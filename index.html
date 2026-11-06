@@ -1168,7 +1168,7 @@ html[data-theme=dark] svg text:not([fill]):not([class]){fill:#ececea}
 </div></div>
 <script>
 const DAYS=["20261107"];             
-const BUILT='2026-11-07T0030';
+const BUILT='2026-11-07T0050';
 const GATED=true;         
 const NOTE_URL="";       
 const $=s=>document.querySelector(s);
@@ -1609,7 +1609,7 @@ main();
  
 (function(){ const nav=document.querySelector('.nav'), sw=document.getElementById('sw'), sc=document.getElementById('tnavsc'); if(!nav||!sw||!sc) return;
   sw.querySelector('[data-site="c"]').onclick=function(){ if(!this.classList.contains('on')) location.href='https://umami-lab-support.github.io/'; };
-  sw.querySelector('[data-site="l"]').onclick=function(){ if(!this.classList.contains('on')) location.href='https://sunao-keiba.github.io/'; };
+  sw.querySelector('[data-site="l"]').onclick=function(){ if(!this.classList.contains('on')) location.href='https://umami-chiho.github.io/'; };
   const skip={up:1,list:1,chi:1};
   function vis(){ return [...nav.querySelectorAll('button[data-k]')].filter(b=>!skip[b.dataset.k]&&getComputedStyle(b).display!=='none'); }
   function build(){ sc.innerHTML=''; vis().forEach(b=>{ const t=document.createElement('button'); t.type='button'; t.dataset.k=b.dataset.k; t.textContent=b.textContent.trim(); t.onclick=()=>{ b.click(); sync(); }; sc.appendChild(t); }); }
