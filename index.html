@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>うまみ UMAMI 地方｜地方競馬の正直な勝率</title>
+<meta name="description" content="地方競馬の全レースに、正直な勝率と期待値。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&family=DM+Mono:wght@400;500&family=Outfit:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&text=%E7%A8%8D&display=swap">
+<script id="thm">try{if(localStorage.getItem('sunao_theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+:root{--ink:#111;--mute:#666;--soft:#999;--bg:#fff;--bg2:#fcfbf8;--line:#e3e3df;--ac:#6b4f2a;--ac2:#f1ebe2;--ac3:#e9e0d2;--y:#fdf6e1;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg2)}
+body{background:var(--bg2);color:var(--ink);font-family:'M PLUS Rounded 1c','Zen Maru Gothic','Hiragino Maru Gothic ProN',Meiryo,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.mono{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-variant-numeric:tabular-nums}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit}
+svg.ic{width:100%;height:100%;fill:none;stroke:#111;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:block}
+.wrap{max-width:520px;margin:0 auto;padding:12px 14px 110px;min-height:100vh}
+
+.hd{display:flex;align-items:center;justify-content:space-between;min-height:40px}
+.hd .wm{display:flex;align-items:center;gap:8px;line-height:1}
+.hd .wm>div{text-align:center}
+.hd .wm .kana{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;letter-spacing:.08em;font-size:24px;color:#111}
+.hd .wm small.en{display:block;font-family:'Outfit',sans-serif;letter-spacing:.3em;font-weight:700;font-size:9.5px;color:var(--mute);margin-top:4px;white-space:nowrap;text-align:center}
+.hd .dt{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;color:var(--mute);text-align:right;line-height:1.4}
+.hd .dt b{display:block;color:var(--ink);font-size:13px;font-weight:400}
+.hdr{display:flex;align-items:center;gap:10px}
+.thm{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;padding:0;background:transparent}.thm svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.lead{font-size:11.5px;color:var(--mute);margin-top:2px;line-height:1.6;word-break:auto-phrase}
+section{display:none}section.on{display:block}
+h2{font-size:22px;font-weight:800;letter-spacing:.02em;margin-top:14px;display:flex;align-items:center;gap:8px}
+h2 i{width:24px;height:24px;display:block}
+h3{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px;letter-spacing:.24em;color:var(--mute);font-weight:400;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.seg{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{flex:1;padding:8px 0;font-size:12.5px;font-weight:700;color:var(--mute);white-space:nowrap}
+.seg button.on{background:var(--ink);color:#fff}
+.seg.sm button{padding:6px 0;font-size:11.5px}
+.seg.dsel{margin:10px 0 0}
+.note{font-size:10.5px;color:var(--soft);line-height:1.8;margin-top:8px;letter-spacing:.04em;word-break:auto-phrase}
+.foot{font-size:10px;color:var(--soft);line-height:1.7;margin-top:24px;text-align:center}
+.box{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;margin-top:12px}
+.box p{font-size:12px;color:var(--mute);line-height:1.7;word-break:auto-phrase}
+.box b{font-size:13px}
+
+.cap{display:inline-flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:400;font-size:11.5px;box-shadow:inset 0 0 0 1px #111;letter-spacing:0;line-height:1;text-indent:0}
+
+.lxh{display:flex;align-items:baseline;justify-content:space-between;margin:16px 2px 6px}
+.lxh b{font-size:12px;font-weight:800;letter-spacing:.04em}
+.lxh span{font-size:10px;color:var(--mute)}
+.lxt{display:grid;column-gap:8px;row-gap:0;align-items:stretch;margin-top:2px}
+.lxt.wide{overflow-x:auto;scrollbar-width:none;margin-left:-14px;margin-right:-14px;padding:0 14px;scroll-padding:0 14px}.lxt.wide::-webkit-scrollbar{display:none}   
+.lxt-vh{position:relative;font-size:11.5px;font-weight:800;text-align:left;padding:0 0 0 15px;margin-bottom:9px;display:flex;gap:5px;align-items:baseline;white-space:nowrap;overflow:hidden}
+.lxt-vh span{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);font-weight:400}
+.lxt-vh::after{content:"";position:absolute;left:15px;right:0;bottom:-5px;height:1.5px;border-radius:1px;background:var(--ac)}
+.lxt-q{position:relative;display:block;width:100%;text-align:left;border:none;background:none;border-radius:0;padding:3px 2px 6px 15px;min-width:0;color:#333}
+.lxt-q.empty{padding:0}
+.lxt-q::before{content:"";position:absolute;left:3.5px;top:0;bottom:0;width:1.5px;background:#d6d5cf}
+.lxt-q.first::before{top:11px}
+.lxt-q.last::before{bottom:auto;height:11px}
+.lxt-q.empty::before,.lxt-q.empty::after{display:none}
+.lxt-q::after{content:"";position:absolute;left:.5px;top:7.5px;width:7px;height:7px;border-radius:50%;background:#fff;border:1.5px solid #9a9a96}
+.lxt-q.fin::after{background:#9a9a96}
+.lxt-q.dis::after{border-color:#c4c4c0}
+.lxt-q.nx::after{border-color:var(--ac);background:var(--ac);box-shadow:0 0 0 1.5px #fff,0 0 0 3px var(--ac)}
+.lxt-q .h{display:flex;align-items:baseline;gap:4px;white-space:nowrap}
+.lxt-q .h b{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:17px;font-weight:400;line-height:1;letter-spacing:-.02em}
+.lxt-q .h i{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;color:var(--mute)}
+.lxt-q .h em{font-style:normal;font-size:8.5px;font-weight:800;color:#aaa}
+.lxt-q .n{display:block;font-size:9px;font-weight:700;color:#777;line-height:1.25;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lxt-q .w{display:block;font-size:8px;line-height:1.3;color:var(--ac);font-weight:800}
+.lxt-q.fin{color:#b5b5b0}
+.lxt-q.fin .h b{color:#c4c4c0}
+.lxt-q.fin .n{color:#b5b5b0}
+.lxt-q.fin .h em{color:#ccc}
+.lxt-q.dis{color:#c4c4c0;cursor:default}
+.lxt-q.dis .n{color:#c4c4c0}
+.lxt-q.nx .h b{color:var(--ac);font-weight:500}
+.lxt-q.nx .n{color:var(--ac);font-weight:800}
+.lxt-q .g{position:absolute;right:2px;top:9px;width:6px;height:6px;border-radius:50%;background:#c9a227}
+.lxt-lg{display:flex;gap:12px;font-size:9.5px;color:var(--mute);margin-top:10px;align-items:center;white-space:nowrap}
+.lxt-lg i{display:inline-block;vertical-align:-1px;margin-right:4px}
+.lxt-lg i.d{width:7px;height:7px;border-radius:50%;border:1.5px solid #9a9a96;background:#9a9a96}
+.lxt-lg i.d.x{border-color:var(--ac);background:var(--ac);box-shadow:0 0 0 1.5px #fff,0 0 0 3px var(--ac);margin-left:3px;margin-right:7px}
+.lxt-lg i.g{width:6px;height:6px;border-radius:50%;background:#c9a227}
+
+#rsel{display:block;position:sticky;top:0;z-index:21;background:var(--bg2);margin:4px -14px 0;padding:6px 14px 8px}
+#rsel.stuck{box-shadow:0 1px 0 var(--line)}
+
+.rh2{text-align:left;margin-top:12px}
+.rh2 .rh-n{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;line-height:1.35;letter-spacing:.02em;color:#111;font-size:17px;word-break:auto-phrase}
+.rh2 .rh-n em{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;font-weight:500;color:#fff;background:var(--ac);border-radius:4px;padding:1px 6px;margin-right:8px;vertical-align:3px}
+.rh2 .rh-m{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;align-items:center}
+.rh2 .rh-m span{display:inline-block;margin:0;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11.5px;font-weight:700;color:#444;background:#f3f3ef;border-radius:999px;padding:3px 11px;white-space:nowrap}
+.rh2 .rh-m span.sf{background:var(--ac2);color:var(--ac)}
+.rh2 .rh-m span.yoso{background:#fff;box-shadow:inset 0 0 0 1px #d9b85a;color:#5a4000}
+.fxl{display:flex;align-items:flex-start;gap:6px;margin-top:8px;font-size:10.5px;line-height:1.55;color:var(--mute);letter-spacing:.02em;word-break:auto-phrase}
+
+.tt{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}
+.tt b{font-size:13px;font-weight:800}
+.seg.srt{width:132px;flex:none}
+.t{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;margin-top:8px}
+.t th{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);font-weight:400;text-align:right;padding:6px 4px;border-bottom:1.5px solid var(--ink);white-space:nowrap;letter-spacing:.06em}
+.t td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;vertical-align:middle}
+.t th.l,.t td.l{text-align:left}
+.t td.c{text-align:center;padding-left:0;padding-right:2px;width:26px}
+.t td.nm{font-weight:700;line-height:1.15;max-width:0;width:44%;overflow:hidden;text-overflow:ellipsis;padding-left:2px}
+.t td.nm .hn{display:flex;align-items:center;gap:4px;min-width:0}
+.t td.nm .hn span{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.t td.nm small{display:block;margin:2px 0 0;color:var(--soft);font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;font-weight:400;overflow:hidden;text-overflow:ellipsis}
+.t td.nm small b{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:500;color:var(--mute)}
+.t tr.e2 td{background:#f5e19e}
+.t tr.e2 td.ev{font-weight:700;color:#3a2a00}
+.t tr.e1 td.ev{font-weight:700;color:#b39a52}
+.t tr.scr td{opacity:.45}
+.t tr.scr td.nm .hn span{text-decoration:line-through}
+.t tr[data-h]{cursor:pointer}
+.t tr.hit td{background:#e1f5ee}
+.t tr.e2.hit td{background:#dff0d0}
+.t td.ev{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:13px}
+.t td.p{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+.t td.od,.t td.pp{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;color:#444}
+.sw{display:inline-flex;align-items:center;justify-content:center;flex:none;width:14px;height:14px;border-radius:50%;background:var(--ac2);color:var(--ac);font-size:8px;font-weight:800;line-height:1}
+.al{display:inline-flex;align-items:center;flex:none;font-size:8.5px;font-weight:800;line-height:1;padding:2px 5px;border-radius:999px;background:#fff;color:#8a5a00;box-shadow:inset 0 0 0 1px #d9b85a;white-space:nowrap}
+.al.a2{background:#f3d9a6;color:#5a3a00;box-shadow:none}
+
+.hcard{display:none}
+.hcard td{padding:0 0 10px;text-align:left;white-space:normal;background:#fff}
+.hc{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fcfbf8}
+.hc h4{font-size:10.5px;font-weight:800;color:var(--ac);letter-spacing:.06em;margin:4px 0 4px}
+.pt{width:100%;border-collapse:collapse;font-size:10.5px}
+.pt th{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;color:var(--mute);font-weight:400;text-align:right;padding:2px 3px;border-bottom:1px solid var(--line);white-space:nowrap}
+.pt td{padding:4px 3px;text-align:right;white-space:nowrap;border-bottom:1px solid #f0efe9;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10.5px}
+.pt th.l,.pt td.l{text-align:left}
+.pt td.l{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+.pt td b{font-weight:500}
+.pt td.w1{color:#8a5a00;font-weight:700}
+.fv{display:grid;gap:5px;margin-top:4px}
+.fv div{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;font-size:11px}
+.fv div b{font-size:10.5px;font-weight:700;color:var(--mute)}
+.fv div span{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px}
+.fv div span em{font-style:normal;color:#8a5a00;font-weight:700}
+.fv div span.ok em{color:#1f7a4d}
+.fv p{font-size:10.5px;color:var(--mute);margin-top:6px;line-height:1.6;word-break:auto-phrase}
+
+.res{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;margin-top:12px}
+.res .ro{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.res .ro div{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.res .ro div i{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px;color:var(--mute);font-weight:400}
+.res .ro div small{font-size:9.5px;color:var(--soft);font-weight:400}
+.pay{width:100%;border-collapse:collapse;margin-top:8px;font-size:11.5px}
+.pay td{padding:4px 2px;border-bottom:1px solid #f0efe9;white-space:nowrap}
+.pay td:first-child{color:var(--mute);font-size:10.5px;width:44px}
+.pay td:nth-child(2){font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+.pay td:last-child{text-align:right;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:500}
+.pay td:last-child small{color:var(--soft);font-weight:400;margin-left:4px}
+.pay tr.g td:last-child{color:#8a5a00;font-weight:700}
+
+.hto .qs{display:grid;gap:8px;margin-top:12px}.hto .qs div{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:12px;background:var(--ac);color:#fff}.hto .qs b{flex:none;width:22px;height:22px;border-radius:50%;background:#f5e19e;color:var(--ac);font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px}.hto .qs span{font-size:12px;line-height:1.6;letter-spacing:.02em;word-break:auto-phrase}.hto .qs em{font-style:normal;color:#f5e19e;font-weight:700}
+.hto .hs{margin-top:22px}.hto .hs>div:first-child{display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--line)}.hto .hs>div:first-child i{width:22px;height:22px;flex:none;color:var(--ac)}.hto .hs>div:first-child b{font-size:14.5px;font-weight:700;letter-spacing:.04em}
+.hto ul{list-style:none;margin:8px 0 0;padding:0}.hto li{position:relative;padding:6px 0 6px 14px;font-size:12px;line-height:1.7;color:var(--ink);letter-spacing:.02em;word-break:auto-phrase}.hto li:before{content:'';position:absolute;left:2px;top:14px;width:5px;height:5px;border-radius:50%;background:#c9a227}
+.hto li b{font-weight:700}.hto .k{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:999px;margin:0 2px;letter-spacing:.02em;white-space:nowrap}.hto .k.g{background:#f5e19e;color:#3a2a00}.hto .k.g2{background:#fefaf0;color:#5a4000;box-shadow:inset 0 0 0 1px #d9b85a}.hto .k.n{background:var(--ac);color:#fff}
+
+.nav{position:fixed;left:0;right:0;bottom:14px;margin:0 auto;width:min(calc(100% - 24px),440px);background:#fff;border-radius:20px;box-shadow:0 2px 6px rgba(60,45,20,.10),0 10px 26px rgba(60,45,20,.20);z-index:30;transition:transform .28s ease,opacity .28s ease}
+.nav.hid{transform:translateY(calc(100% + 30px));opacity:0;pointer-events:none}
+.nav .in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 4px;padding:4px}
+.nav button{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:8.5px;font-weight:700;color:rgba(107,79,42,.6);min-width:0;padding:4px 0 3px;border-radius:14px;white-space:nowrap;line-height:1.3}
+.nav button i{width:20px;height:20px;display:block}
+.nav button svg{stroke:rgba(107,79,42,.6)}
+.nav button.on{background:var(--ac2);color:var(--ac)}
+.nav button.on svg{stroke:var(--ac);stroke-width:1.9}
+.nav button[data-k="record"] svg{stroke-width:3}.nav button.on[data-k="record"] svg{stroke-width:3.5}
+.nav .nup,.nav .nls{display:none}
+.nav.rc .in{grid-template-columns:repeat(2,minmax(0,1fr)) 54px 54px}
+.nav.rc .nls{display:flex;grid-column:3;grid-row:1 / span 2;justify-content:center}
+.nav.rc .nup{display:flex;grid-column:4;grid-row:1 / span 2;justify-content:center}
+.pend{font-size:12px;color:var(--mute);padding:20px 0;text-align:center}
+
+
+.rs-a{display:flex;align-items:center;gap:8px;min-width:0}
+.rs-v{display:flex;border:1.5px solid #9a9a9a;border-radius:999px;overflow:hidden;flex:none;background:#fff}
+#rsel .rs-v button{padding:4px 10px;font-size:11.5px;font-weight:700;color:#555;white-space:nowrap;line-height:1.35}
+#rsel .rs-v button+button{border-left:1px solid #e2e2dc}
+#rsel .rs-v button.vo{background:var(--ac);color:#fff}#rsel .rs-v button.cur:not(.vo){color:var(--ac)}
+.rs-n{flex:1;min-width:0;display:flex;align-items:baseline;justify-content:flex-end;gap:5px}
+.rs-n b{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.rs-n i{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px;color:var(--mute);flex:none}
+#rsel .rs-r{display:flex;gap:0;overflow:hidden;border:1.5px solid #9a9a9a;border-radius:13px;background:#fff;padding:2px;margin-top:7px;position:relative}
+#rsel .rs-r button{flex:1 1 0;min-width:0;height:38px;position:relative;border-radius:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 0 4px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;color:#444;line-height:1}
+#rsel .rs-r button+button{border-left:1px solid #ecece6}
+#rsel .rs-r button b{font-size:12px;font-weight:400}
+#rsel .rs-r button small{font-size:7.5px;color:#8a8a86;letter-spacing:-.02em;white-space:nowrap}
+#rsel .rs-r button::after{content:"";position:absolute;left:28%;right:28%;bottom:3px;height:2px;border-radius:1px;background:#e8cc78}
+#rsel .rs-r button.turf::after{background:#cfd3e2}
+#rsel .rs-r button.gone b,#rsel .rs-r button.gone small{color:#b0b0ac}
+#rsel .rs-r button:disabled b,#rsel .rs-r button:disabled small{color:#d0d0cc}#rsel .rs-r button:disabled::after{display:none}
+#rsel .rs-r button.nx{box-shadow:inset 0 0 0 1.5px var(--ac)}
+#rsel .rs-r button.ro{background:var(--ac);color:#fff;font-weight:500;box-shadow:none;border-radius:10px}#rsel .rs-r button.ro b,#rsel .rs-r button.ro small{color:#fff}#rsel .rs-r button.ro::after{background:#fff}
+#rsel .rs-r button .ck{position:absolute;right:2px;top:2px;width:7px;height:7px;display:block}#rsel .rs-r button .ck svg{width:100%;height:100%;display:block;fill:none;stroke:#9a9a96;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}#rsel .rs-r button.ro .ck svg{stroke:#fff}
+#rsel .rs-v,#rsel .rs-r{border:none;box-shadow:0 1px 2px rgba(60,45,20,.06),0 4px 14px rgba(60,45,20,.07)}
+@media (max-width:340px){#rsel .rs-r button small{font-size:6.5px;letter-spacing:-.04em}}
+html[data-theme=dark] .rs-v{border:1.5px solid #54575f;background:#1a1c21}
+html[data-theme=dark] #rsel .rs-v button{color:#bebebe}html[data-theme=dark] #rsel .rs-v button+button{border-left:1px solid #363632}
+html[data-theme=dark] #rsel .rs-v button.vo{background:var(--ac);color:#16181c}
+html[data-theme=dark] #rsel .rs-r{border:1.5px solid #54575f;background:#1a1c21}
+html[data-theme=dark] #rsel .rs-r button{background:#1a1c21;color:#bebebe}html[data-theme=dark] #rsel .rs-r button+button{border-left:1px solid #363632}
+html[data-theme=dark] #rsel .rs-r button small{color:#bebeba}html[data-theme=dark] #rsel .rs-r button.gone b,html[data-theme=dark] #rsel .rs-r button.gone small{color:#8a8a86}
+html[data-theme=dark] #rsel .rs-r button.ro{background:var(--ac);box-shadow:none}html[data-theme=dark] #rsel .rs-r button.ro b,html[data-theme=dark] #rsel .rs-r button.ro small{color:#14161b}html[data-theme=dark] #rsel .rs-r button.ro::after{background:#14161b}
+html[data-theme=dark] #rsel .rs-r button .ck svg{stroke:#6d6f75}html[data-theme=dark] #rsel .rs-r button.ro .ck svg{stroke:#14161b}
+
+
+
+
+.lock{border:1.5px dashed var(--ac);border-radius:14px;padding:18px 14px;text-align:center;margin-top:12px;background:#fff}
+.lock>i{width:30px;height:30px;display:block;margin:0 auto 8px}.lock>i svg{stroke:var(--ac)}
+.lock p{font-size:12px;color:var(--mute);margin:0 0 12px;font-weight:500;line-height:1.7;word-break:auto-phrase}
+.lock .pw{display:flex;gap:6px;max-width:320px;margin:0 auto}
+.lock input{flex:1;padding:10px;border:1.5px solid var(--ink);border-radius:999px;font-size:15px;text-align:center;letter-spacing:.14em;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;min-width:0;background:#fff;color:var(--ink)}
+.lock button{padding:10px 16px;background:var(--ac);color:#fff;border-radius:999px;font-weight:700;font-size:13px;white-space:nowrap}
+.lock .er{color:#c0392b;font-size:11.5px;margin-top:8px;display:none;font-weight:700}
+.lock .n{font-size:10.5px;color:var(--soft);margin-top:10px;line-height:1.7}
+.lock .buy{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.lock .buy a{font-size:11px;font-weight:700;color:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:5px 12px;white-space:nowrap;text-decoration:none}
+.t td.lk{text-align:center}.t td.lk i{width:12px;height:12px;display:inline-block;vertical-align:-1px}.t td.lk svg{stroke:#b9b7b0}
+.mem-open{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.mem-open span{font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--ac2);color:var(--ac)}
+
+
+.oupdg{width:100%;height:44px;margin-top:10px;border-radius:12px;background:var(--ac);color:#fff;border:none;font-size:13.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;letter-spacing:.04em;cursor:pointer}
+.oupdg svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.oupdg em{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:400;font-size:10.5px;opacity:.75;margin-left:4px;letter-spacing:0}
+.oupdg:disabled{opacity:.6;cursor:default}
+.oupd-n{font-size:10.5px;color:var(--mute);text-align:right;margin-top:4px;min-height:14px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+
+
+.sec{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 12px 13px;margin-top:12px}
+.sh{display:flex;align-items:center;gap:8px;row-gap:6px;flex-wrap:wrap;margin-bottom:8px;min-height:26px}
+.sh .shic{position:relative;flex:none;width:26px;height:26px;border-radius:50%;background:var(--ac2);display:flex;align-items:center;justify-content:center}
+.sh .shic svg{width:14px;height:14px;stroke:var(--ac);stroke-width:1.8}
+.sh .shic em{position:absolute;right:-5px;top:-5px;width:14px;height:14px;border-radius:50%;background:var(--ac);color:#fff;font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;line-height:1;display:flex;align-items:center;justify-content:center}
+.sh b{font-size:14px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.sh .shr{margin-left:auto;display:flex;align-items:center;gap:6px;min-width:0}
+.sh .shr small{font-size:10px;color:var(--mute);white-space:nowrap}
+
+.crs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.crs div{background:var(--bg2);border-radius:10px;padding:7px 8px 6px;min-width:0}
+.crs i{display:block;font-style:normal;font-size:9px;color:var(--mute);letter-spacing:.06em;white-space:nowrap}
+.crs b{display:block;font-size:13px;font-weight:700;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crs b.mono{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:500}
+.crs b.na{color:var(--soft);font-weight:500}
+
+.rlab{display:inline-flex;align-items:center;font-size:10.5px;font-weight:800;padding:2px 9px;border-radius:999px;white-space:nowrap;line-height:1.4}
+.rlab.u-main{background:#f5e19e;color:#3a2a00;box-shadow:inset 0 0 0 1px #c9a227}
+.rlab.u-mid{background:#fff;color:#5a4000;box-shadow:inset 0 0 0 1px #c9a227}
+.rlab.u-ana{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px #9a9a9a}
+.rlab.u-none{background:var(--bg2);color:var(--mute)}
+
+.seg.vw{width:132px;flex:none}
+.mit{display:grid;gap:5px;margin-top:8px}
+.mit .mr{display:grid;grid-template-columns:24px minmax(0,1fr) 58px 46px;gap:7px;align-items:center;padding:6px 8px;border-radius:10px;background:var(--bg2)}
+.mit .mr.e2{background:#f5e19e}.mit .mr.e1{box-shadow:inset 0 0 0 1px #d9b85a;background:#fff}
+.mit .mr.scr{opacity:.45}
+.mit .nm{font-weight:700;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.2}
+.mit .nm small{display:block;font-size:9.5px;color:var(--mute);font-weight:400;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;margin-top:1px}
+.mit .pv{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12px;text-align:right;line-height:1.2}
+.mit .pv small{display:block;font-size:8.5px;color:var(--mute)}
+.mit .ev{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:14px;font-weight:700;text-align:right}
+.mit .mr.e2 .ev{color:#3a2a00}.mit .mr.e1 .ev{color:#b39a52}
+.mit .mr .ev:empty::before{content:'—';color:var(--soft);font-weight:400}
+.mit-h{display:grid;grid-template-columns:24px minmax(0,1fr) 58px 46px;gap:7px;padding:0 8px;margin-top:8px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;color:var(--mute);letter-spacing:.06em}
+.mit-h span{text-align:right}.mit-h span.l{text-align:left}
+
+.alc{display:grid;gap:8px}
+.alc .a{border-radius:12px;padding:9px 10px;background:var(--bg2);border-left:4px solid #d9b85a}
+.alc .a.a2{border-left-color:#c9872a;background:#fbf3e4}
+.alc .ah{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.alc .ah b{font-size:13px;font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.alc .ah .od{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;color:var(--mute);white-space:nowrap}
+.alc .ap{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11.5px;margin-top:5px;color:var(--ink)}
+.alc .ap em{font-style:normal;color:#8a5a00;font-weight:700}
+.alc .ap small{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px;color:var(--mute);margin-left:4px}
+.alc .fv{margin-top:6px}.alc .fv p{display:none}
+.alc .fv div{grid-template-columns:58px 1fr}
+.alc-none{font-size:12px;color:var(--mute);padding:4px 0 2px}
+
+.rn{display:inline-flex;align-items:center;flex:none;font-size:8.5px;font-weight:800;padding:1.5px 5px;border-radius:4px;white-space:nowrap;line-height:1.2;letter-spacing:.02em}
+.rn.r1{background:#1f7a4d;color:#fff}.rn.r2{background:#d9efe3;color:#1f5f3f}.rn.r3{background:#dfe3ea;color:#3f4a5e}.rn.r4{background:#55617a;color:#fff}
+.chs{display:flex;flex-wrap:nowrap;gap:3px;margin-top:3px;overflow:hidden;min-width:0}
+.ch{flex:none;font-size:8.5px;font-weight:700;color:var(--mute);background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:1px 4px;white-space:nowrap;line-height:1.3}
+.ch.up{color:#1f7a4d;border-color:#b9dcc8;background:#f1faf5}.ch.dn{color:#a0522d;border-color:#e6c6b6;background:#fbf4f0}.ch.sp{color:#8a5a00;border-color:#d9b85a;background:#fdf6e1}
+.t td.nm .hn .rn{margin-left:2px}
+
+.l3b{display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:13px;border-radius:3px;font-size:8.5px;font-weight:700;margin-left:3px;padding:0 3px;vertical-align:1px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+.l3b.k1{background:#f5e19e;color:#3a2a00}.l3b.k2{background:#2f3b63;color:#fff}.l3b.k3{background:#d6d5cf;color:#333}
+.pt td.nmr{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;text-align:left;max-width:72px;overflow:hidden;text-overflow:ellipsis;color:var(--mute);font-size:9.5px}
+.ptw{overflow-x:auto;margin:0 -10px;padding:0 10px;-webkit-overflow-scrolling:touch}
+.hcard td{max-width:0;overflow:hidden}
+.ptw .pt{width:auto;min-width:540px}
+.hc{overflow:hidden}
+.jtl{display:grid;gap:3px;margin-top:4px}
+.jtl div{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;font-size:11px}
+.jtl div b{font-size:10.5px;font-weight:700;color:var(--mute)}
+.jtl div span{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px}
+.jtl div span small{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;color:var(--mute);font-size:10px;margin-left:3px}
+.hc .chs{flex-wrap:wrap;overflow:visible;margin:2px 0 6px}
+
+.lxt-q .lb{position:absolute;right:2px;top:8px;width:8px;height:8px;border-radius:50%}
+.lxt-q .lb.u-main{background:#e2bf4f}.lxt-q .lb.u-mid{background:#fff;box-shadow:inset 0 0 0 1.5px #c9a227}.lxt-q .lb.u-ana{background:#fff;box-shadow:inset 0 0 0 1.5px #9a9a9a}
+.lxt-q .ac{position:absolute;right:1px;bottom:6px;min-width:11px;height:11px;border-radius:999px;background:#fbf3e4;color:#8a5a00;font-size:7.5px;font-weight:800;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center;padding:0 2px;box-shadow:inset 0 0 0 1px #d9b85a;line-height:1}
+.lxt-lg i.lb{width:8px;height:8px;border-radius:50%}
+.lxt-lg i.lb.u-main{background:#e2bf4f}.lxt-lg i.lb.u-mid{background:#fff;box-shadow:inset 0 0 0 1.5px #c9a227}.lxt-lg i.lb.u-ana{background:#fff;box-shadow:inset 0 0 0 1.5px #9a9a9a}
+.lxt-lg i.ac{width:11px;height:11px;border-radius:999px;background:#fbf3e4;box-shadow:inset 0 0 0 1px #d9b85a;vertical-align:-2px}
+.lxt-lg{flex-wrap:wrap;row-gap:4px}
+.lxt-vh .wx{font-size:8.5px;color:var(--mute);font-weight:400;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+
+.hto .hs{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:12px}
+.hto .hs>div:first-child{padding-bottom:6px;border-bottom:none}
+.hto .hs .num{position:relative;flex:none;width:26px;height:26px;border-radius:50%;background:var(--ac2);display:flex;align-items:center;justify-content:center}
+.hto .hs .num svg{width:14px;height:14px;stroke:var(--ac);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hto .hs .num em{position:absolute;right:-5px;top:-5px;width:14px;height:14px;border-radius:50%;background:var(--ac);color:#fff;font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;display:flex;align-items:center;justify-content:center}
+.hto .pt-box{background:var(--bg2);border-radius:10px;padding:8px 10px;font-size:12px;line-height:1.7;margin-top:4px;word-break:auto-phrase}
+.hto .pt-box b{color:var(--ac)}
+.hto details{margin-top:6px}
+.hto summary{font-size:11.5px;color:var(--ac);font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;gap:5px;padding:4px 0}
+.hto summary::-webkit-details-marker{display:none}
+.hto summary::before{content:'';width:0;height:0;border:4px solid transparent;border-left:5px solid var(--ac);display:inline-block;transition:transform .15s;margin-left:2px}
+.hto details[open] summary::before{transform:rotate(90deg)}
+.hto details ul{margin-top:0}
+.hto .k.rn{vertical-align:1px}
+
+.wnd{margin-top:8px;font-size:11.5px;color:var(--ink);display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700}
+.wnd i{width:16px;height:16px;display:block;flex:none}.wnd i svg{stroke:var(--ac)}
+.wnd small{font-size:10px;color:var(--mute);font-weight:400}
+.wnd .mono{font-weight:500}
+
+.bin{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.bin label{font-size:10px;color:var(--mute);display:flex;flex-direction:column;gap:3px;letter-spacing:.04em}
+.bin input,.bin select{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:13px;padding:7px 9px;border:1.5px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);width:120px;line-height:1.2}
+.bin select{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;width:128px}
+.bt{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+.bt th{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;color:var(--mute);font-weight:400;text-align:right;padding:4px 3px;border-bottom:1.5px solid var(--ink);white-space:nowrap;letter-spacing:.06em}
+.bt td{padding:6px 3px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line);font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;vertical-align:middle}
+.bt th.l,.bt td.l{text-align:left}
+.bt td.c{text-align:center;padding-left:0;padding-right:2px;width:26px}
+.bt td.nm{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:700;max-width:0;width:34%;overflow:hidden;text-overflow:ellipsis;text-align:left;padding-left:2px}
+.bt td.yen{font-weight:700}
+.bt tr.e2 td.ev{color:#3a2a00;font-weight:700}.bt tr.e1 td.ev{color:#b39a52;font-weight:700}
+.bt tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink);font-weight:700;padding-top:7px}
+.bt tr.tot td.l{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+
+
+.nav{display:none!important}
+.topband{height:6px;background:#6b4f2a;margin:-12px -14px 8px}
+.sitesw{display:flex;height:36px;border:1.5px solid #6b4f2a;border-radius:999px;overflow:hidden;background:#fff;margin:8px 0 6px}
+.sitesw button{flex:1;font-size:13px;font-weight:800;color:#6b4f2a;background:#fff;border:none;letter-spacing:.04em;font-family:inherit;cursor:pointer;line-height:1}
+.sitesw button+button{border-left:1.5px solid #6b4f2a}
+.sitesw button.on{background:#6b4f2a;color:#fff}
+.tnav{position:sticky;top:0;z-index:40;height:36px;background:#f6f1e6;border-bottom:1px solid #e6e4dc;margin:0 -14px 10px;padding:0 6px;display:flex;align-items:stretch}
+.tnav .sc{display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;min-width:0;flex:1}
+.tnav .sc::-webkit-scrollbar{display:none}
+.tnav .sc button{flex:none;padding:0 10px;height:35px;font-size:13px;font-weight:700;color:#8e8c85;border:none;border-bottom:2.5px solid transparent;background:none;white-space:nowrap;line-height:1;font-family:inherit;cursor:pointer}
+.tnav .sc button.on{color:var(--ink,#111);border-bottom-color:#6b4f2a}
+.tnav .fade{position:absolute;right:0;top:0;bottom:1px;width:26px;background:linear-gradient(90deg,rgba(255,255,255,0),#f6f1e6);pointer-events:none}
+#rsel{top:36px}.wrap{padding-bottom:28px}
+.hd .wm i{width:34px;height:34px;display:block;flex:none}.hd .wm i svg{width:100%;height:100%;stroke:#111}
+
+
+#s-race .sec{border:none;background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);margin:14px -6px 0;padding:20px 16px 24px}
+#s-race .sec+.sec{margin-top:22px}
+#s-race .sec .sh{align-items:center;gap:10px;margin-bottom:10px}
+#s-race .sec .sh .shic{width:36px;height:36px;background:var(--ac2)}
+#s-race .sec .sh .shic svg{width:20px;height:20px;stroke:var(--ac);stroke-width:2}
+#s-race .sec .sh .shic em{right:-3px;top:-3px;width:16px;height:16px;background:#e2c46a;color:#3a2a00;font-size:9.5px;font-weight:800}
+#s-race .sec .sh b{font-size:18.5px;font-weight:800;letter-spacing:.02em}
+#s-race .sec .sh .shr small{font-size:10.5px}
+@media (max-width:360px){#s-race .sec .sh b{font-size:17px}#s-race .sec .sh{gap:8px}}
+#s-race .rcd{margin:12px -6px 0;border:none;border-radius:22px;background:#fff;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);padding:14px 16px 14px}
+#s-race .rcd .rcd-h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+#s-race .rcd .rcd-h b{font-size:12.5px;font-weight:800;letter-spacing:.04em}
+#s-race .rcd .rh-y{display:inline-block;font-size:10.5px;font-weight:700;color:#5a4000;background:#fff;box-shadow:inset 0 0 0 1px #d9b85a;border-radius:999px;padding:2px 9px;white-space:nowrap}
+#s-race .rcd .crs div{background:var(--bg2)}
+.steps{margin:14px 0 0;padding:0 0 2px}
+.steps .in{display:flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;background:#fff}
+.steps button{flex:1;padding:8px 0;font-size:11.5px;font-weight:700;color:var(--mute);display:flex;align-items:center;justify-content:center;gap:4px;border:none;background:none;font-family:inherit;white-space:nowrap}
+.steps button+button{border-left:1px solid var(--line)}
+.steps button i{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px;color:var(--soft)}
+.steps button.on{color:var(--ac);background:var(--ac2)}.steps button.on i{color:var(--ac)}
+
+.ch{color:var(--ink);background:#fff;border-color:#cfcfca}
+.ch.sp{color:#5a4000;border-color:#c9a227;background:#fff}
+.al{background:#fff;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac)}.al.a2{background:var(--ac);color:#fff;box-shadow:none}
+.alc .a{border-left-color:var(--ac);background:var(--bg2)}.alc .a.a2{border-left-color:var(--ac);background:#f6f1e6}.alc .ap em{color:var(--ac)}
+.alin{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.alin h4{font-size:13px;font-weight:800;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.alin h4 svg{width:15px;height:15px;stroke:var(--ac);stroke-width:2}
+.rh2 .rh-m span.sf{background:var(--ac2);color:var(--ac)}
+
+
+.hd .bk{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:6px 10px 6px 6px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;color:var(--ink);font-family:inherit}
+.hd .bk i{width:14px;height:14px;display:block}.hd .bk i svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hd .dt b{display:block;color:var(--ink);font-size:13px;font-weight:400}
+#s-race .rh.rh2{text-align:left;margin-top:12px}
+#s-race .rh2 .rh-n{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;line-height:1.3;letter-spacing:.02em;color:#111;word-break:auto-phrase}
+#s-race .rh2 .rh-m{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px;align-items:center}
+#s-race .rh2 .rh-m span{margin:0;background:none;border-radius:0;padding:0;font-size:11.5px;font-weight:700;color:#444}
+#s-race .rh2 .rh-t{display:inline-flex;align-items:baseline;gap:3px;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10.5px;color:#555;white-space:nowrap}
+#s-race .rh2 .rh-t b{display:inline;margin:0;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:13.5px;font-weight:500;color:#111;letter-spacing:.06em}
+#s-race .rh2 .rh-s{display:inline-block;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10.5px;font-weight:700;color:#555;border:1px solid #cfcfca;border-radius:999px;padding:0 8px;white-space:nowrap}
+#s-race .rh2 .rh-s.yoso{color:#5a4000;border-color:#d9b85a}
+#s-race .rh2 .rh-sf{display:inline-block;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;border-radius:999px;padding:2px 10px;background:#fdf6e1;color:#5a4000}
+#s-race .rh2 .rh-hc{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;color:#444}
+#s-race .scrl{margin-top:8px}
+
+#s-race .rcd{margin:12px 0 4px;border:none;background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);padding:11px 12px 10px}
+#s-race .rcd.rc1{position:relative;padding:18px 10px 14px}
+#s-race .rc1 .rlab{position:absolute;right:14px;top:-9px;bottom:auto;font-size:9.5px;font-weight:700;line-height:1;padding:3px 6px;border-radius:999px;letter-spacing:.04em}
+#s-race .rlab.u-main{background:#f5e19e;color:#3a2a00;box-shadow:inset 0 0 0 1px #c9a227}#s-race .rlab.u-mid{background:#fff;color:#5a4000;box-shadow:inset 0 0 0 1px #c9a227}#s-race .rlab.u-ana{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px #9a9a9a}#s-race .rlab.u-none{display:none}
+#s-race .rc1-g{display:grid;text-align:center}
+#s-race .rc1-g>div{min-width:0;padding:0 4px}
+#s-race .rc1-g>div+div{border-left:1px solid #f0efea}
+#s-race .rc1-g label{display:block;font-size:10.5px;font-weight:700;color:#8a8a86;letter-spacing:.02em}
+#s-race .rc1-g .v{display:block;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:26px;font-weight:500;color:var(--ac);line-height:1.2;margin-top:3px;letter-spacing:0}
+#s-race .rc1-g .v small{font-size:12px;margin-left:1px}
+#s-race .rc1-g .v.j{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;font-size:24px}
+#s-race .rc1-g .v.na{color:#b5b5b0;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:700;font-size:18px;line-height:1.7}
+#s-race .rc1-g .s{display:block;font-size:10.5px;font-weight:700;color:#8a8a86;margin-top:3px;white-space:nowrap;letter-spacing:0}
+#s-race .rc1-g .s.gd{color:#8a6400}
+#s-race .rc1-g .sc{display:flex;gap:3px;justify-content:center;margin-top:8px}
+#s-race .rc1-g .sc i{width:12px;height:5px;border-radius:999px;background:#e8e7e1}
+#s-race .rc1-g .sc i.on{background:var(--ac)}
+#s-race .rc1-f{margin-top:12px;display:flex;flex-wrap:wrap;justify-content:center;column-gap:6px;row-gap:2px;font-size:10.5px;color:#a3a29b;font-weight:500;line-height:1.6;letter-spacing:0}
+#s-race .rc1-f i{font-style:normal;color:#d4d3cc}
+#s-race .rc1-f b{color:#555;font-weight:700}#s-race .rc1-f small{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:#b5b5b0;margin-left:3px}
+#s-race .rc1-w{margin-top:6px}
+
+#s-race .steps{position:sticky;top:36px;z-index:20;background:var(--bg2);padding:10px 0 8px;margin-top:8px}
+#s-race .steps .in{display:flex;border:none;border-radius:999px;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(60,45,20,.06),0 4px 14px rgba(60,45,20,.07)}
+#s-race .steps button{flex:1;padding:8px 0;font-size:11.5px;font-weight:700;color:var(--mute);display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap;letter-spacing:0;background:none;border:none;font-family:inherit}
+#s-race .steps button i{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:10px}
+#s-race .steps button.on{background:var(--ink);color:#fff}
+#s-race .steps button .lk{width:10px;height:10px;display:block}#s-race .steps button .lk svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2.2}
+
+#s-race .sec{margin:14px -6px 0;padding:20px 16px 24px;border:none;background:#fff;border-radius:22px;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);scroll-margin-top:100px}
+#s-race .sec+.sec{margin-top:44px}
+#s-race .sec .sh{display:flex;border-bottom:none;padding-bottom:0;align-items:center;gap:10px}
+#s-race .sec .sh .shic{position:relative;display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#f6f1e6;flex:none;font-style:normal}
+#s-race .sec .sh .shic svg{width:20px;height:20px;stroke:var(--ac);stroke-width:3;fill:none}
+#s-race .sec .sh .shic em{position:absolute;right:-3px;top:-3px;width:16px;height:16px;border-radius:50%;background:#e2c46a;color:#3a2a00;font:800 9.5px/16px 'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;text-align:center;font-style:normal;letter-spacing:0}
+#s-race .sec .sh b{font-size:18.5px;font-weight:800;letter-spacing:.02em}
+#s-race .sec .sh span.shr,#s-race .sec .sh>span{font-size:10.5px;color:var(--mute);margin-left:auto;font-weight:500;letter-spacing:0;white-space:nowrap}
+#s-race h3{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:14.5px;font-weight:800;letter-spacing:.02em;line-height:1.5;margin:30px 0 0;color:#111;font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+#s-race h3::before{content:"";width:6px;height:6px;border-radius:50%;background:#e2c46a;flex:none}
+#s-race h3 small{flex-basis:100%;font-size:11px;font-weight:400;letter-spacing:0;line-height:1.65;color:#8a8a86;margin:2px 0 0}
+#s-race .note{font-size:11px;color:var(--mute);line-height:1.7;margin-top:10px;letter-spacing:0}
+
+#s-race .ptb{margin:16px 0 2px;padding:12px 14px 13px;background:#fdf6e1;border-radius:16px}
+#s-race .ptb>i{display:inline-block;font-style:normal;font-size:10px;font-weight:800;color:#8a6400;background:#fff;border-radius:999px;padding:1px 8px;margin-bottom:5px;letter-spacing:.02em}
+#s-race .ptb>b{font-size:15px;font-weight:800;color:#111;line-height:1.55;letter-spacing:.02em}
+#s-race .ptb>span{font-size:11.5px;color:#6b5a2a;margin-top:3px;line-height:1.75;letter-spacing:0}
+#s-race .ptb>b,#s-race .ptb>span{display:flex;flex-wrap:wrap;align-items:center;column-gap:8px;row-gap:3px}
+#s-race .ptb>span{column-gap:16px}
+#s-race .ptb .cap{width:20px;height:20px;font-size:10.5px;margin:0;vertical-align:0}
+#s-race .ptb .ar{font-style:normal;color:#b9a46a;margin:0;font-weight:700;font-size:13px;line-height:1}
+#s-race .ptb em.pn{font-style:normal;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+
+#s-race .ulab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:8px 10px 8px 8px;border-radius:12px;border:1px solid #e2e1db;background:var(--bg)}
+#s-race .ulab b{flex:none;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;letter-spacing:.04em;white-space:nowrap}
+#s-race .ulab span{font-size:10.5px;color:var(--mute);text-align:right;line-height:1.4;letter-spacing:.02em}
+#s-race .ulab em{display:block;font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:17px;font-weight:500;color:var(--ink);letter-spacing:0}
+#s-race .ulab.u-main b{background:#f5e19e;color:#3a2a00}#s-race .ulab.u-mid b{background:#fefaf0;color:#5a4000;box-shadow:inset 0 0 0 1px #d9b85a}#s-race .ulab.u-ana b{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1px #e2e1db}#s-race .ulab.u-none b{background:var(--bg2);color:var(--mute)}
+#s-race .oupdg{width:100%;height:44px;margin-top:10px;border-radius:12px;background:var(--ac);color:#fff;border:none;font-size:13.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;letter-spacing:.04em;cursor:pointer;font-family:inherit}
+#s-race .oupdg svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#s-race .oupdg em{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:400;font-size:10.5px;opacity:.75;margin-left:4px;letter-spacing:0}
+#s-race .oupdg:disabled{opacity:.6}
+#s-race .fxl{display:flex;align-items:flex-start;gap:6px;margin-top:8px;font-size:10.5px;line-height:1.55;color:var(--mute);letter-spacing:.02em}
+#s-race .fxl svg{width:14px;height:14px;flex:none;margin-top:1.5px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+#s-race .tw{overflow-x:auto}
+#s-race .zt{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;margin-top:8px}
+#s-race .zt th{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);font-weight:400;text-align:right;padding:6px 6px;border-bottom:1.5px solid var(--ink);white-space:nowrap;letter-spacing:.06em}
+#s-race .zt td{padding:7px 6px;border-bottom:1px solid #e3e3df;text-align:right;white-space:nowrap;vertical-align:middle;max-width:none;width:auto}
+#s-race .zt th.l,#s-race .zt td.l{text-align:left}
+#s-race .zt td.nm{font-weight:700;white-space:nowrap;line-height:1.15;max-width:none;width:auto;overflow:visible;padding-left:6px}
+#s-race .zt td.nm small{display:block;margin:1px 0 0;color:var(--mute);font-family:inherit;font-size:9.5px;font-weight:500}
+#s-race .zt td.mono{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12.5px;color:var(--ink)}
+#s-race .zt tr.e1 td{background:#fff}#s-race .zt tr.e1 td.evc,#s-race .zt tr.e1 td.kev{font-weight:700;color:#b39a52}
+#s-race .zt tr.e2 td{background:#f5e19e}#s-race .zt tr.e2 td.evc,#s-race .zt tr.e2 td.kev{font-weight:700;color:#5a4000}
+#s-race .zt tr.scr td{opacity:.42}
+#s-race .zt td.kp{text-align:right}#s-race .zt td.kp span{display:inline-block;min-width:54px;padding:4px 6px;border:1px solid #e2e1db;border-radius:8px;background:#fff;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:12.5px;text-align:right}
+#s-race .zt tr.e2 td.kp span{background:#fff}
+.z2w{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle}
+.z2w .z2b,.z2w .z2s{display:block;margin-top:-4px;width:22px;height:13px;box-sizing:border-box;font-style:normal}.z2w .z2s{visibility:hidden}
+.z2b{position:relative;border-radius:999px;border:1px solid #000;background:#fff;color:#000;font:800 8px/11px 'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;text-align:center;letter-spacing:0;box-shadow:0 0 0 1.5px #fff}
+.z2b.k1{background:#000;color:#fff}#s-race .zt tr.e2 .z2b{box-shadow:0 0 0 1.5px #f5e19e}
+
+#s-race .lock{border:1.5px dashed var(--ink);border-radius:14px;padding:18px 14px;text-align:center;margin-top:12px;background:#fff}
+#s-race .lock i{width:32px;height:32px;display:block;margin:0 auto 8px}#s-race .lock i svg{width:100%;height:100%;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#s-race .lock p{font-size:12px;color:var(--mute);margin:0 0 12px;font-weight:500;line-height:1.7;word-break:auto-phrase}
+#s-race .lock .pw{display:flex;gap:6px;max-width:320px;margin:0 auto}
+#s-race .lock input{flex:1;padding:10px;border:1.5px solid var(--ink);border-radius:999px;font-size:15px;text-align:center;letter-spacing:.14em;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;min-width:0;background:#fff;color:var(--ink)}
+#s-race .lock button{padding:10px 16px;background:var(--ink);color:#fff;border-radius:999px;font-weight:700;font-size:13px;white-space:nowrap;border:none;font-family:inherit}
+#s-race .lock .er{color:#c0392b;font-size:11.5px;margin-top:8px;display:none;font-weight:700}
+#s-race .lock .n{font-size:10.5px;color:var(--soft);margin-top:10px;line-height:1.7}
+#s-race .lock .buy{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+#s-race .lock .buy a{display:inline-block;padding:6px 12px;border:1.5px solid var(--ink);border-radius:999px;font-size:12px;font-weight:700;color:var(--ink);text-decoration:none;background:#fff}
+
+#s-race .mbx{margin-top:12px}
+#s-race .mbw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0;padding:0}   
+#s-race .mb{border-collapse:separate;border-spacing:0;font-size:10px;line-height:1.35;letter-spacing:0;background:#fff}
+#s-race .mb th{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);font-weight:400;text-align:left;padding:6px 6px;border-bottom:1.5px solid var(--ink);white-space:nowrap;letter-spacing:.06em;background:#fff}
+#s-race .mb td{padding:7px 6px;border-bottom:1px solid #e3e3df;vertical-align:top;white-space:nowrap;text-align:left}
+#s-race .mb .mbh{position:sticky;left:0;z-index:3;background:#fff;border-right:1px solid #e3e3df;background-clip:padding-box}
+#s-race .mb th.mbh{z-index:2}
+#s-race .mb td.mbh,#s-race .mb th.mbh{width:132px;min-width:132px;max-width:132px;box-sizing:border-box}
+#s-race .mb td.mbh div,#s-race .mb .pc div{overflow:hidden;text-overflow:ellipsis}
+#s-race .mb td.mbh .h1{display:flex;align-items:center;gap:4px;margin-bottom:3px}#s-race .mb td.mbh .cap{width:18px;height:18px;font-size:10px;margin:0;flex:none}
+#s-race .mb td.mbh .h1 b{font-size:10.5px;font-weight:700;overflow:hidden;text-overflow:ellipsis}
+#s-race .mb td.mbh .bl{color:var(--mute);font-size:9px}
+#s-race .mb td.mbh .od{display:flex;gap:6px;align-items:baseline}#s-race .mb td.mbh .od .pp{color:var(--mute)}
+#s-race .mb td.mbh .rn{font-size:8.5px;padding:0 5px;margin-right:3px}
+#s-race .mb td.pc{width:124px;min-width:124px;max-width:124px;box-sizing:border-box;border-right:1px solid #ecece8;background:linear-gradient(#e2e1db,#e2e1db) left 0 top 14px/1px calc(100% - 28px) no-repeat,#f7f6f2}
+#s-race .mb thead th:not(.mbh){border-right:1px solid #ecece8}
+#s-race .mb .pc .l1{display:flex;align-items:center;gap:5px;margin-bottom:2px}
+#s-race .mb .pc .l2{font-weight:700;font-size:10.5px}#s-race .mb .pc .l1 .pl{overflow:hidden;text-overflow:ellipsis;min-width:0}
+#s-race .mb .mono{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+#s-race .mb .rk{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 3px;border-radius:5px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;font-weight:500;box-sizing:border-box;flex:none}
+#s-race .mb .rk.k4{background:#fff;border:1px solid #e2e1db;color:#666}
+#s-race .mb .rk.kx{color:var(--mute);font-size:9.5px;padding:0}
+#s-race .mb .rk.m1{background:#e2c46a;color:#3a2a00;border:none;font-weight:700}
+#s-race .mb .rk.m2{background:var(--ac);color:#fff;border:none;font-weight:700}
+#s-race .mb .rk.m3{background:#d6d5cf;color:#333;border:none;font-weight:700}
+#s-race .mb .ag{display:inline-block;line-height:13px;border-radius:3px;box-sizing:border-box;padding:0 1px;margin-left:1px}
+#s-race .mb .ag.m1{background:#e2c46a;color:#3a2a00;font-weight:700}#s-race .mb .ag.m2{background:var(--ac);color:#fff;font-weight:700}#s-race .mb .ag.m3{background:#d6d5cf;color:#333;font-weight:700}
+#s-race .mb .pc.nil{color:var(--mute);background:#f7f6f2;vertical-align:middle;text-align:left}
+#s-race .mb tr.scr td{opacity:.42}
+
+#s-race .mb .hcard{display:none}#s-race .mb .hcard.on{display:table-row}
+#s-race .mb .hcard td{padding:0 0 10px;text-align:left;white-space:normal;background:#fff;border-right:none;position:sticky;left:0}
+#s-race .hc{border:1px solid #e2e1db;border-radius:12px;padding:10px;background:#f7f6f2;width:calc(100vw - 52px);max-width:468px;box-sizing:border-box}
+#s-race .hcl{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}#s-race .hcl span{font-size:14px;font-weight:700}
+#s-race .hcg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;background:#e2e1db;border:1.5px solid #e2e1db;border-radius:8px;overflow:hidden}
+#s-race .hcg div{background:#fff;padding:7px 8px 6px}#s-race .hcg label{display:block;font-size:9.5px;color:var(--mute);font-weight:500}#s-race .hcg b{display:block;font-size:13px;font-weight:700}#s-race .hcg b.mono{font-weight:400;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}#s-race .hcg i{display:block;font-style:normal;font-size:9.5px;color:var(--soft);font-weight:500}
+#s-race .hcg>div.w2{grid-column:1/-1}
+#s-race .hc h4{font-size:11px;font-weight:800;margin:10px 0 4px;color:#111}
+#s-race .hc .fv div{display:grid;grid-template-columns:58px 1fr;gap:8px;align-items:center;font-size:11px}#s-race .hc .fv em{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:700}#s-race .hc .fv p{font-size:10px;color:var(--mute);margin:4px 0 0;line-height:1.6}
+#s-race .hc .chs{display:flex;flex-wrap:wrap;gap:4px}
+
+#s-race .alc{display:grid;gap:8px;margin-top:8px}
+#s-race .alc .a{border:1px solid #e2e1db;border-radius:12px;padding:10px 12px;background:#fff}
+#s-race .alc .ah{display:flex;align-items:center;gap:6px;flex-wrap:wrap}#s-race .alc .ah b{font-size:13.5px}
+#s-race .alc .ah .od{margin-left:auto;font-size:10.5px;color:var(--mute);font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+#s-race .alc .ap{font-size:11.5px;margin-top:4px;color:#444}#s-race .alc .ap em{font-style:normal;font-weight:800;color:var(--ac)}#s-race .alc .ap small{display:block;color:var(--mute);font-size:10px}
+#s-race .alc .fv{margin-top:6px}#s-race .alc .fv div{display:grid;grid-template-columns:58px 1fr;gap:8px;align-items:center;font-size:11px}#s-race .alc .fv em{font-style:normal;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:700}#s-race .alc .fv p{display:none}
+#s-race .al{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 7px;border-radius:999px;background:#fff;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac);white-space:nowrap}
+#s-race .alc-none{font-size:12px;color:var(--mute);margin-top:8px}
+
+#s-race .kin{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+#s-race .kin label{display:block;font-size:10.5px;color:var(--mute);font-weight:700}
+#s-race .kin input,#s-race .kin select{width:100%;box-sizing:border-box;margin-top:4px;padding:9px 10px;border:1px solid #e2e1db;border-radius:10px;font-size:14px;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;background:#fff;color:var(--ink)}
+#s-race .zt td.yen{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:700}
+#s-race .zt tr.tot td{border-top:1.5px solid var(--ink);border-bottom:none;font-weight:800}
+
+#s-race .rs3 td{vertical-align:middle}#s-race .rs3 tr:first-child td{border-top:1px solid #e3e3df}
+#s-race .rs3 .rpo{width:30px;white-space:nowrap;padding-right:0;text-align:left}#s-race .rs3 .rpo b{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:21px;font-weight:500;line-height:1}
+#s-race .rs3 .rpo small{font-size:10px;color:var(--mute);margin-left:1px;font-family:inherit}
+#s-race .rs3 td.nm{font-size:13.5px;letter-spacing:.04em}#s-race .rs3 td.nm small{font-family:inherit;letter-spacing:.04em;font-size:10px;margin-top:3px}
+#s-race .rs3 .rrt b{display:block;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:14px;font-weight:500;line-height:1.2}#s-race .rs3 .rrt small{display:block;margin:3px 0 0;font-size:10px;font-family:inherit;color:var(--mute)}
+#s-race .rs3 tr.rw1 td.nm{font-size:15px}#s-race .rs3 tr.rw1 .rpo b{font-size:24px}
+#s-race .payt .dash{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;color:var(--mute);margin:0 1px}
+#s-race .payt tr.cont td{border-top:none}#s-race .payt tr:has(+tr.cont) td{border-bottom-color:transparent}
+#s-race .payt tr.g td{background:#f5e19e}#s-race .payt tr.g td.mono{font-weight:700;color:#5a4000}
+
+
+#s-race .kin{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+#s-race .kin label{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);display:block;letter-spacing:.06em;font-weight:400}
+#s-race .kin input,#s-race .kin select{width:100%;height:42px;box-sizing:border-box;margin:0;padding:0 10px;border:1.5px solid #e2e1db;border-radius:10px;font-size:14px;font-weight:700;background:#fff;color:var(--ink);font-family:inherit}
+#s-race .kin input{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;text-align:right}
+#s-race .zt input.c{width:56px;padding:4px;border:1.5px solid #e2e1db;border-radius:6px;font-size:12.5px;text-align:right;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;background:#fff;color:var(--ink)}
+#s-race .zt td.kpc{padding:4px 6px;text-align:right}
+#s-race .sum{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1.5px solid var(--ink);margin-top:6px;font-weight:700;align-items:center;flex-wrap:wrap;gap:6px}
+#s-race .sum .kph{font-size:10px;color:#9a6a00;margin-left:6px;font-weight:500}
+#s-race .lnk-s{margin-left:8px;border:1.5px solid #e2e1db;border-radius:999px;background:#fff;font-size:10px;font-weight:700;padding:3px 8px;color:var(--ink);font-family:inherit}
+#s-race .kbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;margin:2px 0 4px}#s-race .kbar .lnk-s{margin-left:0;white-space:nowrap}
+#s-race .tkt{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:8px 0}#s-race .tkt button{height:32px;padding:0;border-radius:999px;border:1.5px solid #e2e1db;background:#fff;font-size:11px;font-weight:700;white-space:nowrap;color:var(--ink);font-family:inherit}#s-race .tkt button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+#s-race .nbh{display:flex;align-items:center;gap:8px;margin:10px 0 4px}#s-race .nbh label{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9.5px;color:var(--mute);letter-spacing:.06em}#s-race .nbh button{border:1.5px solid #e2e1db;border-radius:999px;background:#fff;font-size:10px;font-weight:700;padding:2px 9px;color:var(--ink);font-family:inherit}#s-race .nbh button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+#s-race .nb6{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+#s-race .nc{height:44px;border:1px solid #e2e1db;border-radius:8px;background:#fff;padding:0 3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;font-family:inherit}
+#s-race .nc b{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;font-weight:800;line-height:1;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;box-shadow:0 1px 2px rgba(0,0,0,.13)}
+#s-race .nc b[style*="background:#ffffff"]{box-shadow:inset 0 0 0 1.5px #d2d1ca,0 1px 2px rgba(0,0,0,.07)}
+#s-race .nc small{font-size:9.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#s-race .nc.on{background:var(--ink);border-color:var(--ink)}#s-race .nc.on small{color:#fff}
+#s-race .nc:disabled{opacity:.28}
+#s-race .b10k{margin-top:10px;width:100%;padding:12px 12px;border-radius:999px;border:none;font-size:13px;font-weight:700;display:flex;justify-content:space-between;align-items:center;background:#f6f1e6;color:var(--ac);font-family:inherit}
+#s-race .b10k:disabled{opacity:.5}#s-race .b10k i{width:16px;height:16px;display:block}#s-race .b10k i svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2}
+#s-race .tkl td,#s-race .tkl th{padding:7px 2px}#s-race .tkl td:first-child{padding-left:0}#s-race .tkl td:last-child,#s-race .tkl th:last-child{padding-right:0}#s-race .tkl .cap{width:20px;height:20px;font-size:11px}
+#s-race .zt input.ko2{width:44px;padding:4px 2px;border:1.5px solid #e2e1db;border-radius:6px;font-size:12.5px;text-align:right;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;background:#fff;color:var(--ink)}
+#s-race .zt button.x{border:none;background:none;font-size:15px;color:var(--mute);padding:0 2px;line-height:1;font-family:inherit}
+#s-race .tkl tr.hit td,#s-race .tkl tr.hb td{background:#e1f5ee}#s-race .tkl tr.back td,#s-race .tkl tr.hb.bk td{background:#fff8e1}#s-race .tkl tr.miss td{opacity:.42}
+#s-race .tkl tr.hit td,#s-race .tkl tr.back td{border-bottom:none}
+#s-race .tkl tr.hb td{text-align:left;font-size:11px;padding:0 4px 8px 0;white-space:normal}
+#s-race .hbl{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:0 7px;margin-right:8px;font-size:10px;font-weight:700;line-height:1.7;background:#fff;letter-spacing:.04em}
+#s-race .tkl .hret{font-size:12.5px;font-weight:700;margin-right:8px}#s-race .tkl tr.hb small{margin-left:0;font-size:10.5px;color:var(--mute)}
+#s-race .kst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 6px;border-top:1.5px solid var(--ink);padding-top:8px;margin-top:6px}#s-race .kst label{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9px;color:var(--mute);display:block;letter-spacing:.06em}#s-race .kst b{font-size:14px;font-weight:700;white-space:nowrap}
+#s-race .kres{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px;padding:10px 12px;border-radius:12px;background:#f7f6f2;font-size:12px;font-weight:700}#s-race .kres.win{background:#e1f5ee}#s-race .kres small{display:block;font-size:10px;color:var(--mute);font-weight:500}#s-race .kres b{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:500}
+
+
+.wmap{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px}   
+.wmap svg{width:124px;height:112px;flex:none;overflow:visible}
+.wmap .wm-trk{fill:none;stroke:#c9c7c0;stroke-width:2.2}
+.wmap .wm-hs{fill:none;stroke:#6b4f2a;stroke-width:4;stroke-linecap:round}
+.wmap .wm-std{fill:none;stroke:#b5b3ac;stroke-width:3;stroke-linecap:round}
+.wmap .wm-goal{fill:none;stroke:#6b4f2a;stroke-width:2;stroke-linecap:round}
+.wmap .wm-chev{fill:none;stroke:#111;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wmap .wm-dim{opacity:.45}
+.wmap .wm-arr{fill:none;stroke:#111;stroke-width:2.4;stroke-linecap:round}
+.wmap .wm-arrh{fill:#111;stroke:none}
+.wmap .wm-n path{fill:#9a9a96}.wmap .wm-n text{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:9px;fill:#9a9a96}
+.wmap .wt{min-width:0;font-size:12.5px;line-height:1.55;color:#111;letter-spacing:0}
+.wmap .wt b{display:block;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:15px;font-weight:500}
+.wmap .wt small{display:block;font-size:10px;color:#8a8a86;letter-spacing:.02em}
+.wmap .wt span{display:block;margin-top:4px;font-size:12px;color:#444}
+.wmap .wt em{font-style:normal;font-weight:800;color:#111}
+.wmap .wt .wm-note{color:#a3a29b;font-size:10.5px}
+
+#s-race .rcw-g{display:flex;align-items:center;gap:8px}
+#s-race .rcw-go{flex:none;width:80px;text-align:center}
+#s-race .rcw .wmap{margin-top:0;flex:1;min-width:0;gap:8px}
+#s-race .rcw .wmap svg{width:110px;height:100px}
+#s-race .rcw .wmap .wt b{font-size:14px;white-space:nowrap}
+
+
+.cap,.nc b{font-family:'M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-weight:800;border:none;box-shadow:0 1px 2px rgba(0,0,0,.13)}
+.cap[style*="background:#ffffff"],.nc b[style*="background:#ffffff"],.cap:not([style]){box-shadow:inset 0 0 0 1.5px #d2d1ca,0 1px 2px rgba(0,0,0,.07)}
+
+
+.stat{display:flex;gap:1.5px;background:var(--ink);border:1.5px solid var(--ink);border-radius:12px;overflow:hidden;margin-top:12px}
+.stat div{flex:1;background:#fff;padding:10px 8px;text-align:center}
+.stat label{display:block;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:8.5px;color:var(--mute);letter-spacing:.1em}
+.stat b{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:22px;font-weight:400}
+.rc{margin-top:8px}.rc .rcr{display:grid;grid-template-columns:62px 1fr 92px;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.rc .rcl{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;color:var(--ink);white-space:nowrap}
+.rc .rcb{display:flex;flex-direction:column;gap:3px}.rc .rcb i,.rc .rcb em{display:block;height:7px;border-radius:2px;min-width:2px}.rc .rcb i{background:#c9a227}.rc .rcb em{background:var(--ac)}
+.rc .rcv{font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif;font-size:11px;text-align:right;line-height:1.35;white-space:nowrap}.rc .rcv b{display:block;font-weight:400;color:#a87400}.rc .rcv em{display:block;font-style:normal;color:var(--ac)}.rc .rcv small{display:block;font-size:9px;color:var(--soft)}
+.rc .lg{display:flex;gap:14px;font-size:10.5px;color:var(--mute);margin-top:8px;align-items:center}.rc .lg i{display:inline-block;width:12px;height:7px;border-radius:2px;margin-right:5px;vertical-align:middle;background:#c9a227}.rc .lg i.b{background:var(--ac)}
+.rc h3{font-size:13.5px;font-weight:700;margin:22px 0 2px;letter-spacing:.02em}.rc .sub{font-size:11px;color:var(--mute);line-height:1.7}
+.rc table.t{width:100%;margin-top:8px;font-size:11.5px;border-collapse:collapse}.rc table.t th{font-size:9.5px;color:var(--mute);font-weight:500;text-align:right;padding:4px 3px;border-bottom:1px solid #ecebe5}.rc table.t th:first-child,.rc table.t td:first-child{text-align:left}.rc table.t td{text-align:right;padding:5px 3px;border-bottom:1px solid #f0efea;font-family:'DM Mono','M PLUS Rounded 1c','Zen Maru Gothic',sans-serif}
+.empty{border:1.5px dashed #bbb;border-radius:12px;padding:18px;text-align:center;color:var(--mute);font-size:12px;font-weight:500;margin-top:10px}
+#s-record .hto{margin-top:6px}#s-record .hto .lead{margin-bottom:4px}
+#s-record .mtab{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}#s-record .mtab button{font-size:11px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-family:inherit;cursor:pointer}#s-record .mtab button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+#s-record .hi{color:#a87400;font-weight:500}
+#s-record .stat{background:#f0efea;border:none;border-radius:22px;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);gap:1px;overflow:hidden}#s-record .stat>div{background:#fff}
+#s-record .empty{background:#fff;border:none;border-radius:22px;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);color:#8a8a86}
+#s-record .note{letter-spacing:0;line-height:1.7}#s-record .lead{letter-spacing:0;line-height:1.8}
+</style>
+<style id="dk">
+html[data-theme=dark]{color-scheme:dark}html[data-theme=dark] body{background:#0f1013}
+html[data-theme=dark]{--ink:#ececea;--mute:#a7aab0;--soft:#8d9097;--bg:#1a1c21;--bg2:#1b1b19;--line:#30333a;--ac:#836640;--ac2:#24201b;--ac3:#2a241c;--y:#2e2817}
+html[data-theme=dark]{background:var(--bg2)}
+html[data-theme=dark] body{background:var(--bg2);color:var(--ink)}
+html[data-theme=dark] button{color:inherit;background:none;border:none}
+html[data-theme=dark] a{color:inherit}
+html[data-theme=dark] svg.ic{fill:none;stroke:#b9bcc2}
+html[data-theme=dark] .hd .wm .kana{color:#ececea}
+html[data-theme=dark] .hd .wm small.en{color:var(--mute)}
+html[data-theme=dark] .hd .dt{color:var(--mute)}
+html[data-theme=dark] .hd .dt b{color:var(--ink)}
+html[data-theme=dark] .thm{border:1.5px solid var(--ink);background:transparent}
+html[data-theme=dark] .thm svg{fill:none;stroke:var(--ink)}
+html[data-theme=dark] .lead{color:var(--mute)}
+html[data-theme=dark] h3{color:var(--mute)}
+html[data-theme=dark] .seg{border:1.5px solid var(--ink);background:#1a1c21}
+html[data-theme=dark] .seg button{color:var(--mute)}
+html[data-theme=dark] .seg button.on{background:var(--ink);color:#16181c}
+html[data-theme=dark] .note{color:var(--soft)}
+html[data-theme=dark] .foot{color:var(--soft)}
+html[data-theme=dark] .box{border:1px solid var(--line);background:#1a1c21}
+html[data-theme=dark] .box p{color:var(--mute)}
+html[data-theme=dark] .cap{box-shadow:inset 0 0 0 1px #b9bcc2}
+html[data-theme=dark] .lxh span{color:var(--mute)}
+html[data-theme=dark] .lxt-vh span{color:var(--mute)}
+html[data-theme=dark] .lxt-vh::after{background:var(--ac)}
+html[data-theme=dark] .lxt-q{border:none;background:none;color:#d5d5d3}
+html[data-theme=dark] .lxt-q::before{background:#2b2a27}
+html[data-theme=dark] .lxt-q::after{background:#1a1c21;border:1.5px solid #989894}
+html[data-theme=dark] .lxt-q.fin::after{background:#72726e}
+html[data-theme=dark] .lxt-q.dis::after{border-color:#4a4d55}
+html[data-theme=dark] .lxt-q.nx::after{border-color:var(--ac);background:var(--ac);box-shadow:0 0 0 1.5px #1a1c21,0 0 0 3px var(--ac)}
+html[data-theme=dark] .lxt-q .h i{color:var(--mute)}
+html[data-theme=dark] .lxt-q .h em{color:#bebebe}
+html[data-theme=dark] .lxt-q .n{color:#a7aab0}
+html[data-theme=dark] .lxt-q .w{color:var(--ac)}
+html[data-theme=dark] .lxt-q.fin{color:#8d9097}
+html[data-theme=dark] .lxt-q.fin .h b{color:#ececea}
+html[data-theme=dark] .lxt-q.fin .n{color:#8d9097}
+html[data-theme=dark] .lxt-q.fin .h em{color:#8d9097}
+html[data-theme=dark] .lxt-q.dis{color:#ececea}
+html[data-theme=dark] .lxt-q.dis .n{color:#ececea}
+html[data-theme=dark] .lxt-q.nx .h b{color:var(--ac)}
+html[data-theme=dark] .lxt-q.nx .n{color:var(--ac)}
+html[data-theme=dark] .lxt-q .g{background:#916b00}
+html[data-theme=dark] .lxt-lg{color:var(--mute)}
+html[data-theme=dark] .lxt-lg i.d{border:1.5px solid #989894;background:#72726e}
+html[data-theme=dark] .lxt-lg i.d.x{border-color:var(--ac);background:var(--ac);box-shadow:0 0 0 1.5px #1a1c21,0 0 0 3px var(--ac)}
+html[data-theme=dark] .lxt-lg i.g{background:#916b00}
+html[data-theme=dark] #rsel{background:var(--bg2)}
+html[data-theme=dark] #rsel.stuck{box-shadow:0 1px 0 var(--line)}
+html[data-theme=dark] .rh2 .rh-n{color:#ececea}
+html[data-theme=dark] .rh2 .rh-n em{color:#16181c;background:var(--ac)}
+html[data-theme=dark] .rh2 .rh-m span{color:#bebebe;background:#1e1e1c}
+html[data-theme=dark] .rh2 .rh-m span.sf{background:var(--ac2);color:var(--ac)}
+html[data-theme=dark] .rh2 .rh-m span.yoso{background:#1a1c21;box-shadow:inset 0 0 0 1px #b0964a;color:#f2d27a}
+html[data-theme=dark] .fxl{color:var(--mute)}
+html[data-theme=dark] .t{background:#1a1c21}
+html[data-theme=dark] .t th{color:var(--mute);border-bottom:1.5px solid var(--ink)}
+html[data-theme=dark] .t td{border-bottom:1px solid var(--line)}
+html[data-theme=dark] .t td.nm small{color:var(--soft)}
+html[data-theme=dark] .t td.nm small b{color:var(--mute)}
+html[data-theme=dark] .t tr.e2 td{background:#4a3d14}
+html[data-theme=dark] .t tr.e2 td.ev{color:#cfbc91}
+html[data-theme=dark] .t tr.e1 td.ev{color:#d5bc73}
+html[data-theme=dark] .t tr.scr td.nm .hn span{text-decoration:line-through}
+html[data-theme=dark] .t tr.hit td{background:#16221e}
+html[data-theme=dark] .t tr.e2.hit td{background:#1c2612}
+html[data-theme=dark] .t td.od,html[data-theme=dark] .t td.pp{color:#bebebe}
+html[data-theme=dark] .sw{background:var(--ac2);color:var(--ac)}
+html[data-theme=dark] .al{background:#1a1c21;color:#e8b36c;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] .al.a2{background:#32250a;color:#ddb784;box-shadow:none}
+html[data-theme=dark] .hcard td{background:#1a1c21}
+html[data-theme=dark] .hc{border:1px solid var(--line);background:#1b1b19}
+html[data-theme=dark] .hc h4{color:var(--ac)}
+html[data-theme=dark] .pt th{color:var(--mute);border-bottom:1px solid var(--line)}
+html[data-theme=dark] .pt td{border-bottom:1px solid #363532}
+html[data-theme=dark] .pt td.w1{color:#e8b36c}
+html[data-theme=dark] .fv div b{color:var(--mute)}
+html[data-theme=dark] .fv div span em{color:#e8b36c}
+html[data-theme=dark] .fv div span.ok em{color:#5cc597}
+html[data-theme=dark] .fv p{color:var(--mute)}
+html[data-theme=dark] .res{border:1px solid var(--line);background:#1a1c21}
+html[data-theme=dark] .res .ro div i{color:var(--mute)}
+html[data-theme=dark] .res .ro div small{color:var(--soft)}
+html[data-theme=dark] .pay td{border-bottom:1px solid #363532}
+html[data-theme=dark] .pay td:first-child{color:var(--mute)}
+html[data-theme=dark] .pay td:last-child small{color:var(--soft)}
+html[data-theme=dark] .pay tr.g td:last-child{color:#e8b36c}
+html[data-theme=dark] .hto .qs div{background:var(--ac);color:#16181c}
+html[data-theme=dark] .hto .qs b{background:#4a3d14;color:var(--ac)}
+html[data-theme=dark] .hto .qs em{color:#f2d27a}
+html[data-theme=dark] .hto .hs>div:first-child{border-bottom:1px solid var(--line)}
+html[data-theme=dark] .hto .hs>div:first-child i{color:var(--ac)}
+html[data-theme=dark] .hto li{color:var(--ink)}
+html[data-theme=dark] .hto li:before{background:#916b00}
+html[data-theme=dark] .hto .k.g{background:#4a3d14;color:#cfbc91}
+html[data-theme=dark] .hto .k.g2{background:#25231c;color:#f2d27a;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] .hto .k.n{background:var(--ac);color:#16181c}
+html[data-theme=dark] .nav{background:#1a1c21;box-shadow:0 2px 6px rgba(60,45,20,.10),0 10px 26px rgba(60,45,20,.20)}
+html[data-theme=dark] .nav button{color:rgba(107,79,42,.6)}
+html[data-theme=dark] .nav button svg{stroke:rgba(107,79,42,.6)}
+html[data-theme=dark] .nav button.on{background:var(--ac2);color:var(--ac)}
+html[data-theme=dark] .nav button.on svg{stroke:var(--ac)}
+html[data-theme=dark] .pend{color:var(--mute)}
+html[data-theme=dark] .rs-v{border:1.5px solid #54575f;background:#1a1c21}
+html[data-theme=dark] #rsel .rs-v button{color:#bebebe}
+html[data-theme=dark] #rsel .rs-v button+button{border-left:1px solid #363632}
+html[data-theme=dark] #rsel .rs-v button.vo{background:var(--ac);color:#16181c}
+html[data-theme=dark] #rsel .rs-v button.cur:not(.vo){color:var(--ac)}
+html[data-theme=dark] .rs-n i{color:var(--mute)}
+html[data-theme=dark] #rsel .rs-r{border:1.5px solid #54575f;background:#1a1c21}
+html[data-theme=dark] #rsel .rs-r button{background:#1a1c21;color:#bebebe}
+html[data-theme=dark] #rsel .rs-r button+button{border-left:1px solid #363632}
+html[data-theme=dark] #rsel .rs-r button small{color:#bebeba}
+html[data-theme=dark] #rsel .rs-r button::after{background:#352c10}
+html[data-theme=dark] #rsel .rs-r button.turf::after{background:#282a33}
+html[data-theme=dark] #rsel .rs-r button.gone b,html[data-theme=dark] #rsel .rs-r button.gone small{color:#bebeba}
+html[data-theme=dark] #rsel .rs-r button:disabled b,html[data-theme=dark] #rsel .rs-r button:disabled small{color:#bebeba}
+html[data-theme=dark] #rsel .rs-r button.nx{box-shadow:inset 0 0 0 1.5px var(--ac)}
+html[data-theme=dark] #rsel .rs-r button.ro{background:var(--ac);color:#16181c;box-shadow:none}
+html[data-theme=dark] #rsel .rs-r button.ro b,html[data-theme=dark] #rsel .rs-r button.ro small{color:#16181c}
+html[data-theme=dark] #rsel .rs-r button.ro::after{background:#1a1c21}
+html[data-theme=dark] #rsel .rs-r button .ck svg{fill:none;stroke:#989894}
+html[data-theme=dark] #rsel .rs-r button.ro .ck svg{stroke:#1a1c21}
+html[data-theme=dark] #rsel .rs-v,html[data-theme=dark] #rsel .rs-r{border:none;box-shadow:0 1px 2px rgba(60,45,20,.06),0 4px 14px rgba(60,45,20,.07)}
+html[data-theme=dark][data-theme=dark] .rs-v{border:1.5px solid #9598a1;background:#505258}
+html[data-theme=dark][data-theme=dark] #rsel .rs-v button{color:#bebebe}
+html[data-theme=dark][data-theme=dark] #rsel .rs-v button+button{border-left:1px solid #999994}
+html[data-theme=dark][data-theme=dark] #rsel .rs-v button.vo{background:var(--ac);color:#bbbec3}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r{border:1.5px solid #9598a1;background:#505258}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button{background:#505258;color:#bebebe}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button+button{border-left:1px solid #999994}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button small{color:#bebeba}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button.gone b,html[data-theme=dark][data-theme=dark] #rsel .rs-r button.gone small{color:#bebeba}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button.ro{background:var(--ac);box-shadow:none}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button.ro b,html[data-theme=dark][data-theme=dark] #rsel .rs-r button.ro small{color:#bbbec5}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button.ro::after{background:#505259}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button .ck svg{stroke:#96989e}
+html[data-theme=dark][data-theme=dark] #rsel .rs-r button.ro .ck svg{stroke:#95989f}
+html[data-theme=dark] .lock{border:1.5px dashed var(--ac);background:#1a1c21}
+html[data-theme=dark] .lock>i svg{stroke:var(--ac)}
+html[data-theme=dark] .lock p{color:var(--mute)}
+html[data-theme=dark] .lock input{border:1.5px solid var(--ink);background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] .lock button{background:var(--ac);color:#16181c}
+html[data-theme=dark] .lock .er{color:#e8675c}
+html[data-theme=dark] .lock .n{color:var(--soft)}
+html[data-theme=dark] .lock .buy a{color:var(--ink);border:1px solid var(--ink);text-decoration:none}
+html[data-theme=dark] .t td.lk svg{stroke:#9a9891}
+html[data-theme=dark] .mem-open span{background:var(--ac2);color:var(--ac)}
+html[data-theme=dark] .oupdg{background:var(--ac);color:#16181c;border:none}
+html[data-theme=dark] .oupdg svg{fill:none;stroke:currentColor}
+html[data-theme=dark] .oupd-n{color:var(--mute)}
+html[data-theme=dark] .sec{background:#1a1c21;border:1px solid var(--line)}
+html[data-theme=dark] .sh .shic{background:var(--ac2)}
+html[data-theme=dark] .sh .shic svg{stroke:var(--ac)}
+html[data-theme=dark] .sh .shic em{background:var(--ac);color:#16181c}
+html[data-theme=dark] .sh .shr small{color:var(--mute)}
+html[data-theme=dark] .crs div{background:var(--bg2)}
+html[data-theme=dark] .crs i{color:var(--mute)}
+html[data-theme=dark] .crs b.na{color:var(--soft)}
+html[data-theme=dark] .rlab.u-main{background:#4a3d14;color:#cfbc91;box-shadow:inset 0 0 0 1px #b0954a}
+html[data-theme=dark] .rlab.u-mid{background:#1a1c21;color:#f2d27a;box-shadow:inset 0 0 0 1px #b0954a}
+html[data-theme=dark] .rlab.u-ana{background:#1a1c21;color:var(--ink);box-shadow:inset 0 0 0 1px #54575f}
+html[data-theme=dark] .rlab.u-none{background:var(--bg2);color:var(--mute)}
+html[data-theme=dark] .mit .mr{background:var(--bg2)}
+html[data-theme=dark] .mit .mr.e2{background:#4a3d14}
+html[data-theme=dark] .mit .mr.e1{box-shadow:inset 0 0 0 1px #b0964a;background:#1a1c21}
+html[data-theme=dark] .mit .nm small{color:var(--mute)}
+html[data-theme=dark] .mit .pv small{color:var(--mute)}
+html[data-theme=dark] .mit .mr.e2 .ev{color:#cfbc91}
+html[data-theme=dark] .mit .mr.e1 .ev{color:#d5bc73}
+html[data-theme=dark] .mit .mr .ev:empty::before{color:var(--soft)}
+html[data-theme=dark] .mit-h{color:var(--mute)}
+html[data-theme=dark] .alc .a{background:var(--bg2);border-left:4px solid #b0964a}
+html[data-theme=dark] .alc .a.a2{border-left-color:#bf8d4f;background:#221d14}
+html[data-theme=dark] .alc .ah .od{color:var(--mute)}
+html[data-theme=dark] .alc .ap{color:var(--ink)}
+html[data-theme=dark] .alc .ap em{color:#e8b36c}
+html[data-theme=dark] .alc .ap small{color:var(--mute)}
+html[data-theme=dark] .alc-none{color:var(--mute)}
+html[data-theme=dark] .rn.r1{background:#2c8457;color:#f4f6fb}
+html[data-theme=dark] .rn.r2{background:#18261f;color:#8fcfa9}
+html[data-theme=dark] .rn.r3{background:#222529;color:#b1bed6}
+html[data-theme=dark] .rn.r4{background:#65728b;color:#f4f6fb}
+html[data-theme=dark] .ch{color:var(--mute);background:var(--bg2);border:1px solid var(--line)}
+html[data-theme=dark] .ch.up{color:#5cc597;border-color:#243b2f;background:#191e1b}
+html[data-theme=dark] .ch.dn{color:#f9a782;border-color:#443026;background:#201c1a}
+html[data-theme=dark] .ch.sp{color:#e8b36c;border-color:#b0964a;background:#2e2817}
+html[data-theme=dark] .l3b.k1{background:#4a3d14;color:#cfbc91}
+html[data-theme=dark] .l3b.k2{background:#44517b;color:#f4f6fb}
+html[data-theme=dark] .l3b.k3{background:#2b2a27;color:#d5d5d3}
+html[data-theme=dark] .pt td.nmr{color:var(--mute)}
+html[data-theme=dark] .jtl div b{color:var(--mute)}
+html[data-theme=dark] .jtl div span small{color:var(--mute)}
+html[data-theme=dark] .lxt-q .lb.u-main{background:#3a3115}
+html[data-theme=dark] .lxt-q .lb.u-mid{background:#1a1c21;box-shadow:inset 0 0 0 1.5px #b0954a}
+html[data-theme=dark] .lxt-q .lb.u-ana{background:#1a1c21;box-shadow:inset 0 0 0 1.5px #54575f}
+html[data-theme=dark] .lxt-q .ac{background:#221d14;color:#e8b36c;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] .lxt-lg i.lb.u-main{background:#3a3115}
+html[data-theme=dark] .lxt-lg i.lb.u-mid{background:#1a1c21;box-shadow:inset 0 0 0 1.5px #b0954a}
+html[data-theme=dark] .lxt-lg i.lb.u-ana{background:#1a1c21;box-shadow:inset 0 0 0 1.5px #54575f}
+html[data-theme=dark] .lxt-lg i.ac{background:#221d14;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] .lxt-vh .wx{color:var(--mute)}
+html[data-theme=dark] .hto .hs{background:#1a1c21;border:1px solid var(--line)}
+html[data-theme=dark] .hto .hs>div:first-child{border-bottom:none}
+html[data-theme=dark] .hto .hs .num{background:var(--ac2)}
+html[data-theme=dark] .hto .hs .num svg{stroke:var(--ac);fill:none}
+html[data-theme=dark] .hto .hs .num em{background:var(--ac);color:#16181c}
+html[data-theme=dark] .hto .pt-box{background:var(--bg2)}
+html[data-theme=dark] .hto .pt-box b{color:var(--ac)}
+html[data-theme=dark] .hto summary{color:var(--ac)}
+html[data-theme=dark] .hto summary::before{border:4px solid transparent;border-left:5px solid var(--ac)}
+html[data-theme=dark] .wnd{color:var(--ink)}
+html[data-theme=dark] .wnd i svg{stroke:var(--ac)}
+html[data-theme=dark] .wnd small{color:var(--mute)}
+html[data-theme=dark] .bin label{color:var(--mute)}
+html[data-theme=dark] .bin input,html[data-theme=dark] .bin select{border:1.5px solid var(--line);background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] .bt th{color:var(--mute);border-bottom:1.5px solid var(--ink)}
+html[data-theme=dark] .bt td{border-bottom:1px solid var(--line)}
+html[data-theme=dark] .bt tr.e2 td.ev{color:#cfbc91}
+html[data-theme=dark] .bt tr.e1 td.ev{color:#d5bc73}
+html[data-theme=dark] .bt tr.tot td{border-bottom:none;border-top:1.5px solid var(--ink)}
+html[data-theme=dark] .topband{background:#836640}
+html[data-theme=dark] .sitesw{border:1.5px solid #b1926c;background:#1a1c21}
+html[data-theme=dark] .sitesw button{color:#d8b890;background:#1a1c21;border:none}
+html[data-theme=dark] .sitesw button+button{border-left:1.5px solid #b1926c}
+html[data-theme=dark] .sitesw button.on{background:#836640;color:#f4f6fb}
+html[data-theme=dark] .tnav{background:#211e18;border-bottom:1px solid #373530}
+html[data-theme=dark] .tnav .sc button{color:#c0beb6;border:none;border-bottom:2.5px solid transparent;background:none}
+html[data-theme=dark] .tnav .sc button.on{color:var(--ink,#ececea);border-bottom-color:#b1926c}
+html[data-theme=dark] .tnav .fade{background:linear-gradient(90deg,rgba(255,255,255,0),#211e18)}
+html[data-theme=dark] .hd .wm i svg{stroke:#b9bcc2}
+html[data-theme=dark] #s-race .sec{border:none;background:#1a1c21;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06)}
+html[data-theme=dark] #s-race .sec .sh .shic{background:var(--ac2)}
+html[data-theme=dark] #s-race .sec .sh .shic svg{stroke:var(--ac)}
+html[data-theme=dark] #s-race .sec .sh .shic em{background:#392f14;color:#cfbc91}
+html[data-theme=dark] #s-race .rcd{border:none;background:#1a1c21;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06)}
+html[data-theme=dark] #s-race .rcd .rh-y{color:#f2d27a;background:#1a1c21;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] #s-race .rcd .crs div{background:var(--bg2)}
+html[data-theme=dark] .steps .in{border:1.5px solid var(--ink);background:#1a1c21}
+html[data-theme=dark] .steps button{color:var(--mute);border:none;background:none}
+html[data-theme=dark] .steps button+button{border-left:1px solid var(--line)}
+html[data-theme=dark] .steps button i{color:var(--soft)}
+html[data-theme=dark] .steps button.on{color:var(--ac);background:var(--ac2)}
+html[data-theme=dark] .steps button.on i{color:var(--ac)}
+html[data-theme=dark] .ch{color:var(--ink);background:#1a1c21;border-color:#363632}
+html[data-theme=dark] .ch.sp{color:#f2d27a;border-color:#b0954a;background:#1a1c21}
+html[data-theme=dark] .al{background:#1a1c21;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac)}
+html[data-theme=dark] .al.a2{background:var(--ac);color:#16181c;box-shadow:none}
+html[data-theme=dark] .alc .a{border-left-color:var(--ac);background:var(--bg2)}
+html[data-theme=dark] .alc .a.a2{border-left-color:var(--ac);background:#211e18}
+html[data-theme=dark] .alc .ap em{color:var(--ac)}
+html[data-theme=dark] .alin{border-top:1px solid var(--line)}
+html[data-theme=dark] .alin h4 svg{stroke:var(--ac)}
+html[data-theme=dark] .rh2 .rh-m span.sf{background:var(--ac2);color:var(--ac)}
+html[data-theme=dark] .hd .bk{border:1.5px solid var(--ink);background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] .hd .bk i svg{fill:none;stroke:currentColor}
+html[data-theme=dark] .hd .dt b{color:var(--ink)}
+html[data-theme=dark] #s-race .rh2 .rh-n{color:#ececea}
+html[data-theme=dark] #s-race .rh2 .rh-m span{background:none;color:#bebebe}
+html[data-theme=dark] #s-race .rh2 .rh-t{color:#bebebe}
+html[data-theme=dark] #s-race .rh2 .rh-t b{color:#ececea}
+html[data-theme=dark] #s-race .rh2 .rh-s{color:#bebebe;border:1px solid #363632}
+html[data-theme=dark] #s-race .rh2 .rh-s.yoso{color:#f2d27a;border-color:#b0964a}
+html[data-theme=dark] #s-race .rh2 .rh-sf{background:#2e2817;color:#f2d27a}
+html[data-theme=dark] #s-race .rh2 .rh-hc{color:#bebebe}
+html[data-theme=dark] #s-race .rcd{border:none;background:#1a1c21;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06)}
+html[data-theme=dark] #s-race .rlab.u-main{background:#4a3d14;color:#cfbc91;box-shadow:inset 0 0 0 1px #b0954a}
+html[data-theme=dark] #s-race .rlab.u-mid{background:#1a1c21;color:#f2d27a;box-shadow:inset 0 0 0 1px #b0954a}
+html[data-theme=dark] #s-race .rlab.u-ana{background:#1a1c21;color:var(--ink);box-shadow:inset 0 0 0 1px #54575f}
+html[data-theme=dark] #s-race .rc1-g>div+div{border-left:1px solid #363532}
+html[data-theme=dark] #s-race .rc1-g label{color:#bebeba}
+html[data-theme=dark] #s-race .rc1-g .v{color:var(--ac)}
+html[data-theme=dark] #s-race .rc1-g .v.na{color:#8d9097}
+html[data-theme=dark] #s-race .rc1-g .s{color:#bebeba}
+html[data-theme=dark] #s-race .rc1-g .s.gd{color:#e0b768}
+html[data-theme=dark] #s-race .rc1-g .sc i{background:#24231f}
+html[data-theme=dark] #s-race .rc1-g .sc i.on{background:var(--ac)}
+html[data-theme=dark] #s-race .rc1-f{color:#bfbeb7}
+html[data-theme=dark] #s-race .rc1-f i{color:#bfbeb7}
+html[data-theme=dark] #s-race .rc1-f b{color:#bebebe}
+html[data-theme=dark] #s-race .rc1-f small{color:#8d9097}
+html[data-theme=dark] #s-race .steps{background:var(--bg2)}
+html[data-theme=dark] #s-race .steps .in{border:none;background:#1a1c21;box-shadow:0 1px 2px rgba(60,45,20,.06),0 4px 14px rgba(60,45,20,.07)}
+html[data-theme=dark] #s-race .steps button{color:var(--mute);background:none;border:none}
+html[data-theme=dark] #s-race .steps button.on{background:var(--ink);color:#16181c}
+html[data-theme=dark] #s-race .steps button .lk svg{fill:none;stroke:currentColor}
+html[data-theme=dark] #s-race .sec{border:none;background:#1a1c21;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06)}
+html[data-theme=dark] #s-race .sec .sh{border-bottom:none}
+html[data-theme=dark] #s-race .sec .sh .shic{background:#211e18}
+html[data-theme=dark] #s-race .sec .sh .shic svg{stroke:var(--ac);fill:none}
+html[data-theme=dark] #s-race .sec .sh .shic em{background:#392f14;color:#cfbc91}
+html[data-theme=dark] #s-race .sec .sh span.shr,html[data-theme=dark] #s-race .sec .sh>span{color:var(--mute)}
+html[data-theme=dark] #s-race h3{color:#ececea}
+html[data-theme=dark] #s-race h3::before{background:#392f14}
+html[data-theme=dark] #s-race h3 small{color:#bebeba}
+html[data-theme=dark] #s-race .note{color:var(--mute)}
+html[data-theme=dark] #s-race .ptb{background:#2e2817}
+html[data-theme=dark] #s-race .ptb>i{color:#e0b768;background:#1a1c21}
+html[data-theme=dark] #s-race .ptb>b{color:#ececea}
+html[data-theme=dark] #s-race .ptb>span{color:#cfbc8a}
+html[data-theme=dark] #s-race .ptb .ar{color:#d1bc81}
+html[data-theme=dark] #s-race .ulab{border:1px solid #363532;background:var(--bg)}
+html[data-theme=dark] #s-race .ulab span{color:var(--mute)}
+html[data-theme=dark] #s-race .ulab em{color:var(--ink)}
+html[data-theme=dark] #s-race .ulab.u-main b{background:#4a3d14;color:#cfbc91}
+html[data-theme=dark] #s-race .ulab.u-mid b{background:#25231c;color:#f2d27a;box-shadow:inset 0 0 0 1px #b0964a}
+html[data-theme=dark] #s-race .ulab.u-ana b{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 1px #363532}
+html[data-theme=dark] #s-race .ulab.u-none b{background:var(--bg2);color:var(--mute)}
+html[data-theme=dark] #s-race .oupdg{background:var(--ac);color:#16181c;border:none}
+html[data-theme=dark] #s-race .oupdg svg{fill:none;stroke:currentColor}
+html[data-theme=dark] #s-race .fxl{color:var(--mute)}
+html[data-theme=dark] #s-race .fxl svg{fill:none;stroke:currentColor}
+html[data-theme=dark] #s-race .zt{background:#1a1c21}
+html[data-theme=dark] #s-race .zt th{color:var(--mute);border-bottom:1.5px solid var(--ink)}
+html[data-theme=dark] #s-race .zt td{border-bottom:1px solid #30333a}
+html[data-theme=dark] #s-race .zt td.nm small{color:var(--mute)}
+html[data-theme=dark] #s-race .zt td.mono{color:var(--ink)}
+html[data-theme=dark] #s-race .zt tr.e1 td{background:#1a1c21}
+html[data-theme=dark] #s-race .zt tr.e1 td.evc,html[data-theme=dark] #s-race .zt tr.e1 td.kev{color:#d5bc73}
+html[data-theme=dark] #s-race .zt tr.e2 td{background:#4a3d14}
+html[data-theme=dark] #s-race .zt tr.e2 td.evc,html[data-theme=dark] #s-race .zt tr.e2 td.kev{color:#f2d27a}
+html[data-theme=dark] #s-race .zt td.kp span{border:1px solid #363532;background:#1a1c21}
+html[data-theme=dark] #s-race .zt tr.e2 td.kp span{background:#1a1c21}
+html[data-theme=dark] .z2b{border:1px solid #b9bcc2;background:#1a1c21;color:#ececea;box-shadow:0 0 0 1.5px #1a1c21}
+html[data-theme=dark] .z2b.k1{background:#ececea;color:#16181c}
+html[data-theme=dark] #s-race .zt tr.e2 .z2b{box-shadow:0 0 0 1.5px #6b5719}
+html[data-theme=dark] #s-race .lock{border:1.5px dashed var(--ink);background:#1a1c21}
+html[data-theme=dark] #s-race .lock i svg{fill:none;stroke:var(--ink)}
+html[data-theme=dark] #s-race .lock p{color:var(--mute)}
+html[data-theme=dark] #s-race .lock input{border:1.5px solid var(--ink);background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .lock button{background:var(--ink);color:#16181c;border:none}
+html[data-theme=dark] #s-race .lock .er{color:#e8675c}
+html[data-theme=dark] #s-race .lock .n{color:var(--soft)}
+html[data-theme=dark] #s-race .lock .buy a{border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;background:#1a1c21}
+html[data-theme=dark] #s-race .mb{background:#1a1c21}
+html[data-theme=dark] #s-race .mb th{color:var(--mute);border-bottom:1.5px solid var(--ink);background:#1a1c21}
+html[data-theme=dark] #s-race .mb td{border-bottom:1px solid #30333a}
+html[data-theme=dark] #s-race .mb .mbh{background:#1a1c21;border-right:1px solid #30333a}
+html[data-theme=dark] #s-race .mb td.mbh .bl{color:var(--mute)}
+html[data-theme=dark] #s-race .mb td.mbh .od .pp{color:var(--mute)}
+html[data-theme=dark] #s-race .mb td.pc{border-right:1px solid #2c2f36;background:linear-gradient(#262522,#262522) left 0 top 14px/1px calc(100% - 28px) no-repeat,#1d1d1b}
+html[data-theme=dark] #s-race .mb thead th:not(.mbh){border-right:1px solid #2c2f36}
+html[data-theme=dark] #s-race .mb .rk.k4{background:#1a1c21;border:1px solid #363532;color:#a7aab0}
+html[data-theme=dark] #s-race .mb .rk.kx{color:var(--mute)}
+html[data-theme=dark] #s-race .mb .pc.nil{color:var(--mute);background:#1d1d1b}
+html[data-theme=dark] #s-race .mb .hcard td{background:#1a1c21;border-right:none}
+html[data-theme=dark] #s-race .hc{border:1px solid #363532;background:#1d1d1b}
+html[data-theme=dark] #s-race .hcg{background:#262522;border:1.5px solid #363532}
+html[data-theme=dark] #s-race .hcg div{background:#1a1c21}
+html[data-theme=dark] #s-race .hcg label{color:var(--mute)}
+html[data-theme=dark] #s-race .hcg i{color:var(--soft)}
+html[data-theme=dark] #s-race .hc h4{color:#ececea}
+html[data-theme=dark] #s-race .hc .fv p{color:var(--mute)}
+html[data-theme=dark] #s-race .alc .a{border:1px solid #363532;background:#1a1c21}
+html[data-theme=dark] #s-race .alc .ah .od{color:var(--mute)}
+html[data-theme=dark] #s-race .alc .ap{color:#bebebe}
+html[data-theme=dark] #s-race .alc .ap em{color:var(--ac)}
+html[data-theme=dark] #s-race .alc .ap small{color:var(--mute)}
+html[data-theme=dark] #s-race .al{background:#1a1c21;color:var(--ac);box-shadow:inset 0 0 0 1px var(--ac)}
+html[data-theme=dark] #s-race .alc-none{color:var(--mute)}
+html[data-theme=dark] #s-race .kin label{color:var(--mute)}
+html[data-theme=dark] #s-race .kin input,html[data-theme=dark] #s-race .kin select{border:1px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .zt tr.tot td{border-top:1.5px solid var(--ink);border-bottom:none}
+html[data-theme=dark] #s-race .rs3 tr:first-child td{border-top:1px solid #30333a}
+html[data-theme=dark] #s-race .rs3 .rpo small{color:var(--mute)}
+html[data-theme=dark] #s-race .rs3 .rrt small{color:var(--mute)}
+html[data-theme=dark] #s-race .payt .dash{color:var(--mute)}
+html[data-theme=dark] #s-race .payt tr.cont td{border-top:none}
+html[data-theme=dark] #s-race .payt tr:has(+tr.cont) td{border-bottom-color:transparent}
+html[data-theme=dark] #s-race .payt tr.g td{background:#4a3d14}
+html[data-theme=dark] #s-race .payt tr.g td.mono{color:#f2d27a}
+html[data-theme=dark] #s-race .kin label{color:var(--mute)}
+html[data-theme=dark] #s-race .kin input,html[data-theme=dark] #s-race .kin select{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .zt input.c{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .sum{border-top:1.5px solid var(--ink)}
+html[data-theme=dark] #s-race .sum .kph{color:#e6b94f}
+html[data-theme=dark] #s-race .lnk-s{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .tkt button{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .tkt button.on{background:var(--ink);color:#16181c;border-color:var(--ink)}
+html[data-theme=dark] #s-race .nbh label{color:var(--mute)}
+html[data-theme=dark] #s-race .nbh button{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .nbh button.on{background:var(--ink);color:#16181c;border-color:var(--ink)}
+html[data-theme=dark] #s-race .nc{border:1px solid #363532;background:#1a1c21}
+html[data-theme=dark] #s-race .nc b{border:none;box-shadow:0 1px 2px rgba(0,0,0,.13)}
+html[data-theme=dark] #s-race .nc b[style*="background:#ffffff"]{box-shadow:inset 0 0 0 1.5px #363531,0 1px 2px rgba(0,0,0,.07)}
+html[data-theme=dark] #s-race .nc small{color:var(--mute)}
+html[data-theme=dark] #s-race .nc.on{background:var(--ink);border-color:var(--ink)}
+html[data-theme=dark] #s-race .nc.on small{color:#16181c}
+html[data-theme=dark] #s-race .b10k{border:none;background:#211e18;color:var(--ac)}
+html[data-theme=dark] #s-race .b10k i svg{fill:none;stroke:currentColor}
+html[data-theme=dark] #s-race .zt input.ko2{border:1.5px solid #363532;background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-race .zt button.x{border:none;background:none;color:var(--mute)}
+html[data-theme=dark] #s-race .tkl tr.hit td,html[data-theme=dark] #s-race .tkl tr.hb td{background:#16221e}
+html[data-theme=dark] #s-race .tkl tr.back td,html[data-theme=dark] #s-race .tkl tr.hb.bk td{background:#201c0e}
+html[data-theme=dark] #s-race .tkl tr.hit td,html[data-theme=dark] #s-race .tkl tr.back td{border-bottom:none}
+html[data-theme=dark] #s-race .hbl{border:1px solid var(--ink);background:#1a1c21}
+html[data-theme=dark] #s-race .tkl tr.hb small{color:var(--mute)}
+html[data-theme=dark] #s-race .kst{border-top:1.5px solid var(--ink)}
+html[data-theme=dark] #s-race .kst label{color:var(--mute)}
+html[data-theme=dark] #s-race .kres{background:#1d1d1b}
+html[data-theme=dark] #s-race .kres.win{background:#16221e}
+html[data-theme=dark] #s-race .kres small{color:var(--mute)}
+html[data-theme=dark] .wmap .wm-trk{fill:none;stroke:#373531}
+html[data-theme=dark] .wmap .wm-hs{fill:none;stroke:#b1926c}
+html[data-theme=dark] .wmap .wm-std{fill:none;stroke:#9a9891}
+html[data-theme=dark] .wmap .wm-goal{fill:none;stroke:#b1926c}
+html[data-theme=dark] .wmap .wm-chev{fill:none;stroke:#b9bcc2}
+html[data-theme=dark] .wmap .wm-arr{fill:none;stroke:#b9bcc2}
+html[data-theme=dark] .wmap .wm-arrh{fill:#ececea;stroke:none}
+html[data-theme=dark] .wmap .wm-n path{fill:#bebeba}
+html[data-theme=dark] .wmap .wm-n text{fill:#bebeba}
+html[data-theme=dark] .wmap .wt{color:#ececea}
+html[data-theme=dark] .wmap .wt small{color:#bebeba}
+html[data-theme=dark] .wmap .wt span{color:#bebebe}
+html[data-theme=dark] .wmap .wt em{color:#ececea}
+html[data-theme=dark] .wmap .wt .wm-note{color:#bfbeb7}
+html[data-theme=dark] .cap,html[data-theme=dark] .nc b{border:none;box-shadow:0 1px 2px rgba(0,0,0,.13)}
+html[data-theme=dark] .cap[style*="background:#ffffff"],html[data-theme=dark] .nc b[style*="background:#ffffff"],html[data-theme=dark] .cap:not([style]){box-shadow:inset 0 0 0 1.5px #363531,0 1px 2px rgba(0,0,0,.07)}
+html[data-theme=dark] .stat{background:var(--ink);border:1.5px solid var(--ink)}
+html[data-theme=dark] .stat div{background:#1a1c21}
+html[data-theme=dark] .stat label{color:var(--mute)}
+html[data-theme=dark] .rc .rcr{border-bottom:1px solid var(--line)}
+html[data-theme=dark] .rc .rcl{color:var(--ink)}
+html[data-theme=dark] .rc .rcb i{background:#916b00}
+html[data-theme=dark] .rc .rcb em{background:var(--ac)}
+html[data-theme=dark] .rc .rcv b{color:#e5b568}
+html[data-theme=dark] .rc .rcv em{color:var(--ac)}
+html[data-theme=dark] .rc .rcv small{color:var(--soft)}
+html[data-theme=dark] .rc .lg{color:var(--mute)}
+html[data-theme=dark] .rc .lg i{background:#916b00}
+html[data-theme=dark] .rc .lg i.b{background:var(--ac)}
+html[data-theme=dark] .rc .sub{color:var(--mute)}
+html[data-theme=dark] .rc table.t th{color:var(--mute);border-bottom:1px solid #363532}
+html[data-theme=dark] .rc table.t td{border-bottom:1px solid #363532}
+html[data-theme=dark] .empty{border:1.5px dashed #4f525a;color:var(--mute)}
+html[data-theme=dark] #s-record .mtab button{border:1px solid var(--line);background:#1a1c21;color:var(--ink)}
+html[data-theme=dark] #s-record .mtab button.on{background:var(--ac);color:#16181c;border-color:var(--ac)}
+html[data-theme=dark] #s-record .hi{color:#e5b568}
+html[data-theme=dark] #s-record .stat{background:#20201d;border:none;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06)}
+html[data-theme=dark] #s-record .stat>div{background:#1a1c21}
+html[data-theme=dark] #s-record .empty{background:#1a1c21;border:none;box-shadow:0 1px 2px rgba(60,45,20,.04),0 6px 20px rgba(60,45,20,.06);color:#bebeba}
+html[data-theme=dark] :not(text)[fill="#111"]{fill:#e6e6e3}
+html[data-theme=dark] [stroke="#111"]{stroke:#d6d6d3}
+html[data-theme=dark] :not(text)[fill="#fff"]{fill:#1a1c21}
+html[data-theme=dark] [stroke="#fff"]{stroke:#1a1c21}
+html[data-theme=dark] [fill="#666"]{fill:#a7aab0}
+html[data-theme=dark] [fill="#777"]{fill:#a7aab0}
+html[data-theme=dark] [stroke="#777"]{stroke:#8d9097}
+html[data-theme=dark] [fill="#9a9a9a"]{fill:#8d9097}
+html[data-theme=dark] [fill="#999"]{fill:#8d9097}
+html[data-theme=dark] [stroke="#999"]{stroke:#6c7078}
+html[data-theme=dark] [stroke="#9a9a9a"]{stroke:#6c7078}
+html[data-theme=dark] [fill="#e8f3e3"]{fill:#1f2d22}
+html[data-theme=dark] [fill="#e9f2e5"]{fill:#223024}
+html[data-theme=dark] [fill="#f1f1ed"]{fill:#26282d}
+html[data-theme=dark] [stroke="#e3e3df"]{stroke:#30333a}
+html[data-theme=dark] [fill="#f7e9bb"]{fill:#463a17}
+html[data-theme=dark] [stroke="#1d3c84"]{stroke:#8fb0f5}
+html[data-theme=dark] [fill="#1d3c84"]{fill:#8fb0f5}
+html[data-theme=dark] [fill="#ddd"]{fill:#3a3d45}
+html[data-theme=dark] [fill="#eaf0fa"]{fill:#1b2333}
+html[data-theme=dark] [style*="color:#666"]{color:#a7aab0!important}
+html[data-theme=dark] svg text:not([fill]):not([class]){fill:#ececea}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-face" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17.5c5.667 4.667 11.333 4.667 17 0"/><path d="M19 18.5l-2 -8.5l1 -2l2 1l1.5 -1.5l-2.5 -4.5c-5.052 .218 -5.99 3.133 -7 6h-6a3 3 0 0 0 -3 3"/><path d="M5 18.5l2 -9.5"/><path d="M8 20l2 -5h4l2 5"/></symbol><symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9" /><path d="M5 21v-7" /></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h7a2 2 0 0 1 2 2v14a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4h-7a2 2 0 0 0-2 2v14a1.5 1.5 0 0 1 1.5-1.5H20z"/></symbol>
+<symbol id="i-chart" viewBox="0 0 48 48"><path d="M8 40 L40 40"/><path d="M12 40 L12 28 M20 40 L20 20 M28 40 L28 30 M36 40 L36 14"/><path d="M12 24 L20 16 L28 26 L36 10"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M5 20 Q12 13 19 20"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.6A7.6 7.6 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1z"/></symbol>
+<symbol id="i-up2" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></symbol>
+<symbol id="i-coin" viewBox="0 0 48 48"><ellipse cx="24" cy="14" rx="12" ry="5"/><path d="M12 14 L12 22 Q12 27 24 27 Q36 27 36 22 L36 14"/><path d="M12 22 L12 30 Q12 35 24 35 Q36 35 36 30 L36 22"/><path d="M20 12 L28 12"/></symbol>
+<symbol id="i-horse" viewBox="0 0 48 48"><path d="M10 40 L10 26 Q10 18 18 16 L26 12 L30 6 L34 12 L36 20 Q34 26 28 26 L26 32 L26 40"/><path d="M14 40 L14 32"/><path d="M22 40 L22 34"/><circle cx="31" cy="15" r="1" fill="#111"/><path d="M28 10 L30 8"/></symbol>
+<symbol id="i-clock" viewBox="0 0 48 48"><circle cx="24" cy="26" r="13"/><path d="M24 17 L24 26 L30 30"/><path d="M14 10 L18 13 M34 10 L30 13"/></symbol>
+<symbol id="i-check" viewBox="0 0 12 12"><path d="M2.5 6.5 L5 9 L9.5 3.5"/></symbol>
+<symbol id="i-track" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="6"/><rect x="7.5" y="9.5" width="9" height="5" rx="2.5"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 L21 19 H3 Z"/><path d="M12 10v4"/><circle cx="12" cy="16.6" r=".6" fill="#111"/></symbol>
+<symbol id="i-list" viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12"/><circle cx="4.5" cy="7" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="17" r="1"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/><path d="M12 14v4M8 20h8"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v3M15 12v2"/></symbol>
+<symbol id="i-run" viewBox="0 0 24 24"><path d="M4 18h16M6 14l4-6 3 4 2-3 3 5"/></symbol>
+<symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 13h15a3 3 0 1 1-3 3"/><path d="M3 18h7"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24"><path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 14 14"><rect x="2.5" y="6" width="9" height="6.5" rx="1.5"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6"/></symbol>
+</defs></svg>
+<div class="wrap">
+  <div class="topband"></div>
+  <div class="hd" id="hd"></div>
+  <div class="sitesw" id="sw"><button type="button" data-site="c" class="">UMAMI 中央</button><button type="button" data-site="l" class="on">UMAMI 地方</button></div>
+  <div class="tnav" id="tnav"><div class="sc" id="tnavsc"></div><div class="fade"></div></div>
+  <section id="s-races"></section>
+  <section id="s-race"></section>
+  <section id="s-record"></section>
+  <section id="s-howto"></section>
+  <section id="s-mem"></section>
+  <div class="foot">正式な情報は各主催者の公式発表でご確認ください。</div>
+</div>
+<div class="nav"><div class="in">
+  <button data-k="races"><i><svg class="ic"><use href="#i-flag"/></svg></i>レース</button>
+  <button data-k="record"><i><svg class="ic"><use href="#i-chart"/></svg></i>記録</button>
+  <button data-k="howto"><i><svg class="ic"><use href="#i-book"/></svg></i>使い方</button>
+  <button data-k="mem"><i><svg class="ic"><use href="#i-user"/></svg></i>会員</button>
+  <button data-k="list" class="nls" type="button" aria-label="一覧へ"><i><svg class="ic"><use href="#i-grid"/></svg></i>一覧へ</button>
+  <button data-k="up" class="nup" type="button" aria-label="いちばん上へ"><i><svg class="ic"><use href="#i-up2"/></svg></i>上へ</button>
+</div></div>
+<script>
+const DAYS=["20261107"];             
+const BUILT='2026-11-07T0030';
+const GATED=true;         
+const NOTE_URL="";       
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ico=(n,cls)=>`<i class="${cls||''}"><svg class="ic"><use href="#i-${n}"/></svg></i>`;
+const ls={get:(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+const WBG={1:'#ffffff',2:'#2b2b2b',3:'#e5342b',4:'#2f6fd0',5:'#f2cf1b',6:'#38a05a',7:'#f0870f',8:'#f0a2bd'};
+const WFG={1:'#111',2:'#fff',3:'#fff',4:'#fff',5:'#111',6:'#fff',7:'#fff',8:'#111'};
+const cap=h=>`<span class="cap" style="background:${WBG[h.waku]||'#ddd'};color:${WFG[h.waku]||'#111'}">${h.uno}</span>`;
+const WDJ='日月火水木金土', dayLab=d=>`${+d.slice(4,6)}/${+d.slice(6,8)}（${WDJ[new Date(+d.slice(0,4),+d.slice(4,6)-1,+d.slice(6,8)).getDay()]}）`;
+function ymd(d){ return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`; }
+function isDark(){ return document.documentElement.getAttribute('data-theme')==='dark'; }
+function thmBtn(){ return `<button class="thm" type="button" onclick="toggleTheme()" aria-label="${isDark()?'明るい画面にする':'暗い画面にする'}"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-${isDark()?'sun':'moon'}"/></svg></button>`; }
+function toggleTheme(){ const dk=!isDark(); if(dk) document.documentElement.setAttribute('data-theme','dark'); else document.documentElement.removeAttribute('data-theme'); try{localStorage.setItem('sunao_theme',dk?'dark':'light');}catch(e){} renderHeader(); }
+let DAY=null, DATA=null, byRid={}, VENUES=[], cur={race:null}, tab='races', SORT='uno';
+const CACHE={};
+function pickDay(){ const q=new URLSearchParams(location.search).get('d'); if(q&&DAYS.includes(q)) return q; const t=ymd(new Date()); if(DAYS.includes(t)) return t; const fut=DAYS.filter(d=>d>t).sort(); return fut[0]||DAYS[0]; }
+async function loadDay(d){ if(CACHE[d]) return CACHE[d]; const r=await fetch(`data/${d}.json?v=${BUILT}`); const j=await r.json(); CACHE[d]=j; return j; }
+async function setDay(d){ DAY=d; DATA=await loadDay(d); mergePaid(DATA,d); byRid={}; (DATA.races||[]).forEach(r=>{ byRid[r.rid]=r; (r.runners||[]).forEach(h=>{ h._rid=r.rid; }); });
+  VENUES=[...new Set((DATA.races||[]).map(r=>r.venue_name))]; }
+const PR=h=>h.scr?0:(h.p==null?null:h.p);
+function renderHeader(){ const d=DAY||'', ds=d?`${d.slice(0,4)}.${d.slice(4,6)}.${d.slice(6,8)}`:'';
+  if(tab==='race'&&cur.race&&byRid[cur.race]){ const r=byRid[cur.race]; $('#hd').innerHTML=`<button class="bk" type="button" onclick="showTab('races')"><i><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></i>${esc(r.venue_name)} R一覧</button><div class="hdr"><div class="dt"><b>${ds}</b>${d?WDJ[new Date(+d.slice(0,4),+d.slice(4,6)-1,+d.slice(6,8)).getDay()]+'曜':''}</div>${thmBtn()}</div>`; return; }
+  $('#hd').innerHTML=`<div class="wm"><i><svg class="ic" style="stroke-width:1.5"><use href="#i-face"/></svg></i><div><span class="kana">うまみ</span><small class="en">UMAMI</small></div></div><div class="hdr"><div class="dt">${ds}<b>${DATA&&DATA.built?'更新 '+esc(DATA.built.slice(11)):''}</b></div>${thmBtn()}</div>`; }
+function showTab(k){ if(!document.getElementById('s-'+k)) k='races'; tab=k; try{ renderHeader(); }catch(e){} document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==='s-'+k));
+  document.querySelectorAll('.nav button[data-k]').forEach(b=>b.classList.toggle('on',b.dataset.k===(k==='race'?'races':k))); $('.nav').classList.toggle('rc',k==='race'); if(k!=='race') ls.set('sunao_tab',k); window.scrollTo(0,0); }
+
+ 
+const LSK='sunao_pw';             
+let ENC=null, OPEN={};            
+function b64d(s){const r=atob(s),a=new Uint8Array(r.length);for(let i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return a;}
+async function kekOf(pw){ const km=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:b64d(ENC.salt),iterations:ENC.it,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['decrypt']); }
+const dec=(k,iv,ct)=>crypto.subtle.decrypt({name:'AES-GCM',iv:b64d(iv)},k,b64d(ct));
+async function unz(buf,z){ if(!z) return new TextDecoder().decode(buf);
+  if(typeof DecompressionStream!=='undefined'){ const st=new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip')); return await new Response(st).text(); }
+  if(!window.fflate){ await new Promise((ok,ng)=>{ const sc=document.createElement('script'); sc.src='https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.js'; sc.onload=ok; sc.onerror=ng; document.head.appendChild(sc); }); }
+  return new TextDecoder().decode(window.fflate.gunzipSync(new Uint8Array(buf))); }
+async function loadEnc(){ if(!GATED) return; try{ const r=await fetch(`data/enc.json?v=${BUILT}`,{cache:'no-store'}); if(r.ok) ENC=await r.json(); }catch(e){} }
+const locked=d=>!!(ENC&&ENC.days&&ENC.days[d]&&!OPEN[d]);
+async function openWith(pw){        
+  const got=[]; if(!ENC||!ENC.days||!pw) return got; const k=await kekOf(pw);
+  for(const [d,x] of Object.entries(ENC.days)){
+    for(const w of (x.w||[])){
+      try{ const raw=await dec(k,w.iv,w.k);
+        if(!OPEN[d]){ const ck=await crypto.subtle.importKey('raw',raw,{name:'AES-GCM'},false,['decrypt']); OPEN[d]=JSON.parse(await unz(await dec(ck,x.iv,x.ct),x.z)); }
+        got.push(d); break; }catch(e){} } }
+  return got; }
+function mergePaid(j,d){ const m=OPEN[d]; if(!m||!j) return; (j.races||[]).forEach(r=>{ const pr=m[r.rid]; if(!pr) return; (r.runners||[]).forEach(h=>{ const x=pr[String(h.uno)]; if(x) Object.assign(h,x); }); }); }
+async function tryUnlock(pw,remember){
+  try{ pw=(pw||'').trim(); if(!pw) return false; const got=await openWith(pw); if(!got.length) return false;
+    if(remember){ const l=(ls.get(LSK,[])||[]).filter(x=>x!==pw); l.push(pw); ls.set(LSK,l); }
+    Object.keys(CACHE).forEach(d=>mergePaid(CACHE[d],d)); if(DATA) mergePaid(DATA,DAY);
+    renderAll(); return true; }catch(e){ return false; } }
+async function unlockFrom(inp){ const box=inp.closest('.lock'); const ok=await tryUnlock(inp.value,true); if(!ok&&box){ box.querySelector('.er').style.display='block'; } }
+function lockBox(d,msg){ const A=NOTE_URL?`<div class="buy"><a href="${esc(NOTE_URL)}" target="_blank" rel="noopener">${dayLab(d)}だけ</a></div>`:'';
+  return `<div class="lock">${ico('lock')}<p>${esc(msg||'勝率と期待値は会員向け。')}</p><div class="pw"><input type="password" placeholder="合い言葉" autocomplete="off" inputmode="numeric" onkeydown="if(event.key==='Enter')unlockFrom(this)"><button type="button" onclick="unlockFrom(this.previousElementSibling)">解錠</button></div><div class="er">合い言葉が違います</div><div class="n">合い言葉は開催日ごとです。<br>入れるとその日の全レースが開きます。${NOTE_URL?'':'<br>1日券は準備中です。'}</div>${A}</div>`; }
+
+ 
+const OUPD={};                                    
+const _dx=(a,k)=>a.map((c,i)=>String.fromCharCode(c^k.charCodeAt(i%k.length))).join(''), _dk='q3Zt8';
+const RELAY=_dx([25,71,46,4,75,75,28,117,6,22,27,90,52,21,22,16,90,117,28,76,5,67,41,78,23,94,93,59,6,22,31,86,46,31,93,24,81,59,90,91,30,94,117,21,72,24,28,59,4,81,46,84,63,0,103,31,82,40,43,87,21,87,41,90,80,5,94,54,75,74,16,80,63,43,81,21,14],_dk), QH1=_dx([9,30,40,17,76,4,65,52,89,94,30,65,55,21,76],_dk);
+const hhmm=()=>{ const n=new Date(); return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; };
+function oddsBtn(r){ const left=Math.max(0,20000-(Date.now()-(OUPD[r.rid]||0))); const y=r.odds_status==='yoso';
+  return `<button class="oupdg" id="oupd" type="button"${left>0?' disabled':''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新のオッズに更新する<em>${r.odds_at?(y?'発売前の想定':esc(r.odds_at)+'時点'):''}</em></button><div class="oupd-n" id="oupdn">${OUPD['n_'+r.rid]||''}</div>`; }
+function applyOdds(r,byHid,st,at){
+  (r.runners||[]).forEach(h=>{ const x=byHid[String(h.hid)]||byHid[String(h.uno).padStart(2,'0')]||byHid[String(h.uno)]; if(x&&x.odds>0){ h.odds=x.odds; h.pop=x.pop; } });    
+  if(st) r.odds_status=st; if(at) r.odds_at=at;
+  const live=(r.runners||[]).filter(h=>!h.scr&&h.odds>0&&h.raw!=null);
+  if(live.length>=2){                               
+    const S=live.reduce((a,h)=>a+1/h.odds,0); let Q=0;
+    live.forEach(h=>{ const m=(1/h.odds)/S; const z=h.raw+Math.log(m/(1-m)); h._q=1/(1+Math.exp(-z)); h.mkt=+m.toFixed(4); Q+=h._q; });
+    live.forEach(h=>{ h.q=+(h._q/Q).toFixed(4); delete h._q; });
+    (r.runners||[]).forEach(h=>{ if(!h.scr&&h.p!=null&&h.odds>0) h.ev=+(h.p*h.odds).toFixed(2); });
+  }
+}
+async function updOdds(r){ const b=$('#oupd'); if(!b||b.disabled) return; b.disabled=true; b.innerHTML='更新中…'; OUPD[r.rid]=Date.now(); OUPD['n_'+r.rid]='';
+  let ok=false;
+  try{ const ac=new AbortController(); const tm=setTimeout(()=>ac.abort(),10000);
+    const res=await fetch(RELAY+encodeURIComponent(r.rid)+'%26type%3D1%26action%3Dinit',{headers:{[QH1]:'text'},signal:ac.signal}); clearTimeout(tm);
+    const t=await res.text(); const j=JSON.parse(t.slice(t.indexOf('{'))); const kn=(j.ary_odds||{}).KettoNum||j.ary_odds||{};    
+    if(j.status==='OK'&&Object.keys(kn).length){ const m={}; Object.entries(kn).forEach(([h,v])=>{ m[h]={odds:+v.Odds,pop:+v.Ninki}; }); applyOdds(r,m,j.odds_status,hhmm()); ok=true; }
+  }catch(e){}
+  if(!ok){ try{ const res=await fetch(`data/${DAY}.json?t=${Date.now()}`,{cache:'no-store'}); const j=await res.json(); const x=(j.races||[]).find(q=>q.rid===r.rid);
+      if(x){ const m={}; (x.runners||[]).forEach(h=>{ if(h.odds>0) m[String(h.hid)]={odds:h.odds,pop:h.pop}; }); applyOdds(r,m,x.odds_status,x.odds_at); OUPD['n_'+r.rid]='サイトの値で更新'; } }catch(e){} }
+  renderRacePage(r); setTimeout(()=>{ const bb=$('#oupd'); if(bb&&cur.race===r.rid) bb.disabled=false; },20000); }
+ 
+const lxMin=r=>{ const m=(r.time||'').match(/(\d+):(\d+)/); return m?(+m[1]*60+ +m[2]):9999; };
+const lxOk=r=>r.runners&&r.runners.length>=2;
+const lxFin=r=>!!(r.result&&r.result.order&&r.result.order.length);
+function lxDay(){ const now=new Date(), t=ymd(now); return {today:DAY===t, past:DAY<t, hm:now.getHours()*60+now.getMinutes()}; }
+function lxGone(r,X){ return lxFin(r)||(X.today&&lxMin(r)<X.hm)||X.past; }
+const GX=h=>!!(h&&h.pfo>0&&h.odds>0&&h.odds>=1.5*h.pfo);    
+function hasGold(r){ return (r.runners||[]).some(h=>!h.scr&&h.ev!=null&&h.ev>=1.0&&!GX(h)); }
+ 
+function raceLabel(r){ const hs=(r.runners||[]).filter(h=>!h.scr&&h.odds>0&&h.p>0); if(!hs.length) return null;
+  let sum=0,n1=0,n9=0; hs.forEach(h=>{ const v=h.ev!=null?h.ev:(h.q!=null?Math.round(h.q*h.odds*100)/100:null); if(v!=null&&v>=0.9&&!GX(h)){ sum+=h.p; if(v>=1) n1++; else n9++; } });
+  return {k:(n1+n9)===0?'none':(sum>=0.25?'main':(sum>=0.10?'mid':'ana')), sum, n1, n9}; }
+const ULAB={main:'本線',mid:'相手',ana:'穴',none:'なし'};
+const alertN=r=>(r.runners||[]).filter(h=>!h.scr&&h.alert>=1).length;
+function renderRaces(){ const el=$('#s-races'); const X=lxDay(); const LK=locked(DAY);
+  const dsel= DAYS.length<2 ? '' : `<div class="seg dsel sm">${DAYS.slice().sort().slice(-4).map(d=>`<button data-d="${d}" class="${d===DAY?'on':''}">${dayLab(d)}</button>`).join('')}</div>`;
+  const byV=VENUES.map(v=>(DATA.races||[]).filter(r=>r.venue_name===v).sort((a,b)=>a.R-b.R));
+  const nxs=X.past?[]:byV.map(rs=>rs.find(r=>lxOk(r)&&!lxGone(r,X))).filter(Boolean); const NX=new Set(nxs.map(r=>r.rid));
+  const maxR=Math.max(0,...byV.map(rs=>rs.length));
+  const cell=(r,rs)=>{ if(!r) return '<div class="lxt-q empty"></div>';
+    const ok=lxOk(r), f=lxFin(r), w=!f&&lxGone(r,X), isn=NX.has(r.rid);
+    const c=['lxt-q',!ok?'dis':f?'fin':w?'wait':'up',isn?'nx':'',r===rs[0]?'first':'',r===rs[rs.length-1]?'last':''].filter(Boolean).join(' ');
+    let mk=''; if(ok&&!f&&!w&&!LK){ const L=raceLabel(r); if(L&&L.k!=='none') mk+=`<span class="lb u-${L.k}"></span>`; const a=alertN(r); if(a) mk+=`<span class="ac">${a}</span>`; }
+    return `<button type="button" class="${c}" data-rid="${r.rid}"${ok?'':' disabled'}><span class="h"><b>${r.R}</b><i>${esc(r.time||'')}</i><em>${r.surface==='芝'?'芝':'ダ'}</em></span><span class="n">${esc(r.name)}</span>${ok&&w?'<span class="w">結果待ち</span>':''}${mk}</button>`; };
+  let rows=''; for(let i=0;i<maxR;i++) rows+=byV.map(rs=>cell(rs[i],rs)).join('');
+  const heads=VENUES.map((v,i)=>{ const rs=byV[i], fin=rs.filter(r=>lxFin(r)).length; const r0=rs.find(r=>r.weather||r.going)||{}; const wx=[r0.weather,r0.going].filter(Boolean).join('・');
+    return `<div class="lxt-vh">${esc(v)}<span>${X.past?'終了':`${fin}/${rs.length}`}</span>${wx?`<span class="wx">${esc(wx)}</span>`:''}</div>`; }).join('');
+  const lg=`<div class="lxt-lg"><span><i class="d f"></i>終了</span><span><i class="d x"></i>次のレース</span>${LK?'':`<span><i class="lb u-main"></i>本線</span><span><i class="lb u-mid"></i>相手</span><span><i class="lb u-ana"></i>穴</span><span><i class="ac"></i>人気裏切りアラート</span>`}</div>`;
+  const map=VENUES.length?`<div class="lxh"><b>${X.today?'きょうのレース':X.past?'全レース（終了）':'全レース'}</b><span>押すとそのレースへ</span></div><div class="lxt${VENUES.length>4?' wide':''}" style="grid-template-columns:repeat(${VENUES.length},${VENUES.length>4?'90px':'minmax(0,1fr)'})">${heads}${rows}</div>${lg}`:'<div class="pend">この日のレースはまだありません</div>';
+  el.innerHTML=`<h2>${ico('flag')}レース</h2>${dsel}${map}`;
+  el.querySelectorAll('.dsel button').forEach(b=>b.onclick=async()=>{ await setDay(b.dataset.d); ls.set('sunao_day',DAY); renderAll(); showTab('races'); });
+  el.querySelectorAll('[data-rid]').forEach(b=>{ if(b.disabled) return; b.onclick=()=>openRace(b.dataset.rid); });
+}
+ 
+function openRace(rid){ cur.race=rid; const r=byRid[rid]; if(!r) return; renderRacePage(r); showTab('race'); }
+const evCls=h=>h.scr||h.ev==null||GX(h)?'':h.ev>=1.0?'e2':h.ev>=0.9?'e1':'';
+const pct=p=>p==null?'—':(p*100).toFixed(1);
+const fmtWt=h=>h.weight?`${h.weight}${h.wdiff!=null?`(${h.wdiff>0?'+':''}${h.wdiff})`:''}`:'';
+function favRows(h){ const f=h.fav||{}; const L={j:'騎手',t:'厩舎',c:'組み合わせ'}; const rows=Object.keys(L).filter(k=>f[k]&&f[k][0]).map(k=>{ const [n,e,a]=f[k]; const ok=a>=e; return `<div><b>${L[k]}</b><span class="${ok?'ok':''}">100回中 見込み${Math.round(e)}→実際<em>${Math.round(a)}</em>（${n}回）</span></div>`; });
+  if(!rows.length) return ''; return `<h4>人気馬だったときの実績</h4><div class="fv">${rows.join('')}<p>単勝5倍以下で乗ったときに、同じ人気の馬が普通どれだけ勝つかと比べたもの。回数が少ないうちは幅があります。</p></div>`; }
+const RUNC={'逃げ':'r1','先行':'r2','差し':'r3','追込':'r4'};
+const runChip=h=>h.run&&RUNC[h.run]?`<span class="rn ${RUNC[h.run]}">${h.run}</span>`:'';
+const CHC=c=>/前走勝ち|速さ1位/.test(c)?'sp':'';
+function chips(h,max){ const C=(h.chips||[]).filter(Boolean); if(!C.length) return ''; const m=max||C.length; const vis=C.slice(0,m), rest=C.length-vis.length;
+  return `<div class="chs">${vis.map(c=>`<span class="ch ${CHC(c)}">${esc(c)}</span>`).join('')}${rest>0?`<span class="ch">+${rest}</span>`:''}</div>`; }
+function jtRows(h){ const j=h.jt||{}; const f=(a,lab)=>a&&a[2]?`<div><b>${lab}</b><span>勝率${a[0]==null?'—':a[0].toFixed(0)}% 3着内${a[1]==null?'—':a[1].toFixed(0)}%<small>（${(a[2]||0).toLocaleString()}回）</small></span></div>`:'';
+  const rows=f(j.j,'騎手')+f(j.t,'調教師'); return rows?`<h4>騎手と調教師のこれまで</h4><div class="jtl">${rows}</div>`:''; }
+function pastRows(h){ const P=h.past||[]; if(!P.length) return '<h4>近走</h4><p class="note" style="margin-top:0">まだ記録がありません。</p>';
+  const l3=p=>`${p.l3!=null?p.l3:'—'}${p.l3r>=1&&p.l3r<=3?`<span class="l3b k${p.l3r}">${p.l3r}</span>`:''}`;
+  return `<h4>近5走</h4><div class="ptw"><table class="pt"><tr><th class="l">日付</th><th class="l">場</th><th>距離</th><th>着</th><th>人気</th><th>速さ</th><th>上り</th><th class="l">通過</th><th class="l">騎手</th><th>体重</th><th class="l">レース</th></tr>${P.map(p=>`<tr><td class="l">${esc(p.d||'')}</td><td class="l">${esc(p.v||'')}</td><td>${esc(p.surf||'')}${p.dist||''}${p.go?'<small style="color:var(--mute)">'+esc(p.go)+'</small>':''}</td><td class="${p.fin===1?'w1':''}"><b>${p.fin==null?'—':p.fin}</b>/${p.n||''}</td><td>${p.pop||'—'}</td><td>${p.sp!=null?p.sp.toFixed(0):'—'}</td><td>${l3(p)}</td><td class="l">${esc(p.pos||'')}</td><td class="l">${esc(p.j||'')}</td><td>${p.wt||''}</td><td class="nmr">${esc(p.nm||'')}</td></tr>`).join('')}</table></div>`; }
+function horseCard(r,h){ const p0=(h.past||[])[0]||{}; const pos=p0.pos?String(p0.pos).split('-').pop():null; const j=h.jt||{}; const jt=(a)=>a&&a[2]?`<b>勝率 ${a[0]==null?'—':a[0].toFixed(0)}%</b><i>3着内 ${a[1]==null?'—':a[1].toFixed(0)}%（${(a[2]||0).toLocaleString()}回）</i>`:'<b>—</b>';
+  const C=(h.chips||[]).filter(Boolean);
+  return `<tr class="hcard" data-h="${h.uno}"><td colspan="6"><div class="hc"><div class="hcl"><span>${esc(h.name)}</span></div><div class="hcg">
+    <div><label>脚質</label><b>${h.run||'—'}</b><i>近5走の序盤の位置</i></div>
+    <div><label>前走の位置</label><b class="mono">${pos?pos+'番手':'—'}</b><i>${p0.l3!=null?'上がり '+p0.l3:'最後のコーナー'}</i></div>
+    <div><label>騎手 ${esc(h.jockey||'')}</label>${jt(j.j)}</div>
+    <div><label>調教師 ${esc(h.trainer||'')}</label>${jt(j.t)}</div>
+    ${C.length?`<div class="w2"><label>要素</label><div class="chs">${C.map(c=>`<span class="ch ${CHC(c)}">${esc(c)}</span>`).join('')}</div></div>`:''}
+  </div>${favRows(h)}</div></td></tr>`; }
+ 
+function rselBody(r,v){ const X=lxDay(); const rs=(DATA.races||[]).filter(x=>x.venue_name===v).sort((a,b)=>a.R-b.R);
+  const nx=X.past?null:(rs.find(x=>lxOk(x)&&!lxGone(x,X))||{}).rid;
+  return `<div class="rs-a"><div class="rs-v">${VENUES.map(p=>`<button type="button" data-v="${p}" class="${p===v?'vo':''}${p===r.venue_name?' cur':''}">${esc(p)}</button>`).join('')}</div><div class="rs-n"><b>${esc(r.name)}</b><i>${esc(r.surface||'')}${r.dist||''}m</i></div></div>
+    <div class="rs-r">${rs.map(x=>{ const ok=lxOk(x); const c=[x.surface==='芝'?'turf':'',x.rid===r.rid?'ro':'',x.rid===nx&&x.rid!==r.rid?'nx':'',ok&&!X.past&&lxGone(x,X)?'gone':''].filter(Boolean).join(' ');
+      return `<button type="button" class="${c}" data-rid="${x.rid}"${ok?'':' disabled'}><b>${x.R}</b><small>${esc(x.time||'')}</small>${ok&&lxFin(x)?'<i class="ck"><svg viewBox="0 0 10 10"><path d="M2 5.2l2 2 4-4.4"/></svg></i>':''}</button>`; }).join('')}</div>`; }
+function bindRsel(el,r){ const box=el.querySelector('#rsel'); if(!box) return;
+  box.onclick=e=>{ const vb=e.target.closest('.rs-v button'); if(vb){ box.innerHTML=rselBody(r,vb.dataset.v); return; }
+    const rb=e.target.closest('.rs-r button'); if(rb&&!rb.disabled&&rb.dataset.rid!==r.rid) openRace(rb.dataset.rid); }; }
+let VIEW='mitate';
+const sh=(n,icon,title,right)=>`<div class="sh"><i class="shic"><svg class="ic"><use href="#i-${icon}"/></svg><em>${n}</em></i><b>${title}</b>${right?`<span class="shr">${right}</span>`:''}</div>`;
+ 
+function ptBox(t,sub){ return `<div class="ptb"><i>ポイント</i><b>${t}</b>${sub?`<span>${sub}</span>`:''}</div>`; }
+const ptU=(h,x,lb)=>`<em class="pn">${lb?lb+' ':''}${cap(h)}${esc(h.name)}${x?' '+x:''}</em>`, ptS=t=>`<em class="pn">${t}</em>`, ptJ=a=>a.filter(Boolean).join('');
+function labelBar(L){ if(!L) return ''; return `<div class="ulab u-${L.k}"><b>${ULAB[L.k]}</b>${L.k==='none'?'<span>期待値0.90以上の馬がいません</span>':`<span>色付き${L.n1+L.n9}頭のどれかが勝つ見込み<em>${Math.round(L.sum*100)}%</em></span>`}</div>`; }
+
+ 
+const JP16W=['北','北北東','北東','東北東','東','東南東','南東','南南東','南','南南西','南西','西南西','西','西北西','北西','北北西'];
+const jp16deg=s=>{ const i=JP16W.indexOf(String(s||'').trim()); return i<0?null:i*22.5; };
+const jp16of=d=>JP16W[Math.round(((d%360)+360)%360/22.5)%16];
+function windWords(w){ if(w.sp==null) return ''; if(w.sp<1) return 'ほぼ無風'; if(w.br==null||w.di==null) return '';
+  const to=(w.di+180)%360, th=(to-w.br)*Math.PI/180, al=w.sp*Math.cos(th), cr=w.sp*Math.sin(th), A=Math.abs(al), C=Math.abs(cr), side=cr>0?'左から':'右から';
+  if(A>=2.4*C) return al>0?'追い風':'向かい風'; if(C>=2.4*A) return side+'の横風'; return (al>0?'斜め追い風':'斜め向かい風')+'（'+side+'）'; }
+function windMap(w){ const cx=62, cy=58, L=44, R=20, s=(w.turn==='右')?-1:1, has=w.br!=null;
+  const th=has?(s>0?w.br-90:w.br+90):0;
+  const ring=`M ${-L/2},${-R} L ${L/2},${-R} A ${R} ${R} 0 0 1 ${L/2},${R} L ${-L/2},${R} A ${R} ${R} 0 0 1 ${-L/2},${-R} Z`;
+  const chev=(x,y,dir)=>`<path class="wm-chev" d="M -4,-3.5 L 1,0 L -4,3.5" transform="translate(${x},${y}) rotate(${dir>0?0:180})"/>`;
+  const goalx=s*L/2;
+  const trk=`<g transform="translate(${cx},${cy}) rotate(${th.toFixed(1)})" class="${has?'':'wm-dim'}"><path class="wm-trk" d="${ring}"/><path class="wm-hs" d="M ${-L/2},${R} L ${L/2},${R}"/><path class="wm-std" d="M ${-L/2+6},${R+7} L ${L/2-6},${R+7}"/><path class="wm-goal" d="M ${goalx},${R-5} L ${goalx},${R+5}"/>${chev(0,-R,-s)}${chev(-s*8,R,s)}</g>`;
+  let arr='';
+  if(w.sp!=null&&w.di!=null&&w.sp>=1){ const len=w.sp<2?14:w.sp<=5?22:30, d=w.di*Math.PI/180, ux=Math.sin(d), uy=-Math.cos(d), r0=R+5;
+    const x1=cx+ux*(r0+len), y1=cy+uy*(r0+len), x2=cx+ux*r0, y2=cy+uy*r0, ang=Math.atan2(y2-y1,x2-x1)*180/Math.PI;
+    arr=`<path class="wm-arr" d="M ${x1.toFixed(1)},${y1.toFixed(1)} L ${x2.toFixed(1)},${y2.toFixed(1)}"/><path class="wm-arrh" d="M -7,-4.5 L 0,0 L -7,4.5 Z" transform="translate(${x2.toFixed(1)},${y2.toFixed(1)}) rotate(${ang.toFixed(0)})"/>`; }
+  const n=`<g class="wm-n"><path d="M 10,16 L 13,8 L 16,16 Z"/><text x="13" y="26" text-anchor="middle">N</text></g>`;
+  const words=windWords(w); const spd=w.sp!=null?`<b>${w.di!=null?jp16of(w.di)+' ':''}${(+w.sp).toFixed(1)} m/s</b>`:'<b>—</b>';
+  return `<div class="wmap"><svg viewBox="0 0 124 112" aria-hidden="true">${n}${trk}${arr}</svg><div class="wt">${spd}${w.time?`<small>${esc(String(w.time))}${w.note?' '+esc(w.note):''}</small>`:(w.note?`<small>${esc(w.note)}</small>`:'')}${words?`<span>直線は <em>${words}</em></span>`:(has?'':'<span class="wm-note">トラックの向きは準備中</span>')}</div></div>`; }
+const straightWord=m=>m>=500?'とても長い':m>=350?'長い':m>=250?'ふつう':'短い';
+ 
+function rcdCard(r,LK){  
+  const L=LK?null:raceLabel(r); const lab=L&&ULAB[L.k]&&L.k!=='none'?`<span class="rlab u-${L.k}">${ULAB[L.k]}</span>`:'';
+  const go=r.going?`<b class="v j">${esc(r.going)}</b>`:'<b class="v na">発表前</b>';
+  const w=r.wind||{}; const src=(w.now&&w.now.spd!=null)?{sp:w.now.spd,dir:w.now.dir,at:w.now.at,note:'いま'}:(w.spd!=null?{sp:w.spd,dir:w.dir,at:w.at,note:'発走時刻の予報'}:null);
+  const tn=w.turn||r.turn||''; const wm=src?windMap({sp:src.sp,di:jp16deg(src.dir),br:w.br,turn:String(tn).replace('回り',''),time:src.at,note:src.note}):`<div class="wmap"><div class="wt"><small>風のデータは準備中</small></div></div>`;
+  return `<div class="rcd rc1 rcw">${lab}<div class="rcw-g"><div class="rc1-g rcw-go"><div><label>${r.surface==='芝'?'芝':'ダート'}の馬場</label>${go}</div></div>${wm}</div></div>`; }
+ 
+const PAST_H=['前走','2走前','3走前','4走前','5走前'];
+function pastTd(p){ if(!p) return '<td class="pc"></td>'; const n=p.fin; const rc=(n>=1&&n<=3)?'m'+n:(n!=null?'k4':'kx'); const ac=(p.l3r>=1&&p.l3r<=3)?'m'+p.l3r:'';
+  return `<td class="pc"><div class="l1"><b class="rk ${rc}">${n!=null?n:'—'}</b><span class="mono">${esc(p.d||'')}</span><span class="pl">${esc(p.v||'')}</span></div>`
+    +`<div class="l2">${esc(p.nm||'')}</div>`
+    +`<div>${esc(p.surf||'')}${p.dist||''} ${esc(p.go||'')} <span class="mono">${esc(p.time||'')}</span></div>`
+    +`<div>${p.n?`<span class="mono">${p.n}</span>頭 `:''}${p.pop?`<span class="mono">${p.pop}</span>人`:''}${p.odds?` <span class="mono">${p.odds}</span>`:''}</div>`
+    +`<div>${esc(p.j||'')} <span class="mono">${p.kin!=null?p.kin:''}</span> <span class="mono">${p.wt||''}</span></div>`
+    +`<div><span class="mono">${esc(p.pos||'')}</span>${p.l3!=null?` 上<span class="ag mono ${ac}">${p.l3}</span>`:''}</div>`
+    +`<div>速さ <span class="mono">${p.sp!=null?p.sp.toFixed(0):'—'}</span>${p.mg?` <span class="mono">${esc(p.mg)}</span>`:''}</div></td>`; }
+function horseTd(h){ const od=!h.scr&&h.odds!=null?`<span class="mono">${h.odds.toFixed(1)}</span>`+(h.pop?`<span class="pp">${h.pop}人</span>`:''):(h.scr?'<span class="pp">取消</span>':'');
+  return `<td class="mbh"><div class="h1">${cap(h)}<b>${esc(h.name)}</b></div>`
+    +`<div>${esc(h.sex||'')}${h.age||''} <span class="mono">${h.kinryo||''}</span> ${esc(h.jockey||'')}</div>`
+    +`<div class="bl">${esc(h.aff||'')} ${esc(h.trainer||'')}</div>`
+    +`<div class="bl">${runChip(h)}${(h.chips||[]).slice(0,2).map(c=>esc(c)).join('・')}</div>`
+    +`<div class="od">${h.weight?`<span class="mono">${fmtWt(h)}</span>`:''}${od}</div></td>`; }
+function tableSec(r,n,LK,fin){ const hs=(r.runners||[]).slice().sort((a,b)=>a.uno-b.uno);
+  const A=LK?[]:hs.filter(h=>!h.scr&&h.alert>=1); const W=hs.filter(h=>!h.scr&&(h.chips||[]).includes('前走勝ち'));
+  const pt=A.length?ptBox(`人気の割に来ていない馬 ${A.length}頭`, ptJ(A.slice(0,4).map(h=>ptU(h)))+(A.length>4?ptS('ほか'):'')):(W.length?ptBox(`前走勝ちの馬 ${W.length}頭`, ptJ(W.slice(0,4).map(h=>ptU(h)))+(W.length>4?ptS('ほか'):'')):'');
+  const rows=hs.map(h=>{ const ps=h.past||[]; const cells=ps.length?[0,1,2,3,4].map(i=>pastTd(ps[i])).join(''):`<td class="pc nil" colspan="5">初出走</td>`; return `<tr data-h="${h.uno}"${h.scr?' class="scr"':''}>${horseTd(h)}${cells}</tr>`+horseCard(r,h); }).join('');
+  return `<div class="sec" id="sec-horses">${sh(n,'horse','うまたち','出馬表：近5走')}${pt}<div class="mbx"><div class="mbw"><table class="mb"><thead><tr><th class="mbh">馬</th>${PAST_H.map(t=>`<th class="pc">${t}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div></div>
+    <div class="note">近5走は横にずらして見られます。着順の札は1〜3着、上がりの札は上がり3Fのレース内1〜3位。速さ＝走破タイムを場・距離・馬場でそろえた指数（大きいほど速い）。行を押すと馬カード（脚質・前走の位置・騎手と調教師のこれまで・人気馬だったときの実績）。</div></div>`; }
+ 
+function rkCap(r,h){ const o=((r.result||{}).order||[]); const i=o.findIndex(x=>+x.uma===+h.uno); const k=i>=0&&i<3?i+1:0; return `<span class="z2w">${cap(h)}${k?`<i class="z2b k${k}">${k}着</i>`:'<i class="z2s"></i>'}</span>`; }
+ 
+function fxLine(r){ const CK='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>';
+  const t=`勝率は${r.p_at?esc(r.p_at.slice(11))+'に':''}決めたまま動きません（発走30分前に1回だけ決め直します）。期待値は勝率×最新の単勝オッズです${r.odds_at?`（オッズは${esc(r.odds_at)}時点）`:''}。`;
+  return `<div class="fxl">${CK}<span>${t}</span></div>`; }
+function evSec(r,n,LK,fin){ let body='';
+  if(LK) body=lockBox(DAY,'勝率と期待値は会員向け。');
+  else{ const HP=handP(r); const PX=h=>HP?HP[(r.runners||[]).indexOf(h)]:h.p; const EX=h=>HP?((PX(h)!=null&&h.odds)?PX(h)*h.odds:null):(h.ev!=null?h.ev:((h.q!=null&&h.odds)?h.q*h.odds:null)); const hs=(r.runners||[]).filter(h=>!h.scr&&PX(h)!=null).sort((a,b)=>PX(b)-PX(a)); const hasO=(r.runners||[]).some(h=>h.odds);
+    if(!hs.length) body='<div class="alc-none">このレースの勝率は出ていません。</div>';
+    else{ const pc=h=>pct(PX(h))+'%'; const pt=ptBox(`${HP?'見立ての1番手':'うまみの1番手'} ${ptU(hs[0],pc(hs[0]))}`, ptJ(hs.slice(1,3).map((h,i)=>ptU(h,pc(h),`${i+2}番手`))));
+      const L=HP?null:raceLabel(r); const all=(r.runners||[]).slice().sort((a,b)=>((PX(b)||0)-(PX(a)||0))||a.uno-b.uno); const tier=v=>{ if(v==null||!isFinite(v)) return ''; const x=Math.round(v*100)/100; return x>=1?'e2':(x>=0.9?'e1':''); };
+      const rows=all.map(h=>`<tr class="${h.scr?'scr':((!HP&&GX(h))?'':tier(EX(h)))}"><td class="l">${fin?rkCap(r,h):cap(h)}</td><td class="l nm">${esc(h.name)}<small>${h.scr?'取消':(h.run||'')}</small></td><td class="mono">${h.scr?'':pct(PX(h))+'%'}</td><td class="mono">${h.odds?h.odds.toFixed(1):'—'}</td><td class="mono evc">${h.scr?'取消':(EX(h)!=null?EX(h).toFixed(2):'—')}</td></tr>`).join('');
+      body=pt+oddsBtn(r)+labelBar(L)+fxLine(r)
+        +`<h3>全頭${HP?'<small>勝率は買い方で入れた自分の見立て</small>':''}</h3><div class="tw"><table class="zt"><thead><tr><th class="l">番</th><th class="l">馬名</th><th>勝率</th><th>単勝</th><th>期待値</th></tr></thead><tbody>${rows}</tbody></table></div>`
+        +`<div class="note">${hasO?(r.odds_status==='yoso'?'オッズは発売前の想定。':'オッズは'+esc(r.odds_at||'')+'時点。'):'単勝オッズは未発売のため期待値は空欄。'}<br>金色＝期待値1.00以上、淡い金色＝0.90〜0.99。<br>勝率を決めたあとにオッズが1.5倍以上に上がった馬は、期待値が高くても色を付けません。<br>期待値は表の勝率×オッズではなく、人気と混ぜた正直な勝率で計算しています（AI単独だと期待値が出すぎるため）。<br>締切直前はオッズが動き、色が変わりやすくなります。</div>`
+        +alertBlock(r); } }
+  return `<div class="sec" id="sec-win">${sh(n,'chart','勝率・期待値',LK?'1日券':'')}${body}</div>`; }
+function alertBlock(r){ const A=(r.runners||[]).filter(h=>!h.scr&&h.alert>=1).sort((a,b)=>(b.alert-a.alert)||(a.odds-b.odds));
+  const body=A.length?`<div class="alc">${A.map(h=>`<div class="a"><div class="ah">${cap(h)}<b>${esc(h.name)}</b><span class="al">${h.alert>=2?'人気の割に':'やや'}</span><span class="od">単勝 ${h.odds!=null?h.odds.toFixed(1):'—'}${h.pop?'・'+h.pop+'人気':''}</span></div><div class="ap">人気 ${pct(h.mkt)}% → うまみ <em>${pct(h.p)}%</em><small>${esc(h.jockey||'')}／${esc(h.trainer||'')}</small></div>${favRows(h).replace('<h4>人気馬だったときの実績</h4>','')}</div>`).join('')}</div>`:'<div class="alc-none">今回は該当なし。</div>';
+  return `<h3>人気裏切りアラート<small>単勝5倍以下の人気馬のうち、うまみの勝率が人気を下回るか、騎手・厩舎・その組み合わせが人気馬だったときに見込みより来ていない馬。「100回中 見込み24→実際15」は、同じ人気の馬が普通どれだけ勝つかとの比べ。</small></h3>${body}`; }
+ 
+const TKK=()=>'sunao_tk_'+DAY, TYPES=['単勝','複勝','馬連','ワイド','馬単','3連複','3連単'];
+const ROWS={'単勝':['馬番'],'複勝':['馬番'],'馬連':['軸','相手'],'ワイド':['軸','相手'],'馬単':['1着','2着'],'3連複':['軸','相手','相手'],'3連単':['1着','2着','3着']};
+function tkState(rid){ const all=ls.get(TKK(),{})||{}; if(!all[rid]) all[rid]={type:'馬連',marks:{},odds:{},list:[],budget:10000,mode:'prob'}; const st=all[rid]; st.marks=st.marks||{}; st.odds=st.odds||{}; st.list=st.list||[]; return [all,st]; }
+function harv(p){  
+  const n=p.length, top=n>=8?3:2, pl=new Array(n).fill(0), pair={}, wide={}, exa={}, trio={}, tri3={}; const k2=(a,b)=>a<b?a+'-'+b:b+'-'+a;
+  for(let a=0;a<n;a++){ const pa=p[a]; if(pa<=0) continue; for(let b=0;b<n;b++){ if(b===a) continue; const pb=p[b]; if(pb<=0) continue; const pab=pa*pb/Math.max(1e-9,1-pa); exa[a+'>'+b]=pab; pair[k2(a,b)]=(pair[k2(a,b)]||0)+pab; if(top===2){ pl[a]+=pab; pl[b]+=pab; }
+    for(let c=0;c<n;c++){ if(c===a||c===b) continue; const pc=p[c]; if(pc<=0) continue; const pabc=pab*pc/Math.max(1e-9,1-pa-pb); tri3[a+'>'+b+'>'+c]=pabc; const ks=[a,b,c].sort((x,y)=>x-y).join('-'); trio[ks]=(trio[ks]||0)+pabc; wide[k2(a,b)]=(wide[k2(a,b)]||0)+pabc; wide[k2(a,c)]=(wide[k2(a,c)]||0)+pabc; wide[k2(b,c)]=(wide[k2(b,c)]||0)+pabc; if(top===3){ pl[a]+=pabc; pl[b]+=pabc; pl[c]+=pabc; } } } }
+  return {win:p,pl,pair,wide,exa,trio,tri3}; }
+function tkCombos(type,mk){ const rows=ROWS[type].length, m=[0,1,2].map(k=>(mk&&mk[k]||[]).slice()); if(rows>=2&&!m[1].length) m[1]=m[0].slice(); if(rows>=3&&!m[2].length) m[2]=m[1].slice(); const out=[], seen=new Set(), ord=type==='馬単'||type==='3連単'; const push=t=>{ const c=ord?t:[...t].sort((x,y)=>x-y); const k=c.join(','); if(!seen.has(k)){ seen.add(k); out.push(c); } };
+  if(rows===1) m[0].forEach(a=>push([a])); else if(rows===2) m[0].forEach(a=>m[1].forEach(b=>{ if(a!==b) push([a,b]); })); else m[0].forEach(a=>m[1].forEach(b=>m[2].forEach(c=>{ if(a!==b&&b!==c&&a!==c) push([a,b,c]); }))); return out; }
+function handP(r){  
+  if(locked(DAY)) return null; const st=tkState(r.rid)[1]; if(!st.handOn||!st.hand) return null;
+  const v=(r.runners||[]).map(h=>{ const x=parseFloat(st.hand[h.uno]); return x>0?x:0; }), t=v.reduce((a,b)=>a+b,0); return t>0?v.map(x=>x/t):null; }
+function payAll(r){  
+  const pays=(r.result&&r.result.pays)||{}; const o={};
+  Object.keys(pays).forEach(k=>{ const p=pays[k]; if(!p||!p.uma) return; const combos=String(p.uma.join('\n')).split(/\n\s*\n/).map(x=>x.split(/\n/).map(y=>parseInt(y.trim(),10)).filter(v=>v>0)).filter(c=>c.length);
+    o[k]=combos.map((c,j)=>({c:(k==='馬単'||k==='3連単')?c.join('>'):[...c].sort((a,b)=>a-b).join('-'), y:p.yen[j]})).filter(x=>x.y!=null); if(!o[k].length) delete o[k]; });
+  return Object.keys(o).length?o:null; }
+function tkComb(t,hs){ const u=t.idx.map(i=>hs[i]&&hs[i].uno); return (t.type==='馬単'||t.type==='3連単')?u.join('>'):[...u].sort((a,b)=>a-b).join('-'); }
+function tkHit(r,t){  
+  const sc=(r.runners||[]).filter(h=>h.scr).map(h=>h.uno); if(t.idx.some(i=>r.runners[i]&&sc.includes(r.runners[i].uno))) return {back:true}; if(!lxFin(r)) return null;
+  const pa=payAll(r); if(!pa||!pa[t.type]) return null; const c=tkComb(t,r.runners); return pa[t.type].find(x=>String(x.c)===c)||false; }
+function betSum(r){ if(!r||!lxFin(r)) return null; const L=(tkState(r.rid)[1].list||[]).filter(t=>t.yen>0); if(!L.length) return null;
+  let inv=0, ret=0, hits=0, back=0, unk=0; L.forEach(t=>{ inv+=t.yen; const h=tkHit(r,t); if(h&&h.back){ back++; ret+=t.yen; } else if(h){ hits++; ret+=Math.round(t.yen/100*h.y); } else if(h===null) unk++; });
+  return {inv,ret,hits,back,unk,pts:L.length}; }
+const plS=v=>(v>=0?'+':'−')+Math.abs(Math.round(v)).toLocaleString()+'円';
+function betLine(r){ const s=betSum(r); if(!s) return ''; return `<div class="kres${s.ret>s.inv?' win':''}"><span>${s.hits?`的中 ${s.hits}点／購入${s.pts}点`:'この買い目は不的中'}${s.back?`<small>返還 ${s.back}点</small>`:''}${s.unk?`<small>${s.unk}点は払戻が無い券種</small>`:''}</span><b class="mono">${yenS(s.inv)} → ${yenS(s.ret)}（${plS(s.ret-s.inv)}）</b></div>`; }
+function betSec(r,n,LK){ if(LK) return `<div class="sec" id="sec-bet">${sh(n,'coin','買い方','1日券')}${lockBox(DAY,'資金配分と券種は会員向け。')}</div>`;
+  const hs=r.runners; const st=tkState(r.rid)[1]; const hv=h=>{ const x=st.hand&&st.hand[h.uno]; if(x!=null&&x!=='') return esc(String(x)); return h.p!=null?(h.p*100).toFixed(1):''; };
+  const body=`<h3>勝率の見立て</h3><div class="tw"><table class="zt" id="kt"><thead><tr><th class="l">番</th><th class="l">馬名</th><th>勝率%</th><th>単勝</th><th>期待値</th></tr></thead><tbody>`+
+    hs.map((h,i)=>`<tr data-i="${i}"${h.scr?' class="scr"':''}><td class="l">${cap(h)}</td><td class="l nm">${esc(h.name)}</td><td class="kpc"><input class="c kp" value="${h.scr?'0':hv(h)}"${h.scr?' disabled':''}></td><td class="mono kod">${h.scr?'取消':(h.odds?h.odds.toFixed(1):'—')}</td><td class="mono kev">—</td></tr>`).join('')+
+    `</tbody></table></div><div class="sum"><span>勝率の合計 <b class="mono" id="kpsum">—</b><small class="kph" id="kphint"></small></span></div>
+    <div class="kbar"><button class="lnk-s" id="knorm" type="button">100%にならす</button><button class="lnk-s" id="kapply" type="button">${st.handOn?'期待値に反映済み':'期待値に反映'}</button>${st.hand?'<button class="lnk-s" id="kreset" type="button">AIに戻す</button>':''}</div>
+    <h3>買い目を組む</h3><div class="tkt" id="tkt">${TYPES.map(t=>`<button type="button" data-t="${t}"${t===st.type?' class="on"':''}>${t}</button>`).join('')}</div><div id="tkm"></div>
+    <button class="b10k" id="kadd" type="button"><span>買い目リストに載せる</span><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></i></button>
+    <h3>買い目リスト</h3><div class="kin"><div><label>予算（円）</label><input id="kb" type="number" value="${st.budget||10000}" step="1000"></div><div><label>配分のしかた</label><select id="kmode"><option value="prob"${st.mode!=='even'?' selected':''}>的中率に比例</option><option value="even"${st.mode==='even'?' selected':''}>払い戻しを揃える</option></select></div></div>
+    <div id="kout"></div><div class="sum"><button class="lnk-s" id="oupd2" type="button" style="margin-left:0">オッズ更新</button><button class="lnk-s" id="kclr" type="button">リストを全部消す</button></div>
+    <div class="note">自動で入るのは単勝オッズだけ。複勝・馬連などは、オッズの欄に手で入れると期待値と配分が出ます。</div>`;
+  return `<div class="sec" id="sec-bet">${sh(n,'coin','買い方','会員・最適配分')}${body}</div>`; }
+function bindKelly(r){ const hs=r.runners, n=hs.length; if(!$('#kt')) return; const [all,st]=tkState(r.rid); const save=()=>{ all[r.rid]=st; ls.set(TKK(),all); }; let cur=[]; bindKelly.rid=r.rid;
+  const rates=()=>{ const v=[...document.querySelectorAll('#kt .kp')].map(x=>+x.value||0), t=v.reduce((a,b)=>a+b,0); $('#kpsum').textContent=t.toFixed(0)+'%'; $('#kpsum').style.color=Math.abs(t-100)>3?'#9a6a00':''; const hn=$('#kphint'); if(hn) hn.textContent=Math.abs(t-100)>3?'100%にならして計算':''; return v.map(x=>x/(t||1)); };
+  const keyOf=t=>t.type+'|'+t.idx.join(','); const sep=t=>(t.type==='馬単'||t.type==='3連単')?'<span class="dash">＞</span>':'<span class="dash">–</span>';
+  const autoOdds=t=>t.type==='単勝'?(hs[t.idx[0]].odds||0):0;    
+  const oddsOf=t=>{ const k=keyOf(t); if(st.odds[k]!=null&&st.odds[k]!=='') return +st.odds[k]||0; return autoOdds(t); };
+  const probOf=(H,t)=>{ const [a,b,c]=t.idx, k2=(x,y)=>x<y?x+'-'+y:y+'-'+x; switch(t.type){ case '単勝': return H.win[a]||0; case '複勝': return H.pl[a]||0; case '馬連': return H.pair[k2(a,b)]||0; case 'ワイド': return H.wide[k2(a,b)]||0; case '馬単': return H.exa[a+'>'+b]||0; case '3連複': return H.trio[[a,b,c].sort((x,y)=>x-y).join('-')]||0; case '3連単': return H.tri3[a+'>'+b+'>'+c]||0; } return 0; };
+  const preview=()=>{ const cnt=tkCombos(st.type,st.marks[st.type]).length; const b=$('#kadd'); b.disabled=!cnt; b.querySelector('span').textContent=cnt?`買い目リストに載せる（${st.type} ${cnt}点）`:'買い目リストに載せる'; };
+  const renderMarks=()=>{ const rows=ROWS[st.type]; const mk=st.marks[st.type]||(st.marks[st.type]=[[],[],[]]); document.querySelectorAll('#tkt button[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===st.type));
+    $('#tkm').innerHTML=rows.map((lb,k)=>`<div class="nbh"><label>${lb}</label><button type="button" class="all${(mk[k]||[]).length===n?' on':''}" data-k="${k}">全</button></div><div class="nb6">${Array.from({length:18},(_,i)=>i<n?`<button type="button" class="nc${(mk[k]||[]).includes(i)?' on':''}" data-k="${k}" data-i="${i}"${hs[i].scr?' disabled':''}><b style="background:${WBG[hs[i].waku]};color:${WFG[hs[i].waku]}">${hs[i].uno}</b><small>${esc((hs[i].name||'').slice(0,3))}</small></button>`:`<button type="button" class="nc" disabled><b>${i+1}</b></button>`).join('')}</div>`).join('');
+    document.querySelectorAll('#tkm button:not(:disabled)').forEach(b=>b.onclick=()=>{ const k=+b.dataset.k; mk[k]=mk[k]||[]; if(b.classList.contains('all')) mk[k]=mk[k].length===n?[]:hs.map((h,i)=>i).filter(i=>!hs[i].scr); else { const i=+b.dataset.i, j=mk[k].indexOf(i); if(j<0) mk[k].push(i); else mk[k].splice(j,1); mk[k].sort((x,y)=>x-y); } save(); renderMarks(); }); preview(); };
+  const money=()=>{ const B=st.budget=+$('#kb').value||0; st.mode=$('#kmode').value; const ws=cur.map(t=>st.mode==='even'?(t.odds>0?1/t.odds:0):t.prob); const tw=ws.reduce((a,b)=>a+b,0)||1; let used=0; cur.forEach((t,i)=>{ t.yen=Math.floor(B*ws[i]/tw/100)*100; used+=t.yen; }); let rest=B-used; const by=cur.map((t,i)=>i).filter(i=>ws[i]>0).sort((x,y)=>ws[y]-ws[x]); for(let k=0;rest>=100&&by.length;k=(k+1)%by.length){ cur[by[k]].yen+=100; rest-=100; }
+    cur.forEach((t,i)=>{ if(st.list[i]) st.list[i].yen=t.yen; }); save();
+    const trs=document.querySelectorAll('#kout tbody tr.tkr'); cur.forEach((t,i)=>{ const tr=trs[i]; if(!tr) return; tr.querySelector('.yen').textContent=t.yen>0?t.yen.toLocaleString()+'円':'—'; tr.querySelector('.ev').textContent=t.odds>0?(t.prob*t.odds).toFixed(2):'—';
+      const hb=tr.nextElementSibling, hr=hb&&hb.classList.contains('hb')?hb.querySelector('.hret'):null; if(hr) hr.textContent=t.yen>0?(t.hit.back?yenS(t.yen):'払戻 '+yenS(t.yen/100*t.hit.y)):''; });
+    const k4=$('#kres4'); if(k4) k4.innerHTML=betLine(r);
+    const tot=cur.reduce((a,t)=>a+t.yen,0), hit=cur.reduce((a,t)=>a+t.prob,0), wo=cur.filter(t=>t.odds>0&&t.yen>0), ret=wo.reduce((a,t)=>a+t.prob*t.odds*t.yen,0), inv=wo.reduce((a,t)=>a+t.yen,0), ev=inv>0?ret/inv:null, allO=cur.length&&cur.every(t=>t.odds>0), gos=allO?1/cur.reduce((a,t)=>a+1/t.odds,0):null;
+    const sm=$('#ksum'); if(sm) sm.innerHTML=[['点数',cur.length+'点'],['当たる確率の合計',(Math.min(1,hit)*100).toFixed(1)+'%'],['全体の倍率',gos?gos.toFixed(1)+'倍':'—'],['期待値',ev!=null?ev.toFixed(2):'—'],['合計',tot.toLocaleString()+'円']].map(([l,v])=>`<div><label>${l}</label><b class="mono">${v}</b></div>`).join(''); };
+  const ktEV=p=>{ document.querySelectorAll('#kt tbody tr').forEach((tr,i)=>{ const h=hs[i]; if(!h) return; const o=tr.querySelector('.kod'), e=tr.querySelector('.kev');
+      if(o) o.textContent=h.scr?'取消':(h.odds?h.odds.toFixed(1):'—'); const ev=(h.odds&&p[i]>0)?p[i]*h.odds:null, et=h.scr?'':(ev==null?'':(Math.round(ev*100)/100>=1?'e2':Math.round(ev*100)/100>=0.9?'e1':''));
+      if(e){ e.textContent=ev!=null?ev.toFixed(2):'—'; } tr.classList.toggle('e1',et==='e1'); tr.classList.toggle('e2',et==='e2'); }); };
+  const renderList=()=>{ const p=rates(); ktEV(p); const H=harv(p); cur=st.list.map(t=>({...t,prob:probOf(H,t),odds:oddsOf(t),hit:tkHit(r,t)})); if(!cur.length){ $('#kout').innerHTML=''; return; }
+    const hbar=t=>!t.hit?'':t.hit.back?`<tr class="hb bk"><td colspan="7"><span class="hbl">返還</span><b class="mono hret"></b><small>取消・除外の馬を含む</small></td></tr>`:`<tr class="hb"><td colspan="7"><span class="hbl">的中</span><b class="mono hret"></b><small>${yenS(t.hit.y)}／100円</small></td></tr>`;
+    $('#kout').innerHTML=`<div class="tw"><table class="zt tkl"><thead><tr><th class="l">券種</th><th class="l">買い目</th><th>当たる<br>確率</th><th>オッズ</th><th>期待値</th><th>金額</th><th></th></tr></thead><tbody>`+cur.map(t=>`<tr class="tkr${!t.hit?(t.hit===false?' miss':''):t.hit.back?' back':' hit'}"><td class="l">${t.type}</td><td class="l">${t.idx.map(i=>cap(hs[i])).join(sep(t))}</td><td class="mono">${(t.prob*100).toFixed(1)}%</td><td><input class="c ko2" value="${t.odds?t.odds:''}" placeholder="—"></td><td class="mono ev"></td><td class="mono yen"></td><td><button type="button" class="x" aria-label="消す">×</button></td></tr>${hbar(t)}`).join('')+`</tbody></table></div><div class="kst" id="ksum"></div><div id="kres4"></div>`;
+    document.querySelectorAll('#kout .ko2').forEach((inp,i)=>inp.oninput=()=>{ st.odds[keyOf(cur[i])]=inp.value; cur[i].odds=+inp.value||0; save(); money(); });
+    document.querySelectorAll('#kout .x').forEach((b,i)=>b.onclick=()=>{ st.list.splice(i,1); save(); renderList(); }); money(); };
+  const rerender=()=>{ const y=window.scrollY; renderRacePage(r); window.scrollTo(0,y); };
+  const resetHand=()=>{ delete st.hand; st.handOn=false; save(); rerender(); };
+  const keepHand=()=>{ const ins=[...document.querySelectorAll('#kt .kp')]; st.hand={}; hs.forEach((h,i)=>{ st.hand[h.uno]=ins[i]?ins[i].value:''; }); save(); const ka=$('#kapply'); if(ka) ka.textContent='期待値に反映';
+    if(!$('#kreset')){ const bar=document.querySelector('#sec-bet .kbar'); if(bar){ const b=document.createElement('button'); b.className='lnk-s'; b.id='kreset'; b.type='button'; b.textContent='AIに戻す'; b.onclick=resetHand; bar.appendChild(b); } } };
+  document.querySelectorAll('#kt .kp').forEach(i=>{ i.oninput=()=>{ keepHand(); renderList(); }; }); $('#kb').oninput=money; $('#kmode').onchange=money;
+  const ka=$('#kapply'); if(ka) ka.onclick=()=>{ keepHand(); st.handOn=true; save(); rerender(); const b=$('#kapply'); if(b){ b.textContent='反映しました'; setTimeout(()=>{ const z=$('#kapply'); if(z&&z.textContent==='反映しました') z.textContent='期待値に反映済み'; },1500); } };
+  const kr=$('#kreset'); if(kr) kr.onclick=resetHand;
+  document.querySelectorAll('#tkt button[data-t]').forEach(b=>b.onclick=()=>{ st.type=b.dataset.t; save(); renderMarks(); });
+  $('#kadd').onclick=()=>{ const have=new Set(st.list.map(keyOf)); tkCombos(st.type,st.marks[st.type]).forEach(c=>{ const t={type:st.type,idx:c}; if(!have.has(keyOf(t))){ have.add(keyOf(t)); st.list.push(t); } }); st.marks[st.type]=[[],[],[]]; save(); renderMarks(); renderList(); $('#kout').scrollIntoView({behavior:'smooth',block:'start'}); };
+  $('#kclr').onclick=()=>{ st.list=[]; st.odds={}; save(); renderList(); };
+  const nb=$('#knorm'); if(nb) nb.onclick=()=>{ const ins=[...document.querySelectorAll('#kt .kp')]; const v=ins.map(x=>+x.value||0), t=v.reduce((q,w)=>q+w,0); if(t>0) ins.forEach((x,i)=>x.value=(v[i]/t*100).toFixed(1)); keepHand(); renderList(); };
+  $('#oupd2').onclick=()=>updOdds(r);
+  renderMarks(); renderList(); }
+ 
+const yenS=v=>Math.round(v).toLocaleString()+'円';
+function payRows(r){ const pays=(r.result&&r.result.pays)||{}; const H=u=>(r.runners||[]).find(h=>+h.uno===+u); const PAYK=['単勝','複勝','枠連','馬連','ワイド','馬単','3連複','3連単']; const winU=+((r.result.order||[])[0]||{}).uma;
+  const out=[]; PAYK.forEach(k=>{ const p=pays[k]; if(!p||!p.uma) return; const combos=String(p.uma.join('\n')).split(/\n\s*\n/).map(x=>x.split(/\n/).map(y=>y.trim()).filter(Boolean)).filter(c=>c.length);
+    combos.forEach((c,j)=>{ const sep=(k==='馬単'||k==='3連単')?'<span class="dash">＞</span>':'<span class="dash">–</span>'; const comb=c.map(x=>H(+x)?cap(H(+x)):`<span class="cap">${esc(x)}</span>`).join(sep); const y=p.yen[j]; const gold=k==='単勝'&&H(winU)&&evCls(H(winU));
+      out.push(`<tr class="${j?'cont':''}${gold?' g':''}"><td class="l">${j?'':k}</td><td class="l">${comb}</td><td class="mono">${y!=null?yenS(y):'—'}</td></tr>`); }); });
+  return out.join(''); }
+function resSec(r,n){ const res=r.result; const H=u=>(r.runners||[]).find(h=>+h.uno===+u); const top=res.order.slice(0,3).map(o=>({o,h:H(o.uma)})).filter(x=>x.h);
+  const pays=res.pays||{}; const py=k=>pays[k]&&pays[k].yen&&pays[k].yen[0]!=null?ptS(`${k} ${yenS(pays[k].yen[0])}`):''; const pt=top.length?ptBox(top.map(x=>cap(x.h)).join('<i class="ar">→</i>'), ptJ([ptS('1着 '+esc(top[0].h.name)),...['3連単','馬連','単勝'].map(py).filter(Boolean).slice(0,2)])):'';
+  const rows=top.map((x,i)=>`<tr${i===0?' class="rw1"':''}><td class="l rpo"><b>${i+1}</b><small>着</small></td><td class="l">${cap(x.h)}</td><td class="l nm">${esc(x.h.name)}<small>${[x.h.jockey?esc(x.h.jockey):'',x.h.run||''].filter(Boolean).join('・')}</small></td><td class="rrt"><b>${esc(x.o.time||'—')}</b><small>${x.o.pop?x.o.pop+'人気':''}</small></td></tr>`).join('');
+  return `<div class="sec" id="sec-res">${sh(n,'trophy','結果','確定')}${pt}<h3>着順</h3><div class="tw"><table class="zt rs3"><tbody>${rows}</tbody></table></div><h3>払戻</h3><div class="tw"><table class="zt payt"><thead><tr><th class="l">券種</th><th class="l">組み合わせ</th><th>払戻</th></tr></thead><tbody>${payRows(r)}</tbody></table></div><div class="note">100円あたり。金色の単勝は、期待値が金だった馬の的中。</div></div>`; }
+function renderRacePage(r){ const el=$('#s-race'); const X=lxDay();
+  const sel=`<div id="rsel">${rselBody(r,r.venue_name)}</div>`;
+  const yoso=r.odds_status==='yoso'; const fin=lxFin(r); const LK=locked(DAY);
+  const nm=String(r.name||''); const head=`<div class="rh rh2"><div class="rh-n" style="font-size:${nm.length>13?18:nm.length>10?20:22}px">${esc(r.name)}</div><div class="rh-m"><span class="rh-t"><b>${esc(r.time||'')}</b>発走</span>${fin?'<span class="rh-s">確定</span>':(yoso?'<span class="rh-s yoso">発売前の想定</span>':'')}<span class="rh-sf">${esc(r.surface||'')}${r.dist||''}m${r.turn?' '+esc(r.turn):''}</span><span class="rh-hc">${(r.runners||[]).filter(h=>!h.scr).length}頭</span></div></div>`;
+  const scr=(r.runners||[]).filter(h=>h.scr); const scrl=scr.length?`<div class="note scrl">取消・除外 ${scr.map(h=>`${h.uno} ${esc(h.name)}`).join('・')}</div>`:'';
+  let n=0; const secs=[tableSec(r,++n,LK,fin), evSec(r,++n,LK,fin), betSec(r,++n,LK)]; if(fin) secs.push(resSec(r,++n));
+  const steps=[['horses','うまたち',true],['win','勝率',!LK],['bet','買い方',!LK]]; if(fin) steps.push(['res','結果',true]);
+  const stepBar=`<div class="steps"><div class="in">${steps.map(([k,l,ok],i)=>`<button type="button" data-k="${k}"><i>${i+1}</i>${l}${ok?'':'<span class="lk"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>'}</button>`).join('')}</div></div>`;
+  el.innerHTML=sel+head+scrl+rcdCard(r,LK)+stepBar+secs.join('');
+  el.querySelectorAll('.steps button').forEach(b=>b.onclick=()=>{ const t=document.getElementById('sec-'+b.dataset.k); if(t){ const y=t.getBoundingClientRect().top+window.scrollY-100; window.scrollTo({top:y,behavior:'smooth'}); } });
+  if(window.IntersectionObserver){ const obs=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ const k=e.target.id.replace('sec-',''); el.querySelectorAll('.steps button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); } }); },{rootMargin:'-40% 0px -55% 0px'}); el.querySelectorAll('.sec[id]').forEach(x=>obs.observe(x)); }
+  bindRsel(el, r); const ob=el.querySelector('#oupd'); if(ob) ob.onclick=()=>updOdds(r);
+  try{ bindKelly(r); }catch(e){ console.error(e); }
+  el.querySelectorAll('.mb tr[data-h]').forEach(tr=>tr.onclick=()=>{ const d=el.querySelector(`.mb .hcard[data-h="${tr.dataset.h}"]`); if(d) d.classList.toggle('on'); });
+  try{ renderHeader(); }catch(e){}
+}
+ 
+let RECJ=null, EVM=null, CALM=null;    
+const EV_G='<span class="k g">金</span>（期待値1.0以上）';
+const evMd=d=>`${+String(d).slice(4,6)}/${+String(d).slice(6,8)}`;
+function evShape(R){  
+  const D=(R&&R.days||[]).slice().sort((a,b)=>String(a.d).localeCompare(String(b.d)));
+  const g=x=>({n:x.n||0,wins:x.hit||0,win:x.n?100*x.hit/x.n:null,top3:x.n?100*x.plc_hit/x.n:null,win_ret:x.n?x.ret/x.n:null,plc_ret:x.n?x.plc_ret/x.n:null});
+  const T=(R&&R.total)||{};
+  const E={start:D.length?D[0].d:ymd(new Date()),end:D.length?D[D.length-1].d:ymd(new Date()),days:D.filter(x=>x.races_counted).length,races_done:T.races_done||0,races_counted:T.races_counted||0,
+    gold:g(T.gold||{}),pale:g(T.pale||{}),daily:D.filter(x=>x.races_done).map(x=>({d:x.d,done:x.races_done,counted:x.races_counted,gold:g(x.gold||{}),pale:g(x.pale||{})}))};
+  const bands=(T.bands||[]).map(b=>({lo:b.lo,hi:b.hi,n:b.n,calc:b.n?100*b.exp/b.n:0,real:b.n?100*b.act/b.n:0,wins:b.act}));
+  const horses=bands.reduce((a,b)=>a+b.n,0);
+  const C=horses?{start:E.start,end:E.end,days:D.filter(x=>x.bands&&x.bands.some(b=>b.n)).length,races:T.races_done||0,horses,bands,
+    daily:D.filter(x=>x.bands&&x.bands.some(b=>b.n)).map(x=>({d:x.d,races:x.races_done,horses:x.bands.reduce((a,b)=>a+b.n,0),calc:x.bands.reduce((a,b)=>a+b.exp,0),wins:x.bands.reduce((a,b)=>a+b.act,0)}))}:null;
+  return {E,C}; }
+function evDayParts(E){  
+  const md=evMd; const pct=v=>(v==null?'—':(+v).toFixed(1)+'%'); const tile=(lab,b)=>`<div><label>${lab}</label><b>${b&&b.n?b.n:0}</b></div>`; const hi=v=>(v!=null&&+v>=100?' class="hi"':'');
+  const rates=b=>`<div class="stat"><div><label>単勝回収率</label><b${b.n?hi(b.win_ret):''}>${b.n?pct(b.win_ret):'—'}</b></div><div><label>複勝回収率</label><b${b.n?hi(b.plc_ret):''}>${b.n?pct(b.plc_ret):'—'}</b></div><div><label>3着内率</label><b>${b.n?pct(b.top3):'—'}</b></div></div>`;
+  const D=(E&&E.daily)||[]; const today=ymd(new Date()); const td=D.find(x=>x.d===today)||D[D.length-1]||null; const tg=(td&&td.gold)||{};
+  const card=td?`<div class="sub">${td.d===today?'今日':'直近の開催日'}の${EV_G}の成績（${md(td.d)}）</div>
+    <div class="stat"><div><label>RACES</label><b>${td.counted}<small style="font-size:12px;color:var(--mute)">/${td.done}</small></b></div>${tile('HORSES',tg)}${tile('WINS',{n:tg.wins||0})}</div>${rates(tg)}
+    <div class="note">${td.d===today?'結果が出たレースから順に入ります。':''}レース数は「集計したレース／結果の出たレース」。</div>`:'';
+  const months=[...new Set(D.map(x=>String(x.d).slice(0,6)))].sort(); if(!months.includes(EVM)) EVM=months[months.length-1];
+  const rows=D.filter(x=>String(x.d).slice(0,6)===EVM).slice().reverse();
+  const rowsHtml=rows.map(x=>`<tr><td>${md(x.d)}</td><td>${x.counted}/${x.done}</td><td>${x.gold.n||0}</td><td>${x.gold.wins||0}</td><td${x.gold.n?hi(x.gold.win_ret):''}>${x.gold.n?pct(x.gold.win_ret):'—'}</td><td${x.gold.n?hi(x.gold.plc_ret):''}>${x.gold.n?pct(x.gold.plc_ret):'—'}</td></tr>`).join('');
+  return {card, rowsHtml, months, tile, rates, pct}; }
+function evBlk(E,md){  
+  if(!E||!E.races_counted) return `<div class="rc" style="margin-top:14px"><div class="sub">${EV_G}だった馬の成績</div><div class="empty">まだ記録がありません</div></div>`;
+  const P=evDayParts(E); const g=E.gold||{}; const tile=P.tile, rates=P.rates, pct=P.pct;
+  const tabs=P.months.length?`<div class="mtab">${P.months.slice().reverse().map(m=>`<button type="button" class="${m===EVM?'on':''}" onclick="EVM='${m}';renderRecord(true)">${+m.slice(4)}月</button>`).join('')}</div>`:'';
+  return `<div class="rc" style="margin-top:14px"><div id="evday">${P.card}</div><div class="sub" style="margin-top:${P.card?'18px':'0'}">通算（${md(E.start)}〜${md(E.end)}・全期間）</div>
+    <div class="stat">${tile('DAYS',{n:E.days})}${tile('RACES',{n:E.races_counted})}${tile('HORSES',g)}${tile('WINS',{n:g.wins||0})}</div>${rates(g)}
+    <div class="note">${g.n?`金の${g.n}頭を100円ずつ買うと、単勝は${pct(g.win_ret)}、複勝は${pct(g.plc_ret)}戻った計算です。`:''}単勝は大きい配当に寄るので、日ごとの差が大きくなります。</div>
+    <div class="sub" style="margin-top:18px">日ごと（${EVM?EVM.slice(0,4)+'年'+(+EVM.slice(4))+'月':''}）</div>${tabs}
+    <table class="t"><thead><tr><th>日付</th><th>レース</th><th>金の頭数</th><th>勝ち</th><th>単勝回収率</th><th>複勝回収率</th></tr></thead><tbody id="evrows">${P.rowsHtml}</tbody></table>
+    <div class="note">色は、発走1分前までに取った最後の勝率とオッズ（締切時のオッズ）で判定したもの。金は期待値（勝率×単勝オッズ）が1.0以上の馬。11/6の途中からは、勝率を決めたあとにオッズが1.5倍以上に上がった馬を金に数えません。払戻は確定の払戻（100円あたり）です。レース欄は「集計したレース／結果の出たレース」。締切時のオッズや結果が取れなかったレースは数えません（確定オッズでは判定しません）。</div></div>`; }
+async function renderRecord(useCache){ const el=$('#s-record'); if(!el) return;
+  if(!useCache||!RECJ){ try{ const r=await fetch(`data/record.json?v=${BUILT}`,{cache:'no-store'}); RECJ=r.ok?await r.json():null; }catch(e){ RECJ=null; } }
+  const {E,C:X}=evShape(RECJ); const md=evMd;
+  const chart=X=>{ const mx=Math.max(1,...X.bands.map(b=>Math.max(b.calc,b.real)));
+    return `<div class="rc"><div class="lg"><span><i></i>出した勝率</span><span><i class="b"></i>実際に勝った割合</span></div>${X.bands.map(b=>`<div class="rcr"><span class="rcl">${b.lo?b.lo+'〜':'〜'}${b.hi<100?b.hi+'%':''}</span><div class="rcb"><i style="width:${(b.calc/mx*100).toFixed(1)}%"></i><em style="width:${(b.real/mx*100).toFixed(1)}%"></em></div><span class="rcv"><b>${b.calc.toFixed(1)}%</b><em>${b.real.toFixed(1)}%</em><small>${b.n}頭</small></span></div>`).join('')}</div>`; };
+  const blk=(X,sub)=>{ if(!X||!X.races) return `<div class="sub">${sub}</div><div class="empty">まだ記録がありません</div>`;
+    return `<div class="sub">${sub}</div><div class="stat"><div><label>DAYS</label><b>${X.days}</b></div><div><label>RACES</label><b>${X.races}</b></div><div><label>HORSES</label><b>${X.horses}</b></div></div>
+      ${chart(X)}
+      ${(()=>{ const months=[...new Set((X.daily||[]).map(d=>String(d.d).slice(0,6)))].sort(); if(!months.includes(CALM)) CALM=months[months.length-1];
+        const tabs=months.length?`<div class="mtab">${months.slice().reverse().map(m=>`<button type="button" class="${m===CALM?'on':''}" onclick="CALM='${m}';renderRecord(true)">${+m.slice(4)}月</button>`).join('')}</div>`:'';
+        const rows=(X.daily||[]).filter(d=>String(d.d).slice(0,6)===CALM).slice().reverse();
+        return `<div class="sub" style="margin-top:14px">日ごと（${CALM?CALM.slice(0,4)+'年'+(+CALM.slice(4))+'月':''}）</div>${tabs}<table class="t"><thead><tr><th>日付</th><th>レース</th><th>頭数</th><th>出した勝率の合計</th><th>勝った馬</th></tr></thead><tbody>${rows.map(d=>`<tr><td>${md(d.d)}</td><td>${d.races}</td><td>${d.horses}</td><td>${d.calc.toFixed(1)}</td><td>${d.wins}</td></tr>`).join('')}</tbody></table>`; })()}`; };
+  el.innerHTML=`<div class="hto"><h2>${ico('chart')}記録</h2><div class="lead">期待値が<span class="k g">金</span>（1.0以上）だった馬の成績と、うまみの勝率が実際にどれだけ当たっているかを、そのまま載せています。</div>
+    ${evBlk(E,md)}
+    <div class="lead" style="margin-top:22px">うまみの勝率の実現度。勝率の帯ごとに、出した勝率の平均と、実際に勝った割合をくらべます。2つが近いほど、勝率が実際に合っています。</div>
+    <div class="rc">${blk(X,'うまみの勝率の帯ごと'+(X?'（'+md(X.start)+'〜'+md(X.end)+'）':''))}</div>
+    <div class="note" style="margin-top:18px">結果が出たレースだけ数えています。取消・除外の馬は除きます。勝率は、そのとき画面に出していたもの（発走1分前までに取った最後の勝率）です。頭数が少ない帯は、ばらつきが大きくなります。</div></div>`; }
+function renderMem(){ const el=$('#s-mem');
+  if(!GATED){ el.innerHTML=`<h2>${ico('user')}会員</h2><div class="box"><b>1日券は準備中</b><p>いまは全部のレースをそのまま見られます。</p></div>`; return; }
+  const od=Object.keys(OPEN).filter(d=>DAYS.includes(d)).sort();
+  el.innerHTML=`<h2>${ico('user')}会員</h2>
+    <div class="box"><b>1日券の合い言葉</b><p>開催日ごとの合い言葉で、その日の全レースの勝率と期待値が開きます。終わった日は誰でも見られます。</p>${lockBox(DAY,'合い言葉を入れる')}</div>
+    <div class="box"><b>この端末で開いている日</b>${od.length?`<div class="mem-open">${od.map(d=>`<span>${dayLab(d)}</span>`).join('')}</div>`:'<p>まだありません。</p>'}</div>
+    ${NOTE_URL?`<div class="box"><b>1日券を買う</b><p>noteの記事から、その日の合い言葉を手に入れられます。</p><div class="lock" style="border:none;padding:0;margin-top:6px"><div class="buy"><a href="${esc(NOTE_URL)}" target="_blank" rel="noopener">1日券の記事一覧</a></div></div></div>`:`<div class="box"><b>1日券は準備中</b><p>買える場所が決まり次第ここに出します。</p></div>`}`; }
+function renderHowto(){ const H=(n,icon,title,point,more)=>`<div class="hs"><div><i class="num"><svg class="ic"><use href="#i-${icon}"/></svg><em>${n}</em></i><b>${title}</b></div><div class="pt-box">${point}</div>${more?`<details><summary>くわしく</summary><ul>${more}</ul></details>`:''}</div>`;
+  $('#s-howto').innerHTML=`<h2>${ico('book')}使い方</h2><div class="hto">
+  <div class="lead">うまみは、地方競馬の全レースに「正直な勝率」と「期待値」を付けるサービスです。</div>
+  <div class="qs"><div><b>1</b><span>目次でレースを押す。色の丸はレースのラベル（<em>本線・相手・穴</em>）、小さな数字は人気裏切りアラートの数です。</span></div><div><b>2</b><span>「勝率と期待値」で<em>見立て</em>を見る。1.00以上は濃い金、0.90以上は淡い金。</span></div><div><b>3</b><span>気になる馬を出馬表で押すと、近5走と騎手・調教師のこれまでが開きます。</span></div></div>
+  ${H(1,'horse','勝率はどう決めている？','うまみのAIが、過去の地方の全レースから学んだ勝率です。うまみが「50%」と出した馬は、100頭いれば50頭ほど勝つ見込みです。',
+    `<li>人気（オッズから見た勝ちやすさ）とは少し違います。うまみの勝率が人気より高い馬は「人気のわりに来る」、低い馬は「人気のわりに来ない」と見ている馬です。</li><li>出した勝率が本当にその通りだったかは、<b>記録</b>のタブで帯ごとに公開しています。</li>`)}
+  ${H(2,'coin','期待値と金の2段','<b>期待値＝勝率×単勝オッズ</b>。勝率どおりなら、100円の単勝がいくら戻るかの倍率です。<span class="k g">1.00以上</span> は払い戻しが賭け金に見合う見込みの馬、<span class="k g2">0.90以上</span> はそれに近い馬。勝率を決めたあとにオッズが1.5倍以上に上がった馬は、色を付けません。',
+    `<li>期待値は目安です。金の馬でも、外れることは多くあります。</li><li>見立て＝期待値が0.90以上の馬を勝率順に並べたもの。いなければ勝率の上位3頭。全頭＝全馬を勝率順に。</li><li>期待値はオッズで動きます。発売前は「想定」のオッズなので目安。発走が近づくほど本当の値に近づきます。</li>`)}
+  ${H(3,'coin','買い方','予算と配分を選ぶと、期待値0.90以上の馬の単勝に100円単位で配った表が出ます。該当する馬がいないレースは「見送り」。',
+    `<li>「勝率に比例」は勝ちやすい馬に多く、「均等」は同じ額ずつ。予算と配分はこの端末に残ります。</li><li>「的中時」はその馬が勝ったときに戻る額（いまのオッズ）。オッズを更新すると配分も出し直します。</li><li>買い目は材料です。買うかどうか、いくら買うかはご自身で決めてください。</li>`)}
+  ${H(4,'flag','レースのラベル','期待値が0.90以上の馬の勝率を足して、<b>本線</b>（100レース中25勝分以上）・<b>相手</b>（10勝分以上）・<b>穴</b>（それ未満）の3つに分けています。',
+    `<li>本線は「金の馬が勝ちやすいレース」。穴は「金の馬はいるが勝率は低い」ので、当たれば大きい代わりに外れやすいレースです。</li><li>目次の色の丸と、レースページの「勝率と期待値」の札に出ます。</li>`)}
+  ${H(5,'alert','人気裏切りアラート','単勝5倍以下の人気馬で、<b>うまみの勝率が人気を下回る</b>か、<b>騎手・厩舎・その組み合わせ</b>が人気馬だったときに見込みより来ていない馬に札が付きます。',
+    `<li>「100回中 見込み24→実際15（65回）」は、同じ人気の馬が普通どれだけ勝つかと比べた数です。回数が少ないうちは偶然の幅があります。</li><li>「やや」と「人気の割に」の2段。人気馬を軸にするときの、念のための確認に。</li><li>レースページの「人気裏切りアラート」の章に、該当する馬だけをまとめています。</li>`)}
+  ${H(6,'run','脚質と札','出馬表の馬名の横に <span class="k rn r1">逃げ</span><span class="k rn r2">先行</span><span class="k rn r3">差し</span><span class="k rn r4">追込</span> の脚質と、休み明け・乗り替わり・距離の変更などの要素の札が付きます。',
+    `<li>脚質は近5走で最初のコーナーをどの位置で回ったかから。逃げ・先行が多いレースは前が苦しくなりやすい、といった見方に。</li><li>乗替↑は前の騎手より勝率の高い騎手に替わった馬、乗替↓はその逆。速さ1位は近5走のいちばん速い走りがレースで1位の馬。</li><li>馬を押すと近5走の表が開き、速さ（大きいほど速い）、上りの順位（1〜3位は札）、通過順も見られます。</li>`)}
+  ${H(7,'clock','オッズを更新','「オッズを更新」を押すと、その時点の単勝オッズを取り直し、期待値（勝率×単勝オッズ）を出し直します。勝率は決めた時刻の値のままで、発走30分前に1回だけ決め直します。押したあと20秒は押せません。',
+    `<li>何もしなくても5分ごとに新しい値に入れ替わります。ページの上に更新した時刻が出ます。</li><li>取消になった馬は薄く表示し、残りの馬で勝率を配り直します。</li>`)}
+  ${H(8,'key','合い言葉（1日券）','勝率・期待値・人気裏切りアラートは、<b>開催日ごとの合い言葉</b>で開きます。一度入れればこの端末では開いたまま。終わった日は誰でも見られます。',
+    `<li>出馬表・オッズ・近5走・結果・記録は、合い言葉なしで見られます。</li><li>合い言葉は「会員」のタブか、レースページの箱に入れます。</li>`)}
+  ${H(9,'chart','記録','うまみの勝率と、金の馬の成績を公開。結果が出るたびに更新。',
+    `<li><span class="k g">金</span>（期待値1.00以上）だった馬の<b>単勝回収率・複勝回収率・3着内率</b>。直近の開催日の成績、通算、日ごと（月のタブ）</li><li>判定は締切時（発走1分前までに取った最後）の勝率とオッズ、払戻は確定。色の決まりは画面と同じ。締切時のオッズや結果が取れなかったレースは数えず、その数も出しています</li><li>勝率の帯ごとに、出した勝率の平均と実際に勝った割合をくらべた表</li>`)}
+  ${H(10,'wind','コースと馬場','レースのページのいちばん上に、馬場状態と、直線に対する風の向きと強さを出します。')}
+  ${H(11,'trophy','結果','レースが終わると、着順と払戻（100円あたり）が出ます。金だった馬の単勝の的中は金色で示します。')}
+  ${H(12,'grid','中央と地方','いちばん上の<b>UMAMI 中央</b>と<b>UMAMI 地方</b>で切り替えます。中央競馬のページでは、展開・馬柱・重賞分析なども見られます。')}
+  <div class="note">うまみは予想を売るサービスではなく、判断の材料を出すサービスです。馬券の購入は自己責任でお願いします。</div>
+</div>`; }
+function renderAll(){ renderHeader(); renderRaces(); renderRecord(); renderMem(); renderHowto(); if(cur.race&&byRid[cur.race]) renderRacePage(byRid[cur.race]); }
+async function main(){ if(!DAYS.length){ $('#hd').innerHTML='<div class="wm"><i><svg class="ic" style="stroke-width:1.5"><use href="#i-face"/></svg></i><div><span class="kana">うまみ</span><small class="en">UMAMI</small></div></div>'; $('#s-races').innerHTML='<div class="pend">データがまだありません</div>'; showTab('races'); return; }
+  await loadEnc(); for(const pw of (ls.get(LSK,[])||[])){ try{ await openWith(pw); }catch(e){} }
+  await setDay(pickDay()); renderAll();
+  const q=new URLSearchParams(location.search).get('r'); let k=ls.get('sunao_tab','races'); if(q&&byRid[q]){ openRace(q); } else { if(k==='race') k='races'; showTab(k); }
+  document.querySelectorAll('.nav button[data-k]').forEach(b=>b.onclick=()=>{ const k=b.dataset.k; if(k==='up'){ window.scrollTo({top:0,behavior:'smooth'}); return; } if(k==='list'){ showTab('races'); return; } showTab(k); });
+  let lastY=window.scrollY; window.addEventListener('scroll',()=>{ const y=window.scrollY; lastY=y; const rs=$('#rsel'); if(rs) rs.classList.toggle('stuck',y>40); },{passive:true});
+  setInterval(async()=>{ try{ const r=await fetch(`data/${DAY}.json?t=${Date.now()}`,{cache:'no-store'}); if(r.status===404){ location.reload(); return; } const j=await r.json(); if(j.built!==DATA.built){ CACHE[DAY]=j; if(GATED){ try{ const e=await fetch(`data/enc.json?t=${Date.now()}`,{cache:'no-store'}); if(e.ok){ ENC=await e.json(); OPEN={}; for(const pw of (ls.get(LSK,[])||[])){ try{ await openWith(pw); }catch(x){} } } }catch(x){} } await setDay(DAY); const y=window.scrollY; renderAll(); window.scrollTo(0,y); } }catch(e){} },300000);    
+}
+main();
+</script>
+
+<script>
+ 
+(function(){ const nav=document.querySelector('.nav'), sw=document.getElementById('sw'), sc=document.getElementById('tnavsc'); if(!nav||!sw||!sc) return;
+  sw.querySelector('[data-site="c"]').onclick=function(){ if(!this.classList.contains('on')) location.href='https://umami-lab-support.github.io/'; };
+  sw.querySelector('[data-site="l"]').onclick=function(){ if(!this.classList.contains('on')) location.href='https://sunao-keiba.github.io/'; };
+  const skip={up:1,list:1,chi:1};
+  function vis(){ return [...nav.querySelectorAll('button[data-k]')].filter(b=>!skip[b.dataset.k]&&getComputedStyle(b).display!=='none'); }
+  function build(){ sc.innerHTML=''; vis().forEach(b=>{ const t=document.createElement('button'); t.type='button'; t.dataset.k=b.dataset.k; t.textContent=b.textContent.trim(); t.onclick=()=>{ b.click(); sync(); }; sc.appendChild(t); }); }
+  let LASTK=null; function sync(){ const on=nav.querySelector('button.on'); const k=on?on.dataset.k:null; if(k===LASTK&&sc.querySelector('button.on')) return; LASTK=k; sc.querySelectorAll('button[data-k]').forEach(t=>t.classList.toggle('on',t.dataset.k===k)); const o=sc.querySelector('button.on'); if(o){ const L=o.offsetLeft-(sc.clientWidth-o.offsetWidth)/2; if(Math.abs(sc.scrollLeft-L)>4) sc.scrollLeft=Math.max(0,L); } }
+  build(); sync(); new MutationObserver(()=>{ if(sc.children.length!==vis().length){ build(); LASTK=null; } sync(); }).observe(nav,{subtree:true,attributes:true,attributeFilter:['class','style']});
+})();
+</script>
+</body>
+</html>
