@@ -1168,7 +1168,7 @@ html[data-theme=dark] svg text:not([fill]):not([class]){fill:#ececea}
 </div></div>
 <script>
 const DAYS=["20261107"];             
-const BUILT='2026-11-07T0110';
+const BUILT='2026-11-07T0115';
 const GATED=true;         
 const NOTE_URL="";       
 const $=s=>document.querySelector(s);
@@ -1229,8 +1229,7 @@ function lockBox(d,msg){ const A=NOTE_URL?`<div class="buy"><a href="${esc(NOTE_
 
  
 const OUPD={};                                    
-const _dx=(a,k)=>a.map((c,i)=>String.fromCharCode(c^k.charCodeAt(i%k.length))).join(''), _dk='q3Zt8';
-const RELAY=_dx([25,71,46,4,75,75,28,117,6,22,27,90,52,21,22,16,90,117,28,76,5,67,41,78,23,94,93,59,6,22,31,86,46,31,93,24,81,59,90,91,30,94,117,21,72,24,28,59,4,81,46,84,63,0,103,31,82,40,43,87,21,87,41,90,80,5,94,54,75,74,16,80,63,43,81,21,14],_dk), QH1=_dx([9,30,40,17,76,4,65,52,89,94,30,65,55,21,76],_dk);
+const RLY='https://umami-api.umami-keiba-support.workers.dev';
 const hhmm=()=>{ const n=new Date(); return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`; };
 function oddsBtn(r){ const left=Math.max(0,20000-(Date.now()-(OUPD[r.rid]||0))); const y=r.odds_status==='yoso';
   return `<button class="oupdg" id="oupd" type="button"${left>0?' disabled':''}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新のオッズに更新する<em>${r.odds_at?(y?'発売前の想定':esc(r.odds_at)+'時点'):''}</em></button><div class="oupd-n" id="oupdn">${OUPD['n_'+r.rid]||''}</div>`; }
@@ -1248,7 +1247,7 @@ function applyOdds(r,byHid,st,at){
 async function updOdds(r){ const b=$('#oupd'); if(!b||b.disabled) return; b.disabled=true; b.innerHTML='更新中…'; OUPD[r.rid]=Date.now(); OUPD['n_'+r.rid]='';
   let ok=false;
   try{ const ac=new AbortController(); const tm=setTimeout(()=>ac.abort(),10000);
-    const res=await fetch(RELAY+encodeURIComponent(r.rid)+'%26type%3D1%26action%3Dinit',{headers:{[QH1]:'text'},signal:ac.signal}); clearTimeout(tm);
+    const res=await fetch(RLY+'/b?r='+encodeURIComponent(r.rid)+'&t=1&x=init',{signal:ac.signal}); clearTimeout(tm);
     const t=await res.text(); const j=JSON.parse(t.slice(t.indexOf('{'))); const kn=(j.ary_odds||{}).KettoNum||j.ary_odds||{};    
     if(j.status==='OK'&&Object.keys(kn).length){ const m={}; Object.entries(kn).forEach(([h,v])=>{ m[h]={odds:+v.Odds,pop:+v.Ninki}; }); applyOdds(r,m,j.odds_status,hhmm()); ok=true; }
   }catch(e){}
